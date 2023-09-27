@@ -11,16 +11,33 @@ export default function SingleProductPage(props) {
   return (
     <div className={styles.singleproductpage}>
       <div className={styles.image}>
-        <img src={singleProduct.image} alt="ProductImage" height="200" />
+        <img
+          src={singleProduct.image}
+          alt="ProductImage"
+          height="200"
+          data-test-id="product-image"
+        />
       </div>
       <div className={styles.productdescriptiontemplate}>
         <h1 className={styles.h1}>{`Ticket ${singleProduct.name}`}</h1>
-        <div className={styles.quantityinput} />
+        <p className={styles.price} data-test-id="product-price">
+          {singleProduct.price}
+        </p>
         <label htmlFor="Quantity" className={styles.quantitylabel}>
           Quantity
         </label>
-        <input id="Quantity" className={styles.price} placeholder="1" />
-        <button className={styles.buttonPrimary}>Add to Cart</button>
+        <input
+          id="Quantity"
+          className={styles.quantityinput}
+          placeholder="1"
+          data-test-id="product-quantity"
+        />
+        <button
+          className={styles.buttonPrimary}
+          data-test-id="product-add-to-cart"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );

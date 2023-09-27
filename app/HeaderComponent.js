@@ -5,7 +5,7 @@ export default function HeaderComponent() {
     <div className={styles.header}>
       <div className={styles.background2} />
       <div className={styles.cartbutton}>
-        <a href="/#" data-test-id="products-link">
+        <a href="/checkoutPage" data-test-id="products-link">
           Products
         </a>
       </div>
