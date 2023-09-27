@@ -7,24 +7,20 @@ export const metadata = {
 };
 
 export default function SingleProductPage(props) {
-  const singleProduct = getProducts(Number(props.params.SingleProductPage));
+  const singleProduct = getProductsByID(Number(props.params.singleProductPage));
   return (
     <div className={styles.singleproductpage}>
-      <div className={styles.background} />
       <div className={styles.image}>
-        <div className={styles.background1} />
+        <img src={singleProduct.image} alt="ProductImage" height="200" />
       </div>
       <div className={styles.productdescriptiontemplate}>
-        <div className={styles.buttonPrimary}>
-          <div className={styles.background2} />
-          <div className={styles.text}>Add to Cart</div>
-        </div>
+        <h1 className={styles.h1}>{`Ticket ${singleProduct.name}`}</h1>
         <div className={styles.quantityinput} />
-        <div className={styles.defaultinputone}>1</div>
-        <div className={styles.quantitylabel}>Quantity</div>
-        <div className={styles.price}>1234444</div>
-        <div className={styles.productdescription}>Description</div>
-        <div className={styles.h1}>h1 Product name 1</div>
+        <label htmlFor="Quantity" className={styles.quantitylabel}>
+          Quantity
+        </label>
+        <input id="Quantity" className={styles.price} placeholder="1" />
+        <button className={styles.buttonPrimary}>Add to Cart</button>
       </div>
     </div>
   );

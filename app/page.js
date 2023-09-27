@@ -25,17 +25,15 @@ export default function Home() {
             >
               <div className={styles.cardBlog1}>
                 <div className={styles.content}>
-                  <div className={styles.background1} />
+                  <img
+                    className={styles.productImage}
+                    src={p.image}
+                    height={100}
+                    alt="ProductImage"
+                  />
                   <h2 className={styles.producttitle}>{p.name}</h2>
                   <p className={styles.seeMore}>{p.price}</p>
                 </div>
-                <img
-                  className={styles.productImage}
-                  src="https://upload.wikimedia.org/wikipedia/commons/0/04/So_happy_smiling_cat.jpg"
-                  width={200}
-                  height={100}
-                  alt="parrot"
-                />
               </div>
             </Link>
           );
