@@ -1,3 +1,4 @@
+import { getProducts, getProductsByID } from '../../database/products';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -5,7 +6,8 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default function SingleProductPage() {
+export default function SingleProductPage(props) {
+  const singleProduct = getProducts(Number(props.params.SingleProductPage));
   return (
     <div className={styles.singleproductpage}>
       <div className={styles.background} />
