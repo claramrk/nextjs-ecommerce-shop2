@@ -1,6 +1,6 @@
 import styles from './HeaderComponent.module.scss';
 
-export default function Header() {
+export default function HeaderComponent() {
   return (
     <div className={styles.header}>
       <div className={styles.background2} />
