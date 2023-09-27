@@ -1,0 +1,71 @@
+.background2,
+.background3 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.background2 {
+  background-color: #fff;
+}
+.background3 {
+  border-radius: var(--br-8xs);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+}
+.cartbutton {
+  position: absolute;
+  width: calc(100% - 33px);
+  top: calc(50% - 12px);
+  left: 17px;
+  line-height: 134.77%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttonSecondary {
+  position: absolute;
+  height: 62.5%;
+  width: 9.72%;
+  top: 18.75%;
+  right: 2.78%;
+  bottom: 18.75%;
+  left: 87.5%;
+}
+.logo {
+  position: absolute;
+  top: 28.13%;
+  left: 2.78%;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: left;
+}
+.currentcarttotalellipse {
+  position: absolute;
+  height: 90.63%;
+  width: 4.51%;
+  top: 50%;
+  right: 0;
+  bottom: -40.62%;
+  left: 95.49%;
+  border-radius: 50%;
+  background-color: #e75050;
+}
+.currentcartitemno {
+  position: absolute;
+  top: 81.25%;
+  left: 97.36%;
+  line-height: 134.77%;
+}
+.header {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-black);
+  font-family: var(--font-roboto);
+}
