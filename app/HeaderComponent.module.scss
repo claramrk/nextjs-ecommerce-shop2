@@ -1,3 +1,8 @@
+.HeaderComponent {
+  position: fixed;
+  top: 0px;
+}
+
 .background2,
 .background3 {
   position: absolute;
@@ -55,10 +60,7 @@
   background-color: #e75050;
 }
 .currentcartitemno {
-  position: absolute;
-  top: 81.25%;
-  left: 97.36%;
-  line-height: 134.77%;
+  color: var(--color-white);
 }
 .header {
   position: relative;

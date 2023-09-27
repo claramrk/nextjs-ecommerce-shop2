@@ -1,5 +1,10 @@
 import styles from './page.module.scss';
 
+export const metadata = {
+  title: 'Products',
+  description: 'This is Claras e-commerce shop',
+};
+
 export default function CheckoutPage() {
   return (
     <div className={styles.checkoutpage}>

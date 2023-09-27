@@ -1,5 +1,10 @@
 import styles from './page.module.scss';
 
+export const metadata = {
+  title: 'Product',
+  description: 'This is Claras e-commerce shop',
+};
+
 export default function SingleProductPage() {
   return (
     <div className={styles.singleproductpage}>

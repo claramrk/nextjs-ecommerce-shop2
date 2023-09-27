@@ -1,5 +1,10 @@
 import styles from './page.module.scss';
 
+export const metadata = {
+  title: 'ThankYou',
+  description: 'This is Claras e-commerce shop',
+};
+
 export default function ThankYouPage() {
   return (
     <div className={styles.thankyoupage}>
