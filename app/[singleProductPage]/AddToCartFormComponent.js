@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { setQuantityInCookies } from './AddToCartFormAction';
 
 export default function AddToCartFormComponent() {
   const [quantityValue, setQuantityValue] = useState('');
@@ -36,7 +37,7 @@ export default function AddToCartFormComponent() {
       <button
         className="buttonPrimary"
         data-test-id="product-add-to-cart"
-        formAction={console.log('set cookies')}
+        formAction={async () => await setQuantityInCookies(quantityValue)}
       >
         Add to Cart
       </button>
