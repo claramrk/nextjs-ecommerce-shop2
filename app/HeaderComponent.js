@@ -1,7 +1,18 @@
+import { cookies } from 'next/headers';
 import Link from 'next/link';
 import styles from './HeaderComponent.module.scss';
 
 export default function HeaderComponent() {
+  const cartCookie = cookies().get('cart')?.value;
+
+  function sumQuantity() {
+    const parsedCartCookie = JSON.parse(cartCookie);
+    const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
+      return accumulator + object.quantity;
+    }, 0);
+    return sumTotal;
+  }
+
   return (
     <div className={styles.header}>
       <div className={styles.background2} />
@@ -20,7 +31,7 @@ export default function HeaderComponent() {
       <b className={styles.logo}>E.commerce Shop</b>
       <div className={styles.currentcarttotalellipse}>
         <div className={styles.currentcartitemno} data-test-id="cart-count">
-          0
+          {cartCookie ? sumQuantity() : ''}
         </div>
       </div>
     </div>

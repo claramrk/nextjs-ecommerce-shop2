@@ -28,16 +28,14 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
     if (singleProductToUpdate) {
       parsedCartCookie[
         parsedCartCookie.indexOf(singleProductToUpdate)
-      ].quantity = quantityValue;
+      ].quantity = Number(quantityValue);
       cookies().set('cart', JSON.stringify([...parsedCartCookie]));
-      console.log(JSON.stringify([...parsedCartCookie]));
     } else {
       parsedCartCookie.push({
         id: singleProductFromDatabase.id,
-        quantity: quantityValue,
+        quantity: Number(quantityValue),
       });
       cookies().set('cart', JSON.stringify([...parsedCartCookie]));
-      console.log(JSON.stringify([...parsedCartCookie]));
     }
   }
 
