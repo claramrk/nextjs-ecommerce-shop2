@@ -33,7 +33,11 @@ export default function AddToCartFormComponent() {
           preventMinus(event.currentTarget.value);
         }}
       />
-      <button className="buttonPrimary" data-test-id="product-add-to-cart">
+      <button
+        className="buttonPrimary"
+        data-test-id="product-add-to-cart"
+        formAction={console.log('set cookies')}
+      >
         Add to Cart
       </button>
     </form>
