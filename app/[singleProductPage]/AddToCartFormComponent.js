@@ -3,12 +3,8 @@
 import { useEffect, useState } from 'react';
 import { setQuantityInCookies } from './AddToCartFormAction';
 
-export default function AddToCartFormComponent() {
-  const [quantityValue, setQuantityValue] = useState('');
-
-  useEffect(() => {
-    setQuantityValue(1);
-  }, []);
+export default function AddToCartFormComponent(props) {
+  const [quantityValue, setQuantityValue] = useState(1);
 
   const preventMinus = (e) => {
     if (e.code === 'Minus') {
@@ -28,7 +24,7 @@ export default function AddToCartFormComponent() {
         className="quantityinput"
         value={quantityValue}
         data-test-id="product-quantity"
-        min="0"
+        min="1"
         onChange={(event) => {
           setQuantityValue(event.currentTarget.value);
           preventMinus(event.currentTarget.value);
@@ -37,7 +33,9 @@ export default function AddToCartFormComponent() {
       <button
         className="buttonPrimary"
         data-test-id="product-add-to-cart"
-        formAction={async () => await setQuantityInCookies(quantityValue)}
+        formAction={async () =>
+          await setQuantityInCookies(props.singleProductID, quantityValue)
+        }
       >
         Add to Cart
       </button>
