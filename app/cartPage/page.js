@@ -5,6 +5,23 @@ import { getProducts } from '../../database/products';
 export default function CartPage() {
   const cartCookie = cookies().get('cart')?.value;
   const productsDatabase = getProducts();
+  const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
+
+  const databaseProductsInCart = productsDatabase.map((p) => {
+    const matchingProductFromCookie = parsedCartCookie.find(
+      (c) => productsDatabase.id === c.id,
+    );
+    return {
+      ...productsDatabase,
+      quantity: matchingProductFromCookie.quantity,
+    };
+  });
+
+  const matchingProductFromCookieOnlyDefined = databaseProductsInCart.filter(
+    (e) => e.quantity !== undefined,
+  );
+
+  console.log(matchingProductFromCookieOnlyDefined);
 
   function sumQuantity() {
     const parsedCartCookie = JSON.parse(cartCookie);
@@ -20,24 +37,36 @@ export default function CartPage() {
       for (let i = 0; i < productsDatabase.length; i++) {
         if (productsDatabase[i].id === c.id) {
           const priceXQuantity = productsDatabase[i].price * c.quantity;
-          console.log(
-            `${productsDatabase[i].name} ${c.quantity} ${priceXQuantity}`,
-          );
           return priceXQuantity;
         }
       }
     });
+
     const sumTotal = subtotalPrices.reduce((accumulator, object) => {
       return accumulator + object;
     }, 0);
     return sumTotal;
   }
-  console.log(multiplySubtotalPrices());
 
   return (
     <div className="cartpage">
       <h1 className="cart">Cart</h1>
 
+      {!cartCookie
+        ? ''
+        : JSON.parse(cartCookie).map((c) => {
+            return (
+              <div
+                className="ProductCard"
+                data-test-id={`cart-product-${c.id}`}
+                key={`cart-product-${c.id}`}
+              >
+                <div className="title">
+                  <h2>{c.id}</h2>
+                </div>
+              </div>
+            );
+          })}
       <div className="ProductCard" data-test-id="cart-product-<product id>">
         <div className="title">
           <h2>Product.Name</h2>
