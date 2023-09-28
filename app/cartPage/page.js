@@ -14,20 +14,25 @@ export default function CartPage() {
     return sumTotal;
   }
 
-  function multiplyTotalPrice() {
+  function multiplySubtotalPrices() {
     const parsedCartCookie = JSON.parse(cartCookie);
-    parsedCartCookie.forEach((c) => {
+    const subtotalPrices = parsedCartCookie.map((c) => {
       for (let i = 0; i < productsDatabase.length; i++) {
         if (productsDatabase[i].id === c.id) {
           const priceXQuantity = productsDatabase[i].price * c.quantity;
           console.log(
             `${productsDatabase[i].name} ${c.quantity} ${priceXQuantity}`,
           );
+          return priceXQuantity;
         }
       }
     });
+    const sumTotal = subtotalPrices.reduce((accumulator, object) => {
+      return accumulator + object;
+    }, 0);
+    return sumTotal;
   }
-  console.log(multiplyTotalPrice());
+  console.log(multiplySubtotalPrices());
 
   return (
     <div className="cartpage">
@@ -56,16 +61,18 @@ export default function CartPage() {
       </div>
 
       <div className="totalpriceandquantity">
-        <div className="totalprice">
-          <h2>Total</h2>
-          <div className="price">
-            {`Price: `}
-            <p data-test-id="cart-total">0</p>
-          </div>
+        <h2>Total</h2>
+        <div className="quantity">
+          {`Quantity:`}
+          <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
         </div>
-        <div className="quantity">{`Quantity: ${
-          cartCookie ? sumQuantity() : '0'
-        }`}</div>
+        <div className="price">
+          {`Price:`}
+          <p data-test-id="cart-total">
+            {cartCookie ? multiplySubtotalPrices() : '0'}
+          </p>
+        </div>
+
         <Link href="/shoppage">
           <div className="buttonSecondary">
             <div className="background3" />
