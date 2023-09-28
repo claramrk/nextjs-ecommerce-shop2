@@ -11,16 +11,17 @@ export default function HeaderComponent() {
         </a>
       </div>
 
-      <Link href="/cartPage">
+      <Link href="/cartPage" data-test-id="cart-link">
         <div className={styles.buttonSecondary}>
           <div className={styles.background3} />
-
           <div className={styles.cartbutton}>Cart</div>
         </div>
       </Link>
       <b className={styles.logo}>E.commerce Shop</b>
       <div className={styles.currentcarttotalellipse}>
-        <div className={styles.currentcartitemno}>0</div>
+        <div className={styles.currentcartitemno} data-test-id="cart-count">
+          0
+        </div>
       </div>
     </div>
   );
