@@ -1,5 +1,3 @@
-import styles from './page.module.scss';
-
 export const metadata = {
   title: 'ThankYou',
   description: 'This is Claras e-commerce shop',
@@ -7,13 +5,13 @@ export const metadata = {
 
 export default function ThankYouPage() {
   return (
-    <div className={styles.thankyoupage}>
-      <div className={styles.background} />
-      <div className={styles.buttonPrimary}>
-        <div className={styles.background1} />
-        <div className={styles.text}>Go back to Homepage</div>
+    <div className="thankyoupage">
+      <div className="background" />
+      <div className="buttonPrimary">
+        <div className="background1" />
+        <div className="text">Go back to Homepage</div>
       </div>
-      <div className={styles.h1}>Thank you for your order</div>
+      <div className="h1">Thank you for your order</div>
     </div>
   );
 }

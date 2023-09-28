@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './HeaderComponent.module.scss';
 
 export default function HeaderComponent() {
@@ -5,16 +6,18 @@ export default function HeaderComponent() {
     <div className={styles.header}>
       <div className={styles.background2} />
       <div className={styles.cartbutton}>
-        <a href="../app" data-test-id="products-link">
+        <a href="/shoppage" data-test-id="products-link">
           Products
         </a>
       </div>
 
-      <div className={styles.buttonSecondary}>
-        <div className={styles.background3} />
+      <Link href="/cartPage">
+        <div className={styles.buttonSecondary}>
+          <div className={styles.background3} />
 
-        <div className={styles.cartbutton}>Cart</div>
-      </div>
+          <div className={styles.cartbutton}>Cart</div>
+        </div>
+      </Link>
       <b className={styles.logo}>E.commerce Shop</b>
       <div className={styles.currentcarttotalellipse}>
         <div className={styles.currentcartitemno}>0</div>
