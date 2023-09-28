@@ -31,7 +31,7 @@ export default function HeaderComponent() {
       <b className={styles.logo}>E.commerce Shop</b>
       <div className={styles.currentcarttotalellipse}>
         <div className={styles.currentcartitemno} data-test-id="cart-count">
-          {cartCookie ? sumQuantity() : ''}
+          {cartCookie ? sumQuantity() : '0'}
         </div>
       </div>
     </div>

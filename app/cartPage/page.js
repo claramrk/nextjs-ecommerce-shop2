@@ -1,6 +1,34 @@
+import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { getProducts } from '../../database/products';
 
 export default function CartPage() {
+  const cartCookie = cookies().get('cart')?.value;
+  const productsDatabase = getProducts();
+
+  function sumQuantity() {
+    const parsedCartCookie = JSON.parse(cartCookie);
+    const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
+      return accumulator + object.quantity;
+    }, 0);
+    return sumTotal;
+  }
+
+  function multiplyTotalPrice() {
+    const parsedCartCookie = JSON.parse(cartCookie);
+    parsedCartCookie.forEach((c) => {
+      for (let i = 0; i < productsDatabase.length; i++) {
+        if (productsDatabase[i].id === c.id) {
+          const priceXQuantity = productsDatabase[i].price * c.quantity;
+          console.log(
+            `${productsDatabase[i].name} ${c.quantity} ${priceXQuantity}`,
+          );
+        }
+      }
+    });
+  }
+  console.log(multiplyTotalPrice());
+
   return (
     <div className="cartpage">
       <h1 className="cart">Cart</h1>
@@ -29,10 +57,15 @@ export default function CartPage() {
 
       <div className="totalpriceandquantity">
         <div className="totalprice">
-          <h2>Total Price of all products:</h2>
-          <p data-test-id="cart-total">0</p>
+          <h2>Total</h2>
+          <div className="price">
+            {`Price: `}
+            <p data-test-id="cart-total">0</p>
+          </div>
         </div>
-        <div className="quantity">{`Quantity: `}</div>
+        <div className="quantity">{`Quantity: ${
+          cartCookie ? sumQuantity() : '0'
+        }`}</div>
         <Link href="/shoppage">
           <div className="buttonSecondary">
             <div className="background3" />
