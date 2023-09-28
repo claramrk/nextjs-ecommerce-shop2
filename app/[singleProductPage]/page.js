@@ -1,5 +1,6 @@
 import { getProductsByID } from '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
 import Link from 'next/link';
+import AddToCartFormComponent from './AddToCartFormComponent';
 
 export const metadata = {
   title: 'Product',
@@ -24,21 +25,10 @@ export default function SingleProductPage(props) {
         <p className="price" data-test-id="product-price">
           {singleProduct?.price}
         </p>
-        <label htmlFor="Quantity" className="quantitylabel">
-          Quantity:
-        </label>
-        <input
-          id="Quantity"
-          className="quantityinput"
-          placeholder="1"
-          data-test-id="product-quantity"
-        />
-        <button className="buttonPrimary" data-test-id="product-add-to-cart">
-          Add to Cart
-        </button>
+        <AddToCartFormComponent />
         <Link href="/cartPage" data-test-id="cart-link">
           <div className="buttonSecondary">
-            <div className="cartbutton">Go to Cart</div>
+            <div className="cartbutton">View all products in Cart</div>
           </div>
         </Link>
       </div>

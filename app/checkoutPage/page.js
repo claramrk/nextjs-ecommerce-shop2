@@ -16,34 +16,51 @@ export default function CheckoutPage() {
 
             <div className="FirstName">
               <label htmlFor="FirstName">First Name:</label>
-              <input className="FirstName" data-test-id="checkout-first-name" />
+              <input
+                className="FirstName"
+                data-test-id="checkout-first-name"
+                required
+              />
             </div>
             <div className="LastName">
               <label htmlFor="LastName">First Name:</label>
-              <input className="LastName" data-test-id="checkout-last-name" />
+              <input
+                className="LastName"
+                data-test-id="checkout-last-name"
+                required
+              />
             </div>
             <div className="email">
               <label htmlFor="email">Email:</label>
-              <input className="email" data-test-id="checkout-email" />
+              <input className="email" data-test-id="checkout-email" required />
             </div>
             <div className="address">
               <label htmlFor="address">Address:</label>
-              <input className="address" data-test-id="checkout-address" />
+              <input
+                className="address"
+                data-test-id="checkout-address"
+                required
+              />
             </div>
             <div className="city">
               <label htmlFor="city">City:</label>
-              <input className="city" data-test-id="checkout-city" />
+              <input className="city" data-test-id="checkout-city" required />
             </div>
             <div className="postal-code">
               <label htmlFor="postal-code">Postal Code:</label>
               <input
                 className="postal-code"
                 data-test-id="checkout-postal-code"
+                required
               />
             </div>
             <div className="country">
               <label htmlFor="country">Country:</label>
-              <input className="country" data-test-id="checkout-country" />
+              <input
+                className="country"
+                data-test-id="checkout-country"
+                required
+              />
             </div>
           </div>
           <div className="payment-information">
@@ -53,6 +70,7 @@ export default function CheckoutPage() {
               <input
                 className="credit-card"
                 data-test-id="checkout-credit-card"
+                required
               />
             </div>
             <div className="expiration-date">
@@ -60,6 +78,7 @@ export default function CheckoutPage() {
               <input
                 className="expiration-date"
                 data-test-id="checkout-expiration-date"
+                required
               />
             </div>
             <div className="security-code">
@@ -67,6 +86,7 @@ export default function CheckoutPage() {
               <input
                 className="security-code"
                 data-test-id="checkout-security-code"
+                required
               />
             </div>
           </div>
