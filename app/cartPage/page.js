@@ -1,36 +1,44 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
-import { getProducts, products } from '../../database/products';
+import { getProductsByID, products } from '../../database/products';
 
 export default function CartPage() {
+  // get and parse cookies
   const cartCookie = cookies().get('cart')?.value;
   const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
 
+  // matching products from cart with database and assigning quanitity
   const databaseProductsInCart = products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
       (cookieObject) => product.id === cookieObject.id,
     );
     return { ...product, quantity: matchingProductFromCookie?.quantity };
   });
-
-  console.log(databaseProductsInCart);
-
   const matchingProductFromCookieOnlyDefined = databaseProductsInCart.filter(
     (e) => e.quantity !== undefined,
   );
 
-  console.log(matchingProductFromCookieOnlyDefined);
-
+  // summing quantity of all products
   function sumQuantity() {
-    const parsedCartCookie = JSON.parse(cartCookie);
     const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
       return accumulator + object.quantity;
     }, 0);
     return sumTotal;
   }
 
+  // multiplying subtotal price
+  function multiplySubtotalPricePerItem(id) {
+    const singleProduct = matchingProductFromCookieOnlyDefined.find(
+      (p) => p.id === id,
+    );
+    console.log(singleProduct.price);
+    console.log(singleProduct.quantity);
+    const priceXQuantity = singleProduct.price * singleProduct.quantity;
+    return priceXQuantity;
+  }
+
+  // multiplying total price
   function multiplySubtotalPrices() {
-    const parsedCartCookie = JSON.parse(cartCookie);
     const subtotalPrices = parsedCartCookie.map((c) => {
       for (let i = 0; i < products.length; i++) {
         if (products[i].id === c.id) {
@@ -46,6 +54,7 @@ export default function CartPage() {
     return sumTotal;
   }
 
+  // JSX Code return
   return (
     <div className="cartpage">
       <h1 className="cart">Cart</h1>
@@ -61,32 +70,27 @@ export default function CartPage() {
                 <div className="title">
                   <h2>{p.name}</h2>
                 </div>
+                <div
+                  className="Quantity"
+                  data-test-id={`cart-product-quantity-${p.id}`}
+                >
+                  <p>{`Quantity: ${p.quantity}`}</p>
+                </div>
+                <p>Price per Item:</p>
+                <p>{p.price}</p>
+                <div className="subtotalP1">
+                  Product subtotal: {multiplySubtotalPricePerItem(p.id)}
+                </div>
+                <button
+                  className="buttonSecondary"
+                  data-test-id={`cart-product-remove-${p.id}`}
+                >
+                  Remove
+                </button>
               </div>
             );
           })
         : ''}
-      <div className="ProductCard" data-test-id="cart-product-<product id>">
-        <div className="title">
-          <h2>Product.Name</h2>
-        </div>
-
-        <div
-          className="Quantity"
-          data-test-id="cart-product-quantity-<product id>"
-        >
-          <p>{`Quantity: `}</p>{' '}
-        </div>
-        <div className="subtotalP1">Product subtotal: price × quantity</div>
-        <p>Total Price:</p>
-        <p>0</p>
-        <button
-          className="buttonSecondary"
-          data-test-id="cart-product-remove-<product id>"
-        >
-          Remove
-        </button>
-      </div>
-
       <div className="totalpriceandquantity">
         <h2>Total</h2>
         <div className="quantity">
