@@ -1,21 +1,19 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
-import { getProducts } from '../../database/products';
+import { getProducts, products } from '../../database/products';
 
 export default function CartPage() {
   const cartCookie = cookies().get('cart')?.value;
-  const productsDatabase = getProducts();
   const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
 
-  const databaseProductsInCart = productsDatabase.map((p) => {
+  const databaseProductsInCart = products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
-      (c) => productsDatabase.id === c.id,
+      (cookieObject) => product.id === cookieObject.id,
     );
-    return {
-      ...productsDatabase,
-      quantity: matchingProductFromCookie.quantity,
-    };
+    return { ...product, quantity: matchingProductFromCookie?.quantity };
   });
+
+  console.log(databaseProductsInCart);
 
   const matchingProductFromCookieOnlyDefined = databaseProductsInCart.filter(
     (e) => e.quantity !== undefined,
@@ -34,9 +32,9 @@ export default function CartPage() {
   function multiplySubtotalPrices() {
     const parsedCartCookie = JSON.parse(cartCookie);
     const subtotalPrices = parsedCartCookie.map((c) => {
-      for (let i = 0; i < productsDatabase.length; i++) {
-        if (productsDatabase[i].id === c.id) {
-          const priceXQuantity = productsDatabase[i].price * c.quantity;
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].id === c.id) {
+          const priceXQuantity = products[i].price * c.quantity;
           return priceXQuantity;
         }
       }
@@ -52,21 +50,21 @@ export default function CartPage() {
     <div className="cartpage">
       <h1 className="cart">Cart</h1>
 
-      {!cartCookie
-        ? ''
-        : JSON.parse(cartCookie).map((c) => {
+      {matchingProductFromCookieOnlyDefined.length > 0
+        ? matchingProductFromCookieOnlyDefined.map((p) => {
             return (
               <div
                 className="ProductCard"
-                data-test-id={`cart-product-${c.id}`}
-                key={`cart-product-${c.id}`}
+                data-test-id={`cart-product-${p.id}`}
+                key={`cart-product-${p.id}`}
               >
                 <div className="title">
-                  <h2>{c.id}</h2>
+                  <h2>{p.name}</h2>
                 </div>
               </div>
             );
-          })}
+          })
+        : ''}
       <div className="ProductCard" data-test-id="cart-product-<product id>">
         <div className="title">
           <h2>Product.Name</h2>
