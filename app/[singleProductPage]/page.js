@@ -1,6 +1,5 @@
 import { getProductsByID } from '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
 import Link from 'next/link';
-import { setQuantityInCookies } from './AddToCartFormAction';
 import AddToCartFormComponent from './AddToCartFormComponent';
 
 export const metadata = {

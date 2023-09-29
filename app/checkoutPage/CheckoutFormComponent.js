@@ -1,5 +1,6 @@
 'use client';
 import { redirect } from 'next/dist/server/api-utils';
+import { setCookiesToZero } from './CheckoutFormAction';
 
 export default function CheckoutPageFormComponent() {
   return (
@@ -82,6 +83,7 @@ export default function CheckoutPageFormComponent() {
           onClick={() => {
             redirect('/thankYouPage');
           }}
+          formAction={async () => await setCookiesToZero()}
         >
           Confirm Order
         </button>

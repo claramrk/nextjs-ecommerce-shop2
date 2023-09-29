@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
-import { getProductsByID, products } from '../../database/products';
+import { products } from '../../database/products';
 
 export default function CartPage() {
   // get and parse cookies
@@ -90,34 +90,37 @@ export default function CartPage() {
               </div>
             );
           })
-        : ''}
+        : 'Your Cart is empty'}
+      <Link href="/shoppage">
+        <div className="buttonSecondary">
+          <button className="cartbutton">Continue Shopping</button>
+        </div>
+      </Link>
       <div className="totalpriceandquantity">
         <h2>Total</h2>
-        <div className="quantity">
-          {`Quantity:`}
-          <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
-        </div>
-        <div className="price">
-          {`Price:`}
-          <p data-test-id="cart-total">
-            {cartCookie ? multiplySubtotalPrices() : '0'}
-          </p>
-        </div>
-
-        <Link href="/shoppage">
-          <div className="buttonSecondary">
-            <div className="background3" />
-
-            <div className="cartbutton">Continue Shopping</div>
-          </div>
-        </Link>
-        <Link href="/checkoutPage">
-          <div className="buttonSecondary">
-            <div className="background3" />
-
-            <div className="cartbutton">Checkout</div>
-          </div>
-        </Link>
+        {matchingProductFromCookieOnlyDefined.length > 0 ? (
+          <>
+            <div className="quantity">
+              Quantity:
+              <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
+            </div>
+            <div className="price">
+              Price:
+              <p data-test-id="cart-total">
+                {cartCookie ? multiplySubtotalPrices() : '0'}
+              </p>
+            </div>
+            <Link href="/checkoutPage">
+              <div className="buttonSecondary">
+                <button className="cartbutton" disabled={!sumQuantity() > 0}>
+                  Checkout
+                </button>
+              </div>
+            </Link>
+          </>
+        ) : (
+          'Your Cart is empty'
+        )}
       </div>
     </div>
   );

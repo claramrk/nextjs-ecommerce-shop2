@@ -1,5 +1,3 @@
-import { redirect } from 'next/dist/server/api-utils';
-import Link from 'next/link';
 import CheckoutPageFormComponent from './CheckoutFormComponent';
 
 export const metadata = {

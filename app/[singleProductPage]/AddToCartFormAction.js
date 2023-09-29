@@ -72,4 +72,6 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
 }
 */
 }
-await setQuantityInCookies;
+setQuantityInCookies().catch((error) => {
+  console.log(error);
+});
