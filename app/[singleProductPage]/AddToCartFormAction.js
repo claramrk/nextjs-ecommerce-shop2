@@ -6,6 +6,7 @@ import { getProductsByID } from '../../database/products';
 export async function setQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = getProductsByID(singleProductID);
   const cartCookie = cookies().get('cart')?.value;
+  const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
 
   if (cartCookie === undefined) {
     cookies().set(
@@ -20,7 +21,6 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
       ]),
     );
   } else {
-    const parsedCartCookie = JSON.parse(cartCookie);
     const singleProductToUpdate = parsedCartCookie.find(
       (c) => c.id === singleProductID,
     );

@@ -29,6 +29,7 @@ export default function HeaderComponent() {
         </div>
       </Link>
       <b className={styles.logo}>E.commerce Shop</b>
+
       <div className={styles.currentcarttotalellipse}>
         <div className={styles.currentcartitemno} data-test-id="cart-count">
           {cartCookie ? sumQuantity() : '0'}

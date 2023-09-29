@@ -1,3 +1,4 @@
+import './page.module.css';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { products } from '../../database/products';
@@ -70,6 +71,12 @@ export default function CartPage() {
                 <div className="title">
                   <h2>{p.name}</h2>
                 </div>
+                <img
+                  src={p.image}
+                  alt="ProductImage"
+                  height="200"
+                  data-test-id="product-image"
+                />
                 <div
                   className="Quantity"
                   data-test-id={`cart-product-quantity-${p.id}`}
