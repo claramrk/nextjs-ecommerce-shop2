@@ -29,7 +29,7 @@ export default function SingleProductPage(props) {
         <AddToCartFormComponent singleProductID={singleProduct.id} />
         <Link href="/cartPage" data-test-id="cart-link">
           <div className="buttonSecondary">
-            <div className="cartbutton">View all products in Cart</div>
+            <button className="cartbutton">View all products in Cart</button>
           </div>
         </Link>
       </div>

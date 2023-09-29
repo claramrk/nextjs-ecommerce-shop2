@@ -98,8 +98,7 @@ export default function CheckoutPage() {
               className="NEEDSTOBEABUTTON"
             >
               <div className="buttonSecondary">
-                <div className="background3" />
-                <div className="cartbutton">Confirm Order</div>
+                <button className="cartbutton">Confirm Order</button>
               </div>
             </Link>
           </div>

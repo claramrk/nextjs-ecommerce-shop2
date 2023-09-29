@@ -15,8 +15,7 @@ export default function ThankYouPage() {
         className="NEEDSTOBEABUTTON"
       >
         <div className="buttonSecondary">
-          <div className="background3" />
-          <div className="cartbutton">Return to the Shop</div>
+          <button className="cartbutton">Return to the Shop</button>
         </div>
       </Link>
     </div>
