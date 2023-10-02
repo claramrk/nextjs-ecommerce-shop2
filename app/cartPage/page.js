@@ -7,8 +7,9 @@ export default function CartPage() {
   // get and parse cookies
   const cartCookie = cookies().get('cart')?.value;
   const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
+  console.log(parsedCartCookie);
 
-  // matching products from cart with database and assigning quanitity
+  // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
       (cookieObject) => product.id === cookieObject.id,
@@ -22,7 +23,7 @@ export default function CartPage() {
   // summing quantity of all products
   function sumQuantity() {
     const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
-      return accumulator + object.quantity;
+      return accumulator + Number(object.quantity);
     }, 0);
     return sumTotal;
   }

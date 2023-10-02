@@ -8,7 +8,7 @@ export default function HeaderComponent() {
 
   function sumQuantity() {
     const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
-      return accumulator + object.quantity;
+      return accumulator + Number(object.quantity);
     }, 0);
     return sumTotal;
   }

@@ -83,7 +83,7 @@ export default function CheckoutPageFormComponent() {
           onClick={() => {
             redirect('/thankYouPage');
           }}
-          formAction={async () => await setCookiesToZero()}
+          // formAction={async () => await setCookiesToZero()}
         >
           Confirm Order
         </button>
