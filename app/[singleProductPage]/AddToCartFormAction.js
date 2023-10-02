@@ -5,8 +5,11 @@ import { getProductsByID } from '../../database/products';
 
 export async function setQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = getProductsByID(singleProductID);
-  const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
+  const cartCookie = await cookies().get('cart')?.value;
+  const parsedCartCookie =
+    !cartCookie || JSON.parse(cartCookie).length === 0
+      ? []
+      : JSON.parse(cartCookie);
 
   if (cartCookie === undefined) {
     cookies().set(

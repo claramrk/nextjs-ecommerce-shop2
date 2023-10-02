@@ -4,7 +4,10 @@ import styles from './HeaderComponent.module.scss';
 
 export default function HeaderComponent() {
   const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
+  const parsedCartCookie =
+    !cartCookie || JSON.parse(cartCookie).length === 0
+      ? []
+      : JSON.parse(cartCookie);
 
   function sumQuantity() {
     const sumTotal = parsedCartCookie.reduce((accumulator, object) => {

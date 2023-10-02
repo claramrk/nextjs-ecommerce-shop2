@@ -6,7 +6,10 @@ import { products } from '../../database/products';
 export default function CartPage() {
   // get and parse cookies
   const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie = !cartCookie ? [] : JSON.parse(cartCookie);
+  const parsedCartCookie =
+    !cartCookie || JSON.parse(cartCookie).length === 0
+      ? []
+      : JSON.parse(cartCookie);
   console.log(parsedCartCookie);
 
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
@@ -99,15 +102,11 @@ export default function CartPage() {
             );
           })
         : 'Your Cart is empty'}
-      <Link href="/shoppage">
-        <div className="buttonSecondary">
-          <button className="cartbutton">Continue Shopping</button>
-        </div>
-      </Link>
+
       <div className="totalpriceandquantity">
-        <h2>Total</h2>
         {matchingProductFromCookieOnlyDefined.length > 0 ? (
           <>
+            <h2>Total</h2>
             <div className="quantity">
               Quantity:
               <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
@@ -127,8 +126,13 @@ export default function CartPage() {
             </Link>
           </>
         ) : (
-          'Your Cart is empty'
+          ''
         )}
+        <Link href="/shoppage">
+          <div className="buttonSecondary">
+            <button className="cartbutton">Continue Shopping</button>
+          </div>
+        </Link>
       </div>
     </div>
   );
