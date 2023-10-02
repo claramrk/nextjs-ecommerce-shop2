@@ -1,6 +1,6 @@
 'use client';
-import { redirect } from 'next/dist/server/api-utils';
-import { setCookiesToZero } from './CheckoutFormAction';
+import { redirect } from 'next/navigation';
+import { removeAllItemsFromCookies } from './CheckoutFormAction';
 
 export default function CheckoutPageFormComponent() {
   return (
@@ -80,10 +80,10 @@ export default function CheckoutPageFormComponent() {
         <h2>Confirm your Order</h2>
         <button
           className="cartbutton"
-          onClick={() => {
+          formAction={async () => {
+            await removeAllItemsFromCookies();
             redirect('/thankYouPage');
           }}
-          formAction={async () => await setCookiesToZero()}
         >
           Confirm Order
         </button>

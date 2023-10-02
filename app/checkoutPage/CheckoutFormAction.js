@@ -2,10 +2,17 @@
 
 import { cookies } from 'next/headers';
 
-export async function setCookiesToZero() {
-  await cookies().delete('cart');
-}
+export async function removeAllItemsFromCookies() {
+  const cartCookie = cookies().get('cart')?.value;
+  const parsedCartCookie =
+    !cartCookie || JSON.parse(cartCookie).length === 0
+      ? []
+      : JSON.parse(cartCookie);
 
-setCookiesToZero().catch((error) => {
+  await parsedCartCookie.splice(0, parsedCartCookie.length);
+  console.log(parsedCartCookie);
+  await cookies().set('cart', JSON.stringify([...parsedCartCookie]));
+}
+removeAllItemsFromCookies().catch((error) => {
   console.log(error);
 });
