@@ -2,6 +2,8 @@ import './page.module.css';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { products } from '../../database/products';
+import { removeItemFromCookies } from './CartRemoveAction';
+import CartRemoveButton from './CartRemoveButton';
 
 export default function CartPage() {
   // get and parse cookies
@@ -10,7 +12,6 @@ export default function CartPage() {
     !cartCookie || JSON.parse(cartCookie).length === 0
       ? []
       : JSON.parse(cartCookie);
-  console.log(parsedCartCookie);
 
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = products.map((product) => {
@@ -36,8 +37,6 @@ export default function CartPage() {
     const singleProduct = matchingProductFromCookieOnlyDefined.find(
       (p) => p.id === id,
     );
-    console.log(singleProduct.price);
-    console.log(singleProduct.quantity);
     const priceXQuantity = singleProduct.price * singleProduct.quantity;
     return priceXQuantity;
   }
@@ -98,6 +97,9 @@ export default function CartPage() {
                 >
                   Remove
                 </button>
+                <form>
+                  <CartRemoveButton singleProductID={p.id} />
+                </form>
               </div>
             );
           })

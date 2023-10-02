@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers';
 
 export async function setCookiesToZero() {
-  await cookies().set('cart', []);
+  await cookies().delete('cart');
 }
 
 setCookiesToZero().catch((error) => {
