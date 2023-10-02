@@ -1,18 +1,15 @@
 'use client';
 
-import { removeItemFromCookies } from './CartRemoveAction';
+import { removeAllItemsFromCookies } from './CartRemoveAllAction';
 
 export default function CartRemoveButton(props) {
   console.log(props);
   return (
     <button
       className="buttonSecondary"
-      data-test-id={`cart-product-remove-${props.singleProductID}`}
-      formAction={async () =>
-        await removeItemFromCookies(props.singleProductID)
-      }
+      formAction={async () => await removeAllItemsFromCookies()}
     >
-      Remove Test
+      Remove Item
     </button>
   );
 }

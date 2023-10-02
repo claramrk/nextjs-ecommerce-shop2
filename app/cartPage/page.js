@@ -2,7 +2,7 @@ import './page.module.css';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { products } from '../../database/products';
-import { removeItemFromCookies } from './CartRemoveAction';
+import CartRemoveAllButton from './CartRemoveAllButton';
 import CartRemoveButton from './CartRemoveButton';
 
 export default function CartPage() {
@@ -91,12 +91,6 @@ export default function CartPage() {
                 <div className="subtotalP1">
                   Product subtotal: {multiplySubtotalPricePerItem(p.id)}
                 </div>
-                <button
-                  className="buttonSecondary"
-                  data-test-id={`cart-product-remove-${p.id}`}
-                >
-                  Remove
-                </button>
                 <form>
                   <CartRemoveButton singleProductID={p.id} />
                 </form>
@@ -126,6 +120,9 @@ export default function CartPage() {
                 </button>
               </div>
             </Link>
+            <form>
+              <CartRemoveAllButton />
+            </form>
           </>
         ) : (
           ''
