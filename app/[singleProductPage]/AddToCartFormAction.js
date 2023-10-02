@@ -41,39 +41,6 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
       cookies().set('cart', JSON.stringify([...parsedCartCookie]));
     }
   }
-
-  /*
-
-  console.log(productExistsInCookieCart());
-
-  const singleProductToUpdate = parsedCartCookie.find(
-    (c) => c.id === singleProductID,
-  );
-
-  console.log(singleProductToUpdate);
-
-  await function setQuantityLogic() {
-      if (
-        productExistsInCookieCart(singleProductFromDatabase.id) ? true : false
-      ) {
-        parsedCartCookie[singleProductID].quantity = quantityValue;
-        console.log(parsedCartCookie);
-        cookies().set('cart', JSON.stringify([...parsedCartCookie]));
-      } else {
-        parsedCartCookie.push({
-          singleProductFromDatabase,
-          quantity: quantityValue,
-        });
-        cookies().set('cart', JSON.stringify([...parsedCartCookie]));
-      }
-    }
-
-    setQuantityLogic();
-
-  };
-
-}
-*/
 }
 setQuantityInCookies().catch((error) => {
   console.log(error);
