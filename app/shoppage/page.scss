@@ -1,29 +1,14 @@
 /* Shoppage container */
 .shoppage {
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
-}
-
-/* Background div */
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  // background-image: url('your-background-image.jpg');
-  background-size: cover;
-  opacity: 0.5; /* Adjust the opacity as needed */
-  z-index: -1;
 }
 
 /* Title */
 .h1Title {
   font-size: 24px;
   margin-bottom: 20px;
+  padding: 50px;
 }
 
 /* Product list container */
@@ -35,8 +20,11 @@
 
 /* Product card container */
 .cardBlog {
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
   margin-bottom: 20px;
-  border: 1px solid black;
   padding: 30px;
   background-color: #fff;
   transition: transform 0.2s ease-in-out;

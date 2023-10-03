@@ -1,12 +1,22 @@
 body {
   margin: 0;
   line-height: normal;
-  background-color: rgb(238, 238, 238);
+  background-image: '../public/1648563894.jpg';
+  background-size: cover;
 }
 
 .HeaderComponent {
-  position: fixed;
-  top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d7fec8;
+  line-height: 0px;
+  font-size: 1.25rem;
+  top: 0;
+  height: 96px;
+  max-height: 96px;
+
+  position: sticky;
 }
 
 a {
@@ -15,7 +25,7 @@ a {
 }
 
 main {
-  font-family: 'Times New Roman', Times, serif;
+  padding: 0px 100px;
 }
 
 :root {

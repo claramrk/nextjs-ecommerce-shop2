@@ -1,0 +1,196 @@
+.ticketAll {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  display: grid;
+  color: black;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  height: 300px;
+}
+
+.ticket {
+  margin: auto;
+  display: flex;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  height: 200px;
+}
+
+.barcode {
+  width: 70%;
+}
+
+.left {
+  display: flex;
+}
+
+.image {
+  height: auto;
+  width: auto;
+  background-image: url('https://familienausflug.info/img/4567/ausflugsziel-hermannsh%C3%B6hle-17088.jpg');
+  background-size: contain;
+  opacity: 0.85;
+}
+
+.textinimage {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0px;
+}
+
+.admitone {
+  color: darkgray;
+  padding: 0px 10px;
+  letter-spacing: 0.15em;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg);
+  font-size: 0.8em;
+  gap: 10%;
+}
+
+.admitone span:nth-child(2) {
+  color: white;
+  font-weight: 700;
+}
+
+.left .ticketnumber {
+  height: 150px;
+  width: 250px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5px;
+}
+
+.ticketinfo {
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+}
+
+.date {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 0px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.date span {
+  width: 100px;
+}
+
+.date span:first-child {
+  text-align: left;
+}
+
+.date span:last-child {
+  text-align: right;
+}
+
+.date .june29 {
+  color: rgb(205, 205, 78);
+  font-size: 20px;
+}
+
+.showname h2 {
+  font-size: 2em;
+  color: rgb(205, 205, 78);
+  margin: 0px;
+}
+
+.showname h1 {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #000000;
+  font-size: 2em;
+  margin: 0px;
+}
+
+.timeAndPrice {
+  color: #4a437e;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  color: #4a437e;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.price {
+  color: #4a437e;
+  font-weight: 700;
+}
+
+.time span {
+  font-weight: 400;
+  color: gray;
+}
+
+.left .time {
+  font-size: 16px;
+}
+
+.location {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding-top: 1px;
+  border-top: 1px solid gray;
+}
+
+.location .separator {
+  font-size: 20px;
+}
+
+.right {
+  width: 180px;
+  border-left: 1px dashed #404040;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.right .admitone {
+  color: darkgray;
+}
+
+.right .admitone span:nth-child(2) {
+  color: gray;
+}
+
+.right .rightinfocontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.right .showname h1 {
+  font-size: 18px;
+}
+
+.barcode img {
+  height: 100%;
+}
+
+.right .ticketnumber {
+  color: gray;
+}

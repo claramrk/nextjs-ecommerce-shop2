@@ -1,7 +1,9 @@
 import '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
 import '/Users/claramrkos/projects/nextjs-ecommerce-shop2/app/shoppage/page.scss';
 import { getProducts } from '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
+import Image from 'next/image';
 import Link from 'next/link';
+import TicketComponent from './TicketComponent';
 
 export const metadata = {
   title: 'Home',
@@ -43,6 +45,7 @@ export default function Home() {
           );
         })}
       </div>
+      <TicketComponent />
     </div>
   );
 }

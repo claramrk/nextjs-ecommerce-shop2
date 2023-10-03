@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './HeaderComponent.module.scss';
 
@@ -19,6 +20,7 @@ export default function HeaderComponent() {
   return (
     <div className={styles.header}>
       <div className={styles.background2} />
+
       <div className={styles.cartbutton}>
         <a href="/shoppage" data-test-id="products-link">
           Products
@@ -32,7 +34,7 @@ export default function HeaderComponent() {
         </div>
       </Link>
       <Link href="/shoppage">
-        <b className={styles.logo}>E.commerce Shop</b>
+        <b className={styles.logo}>Hermannshöhle</b>
       </Link>
 
       <div className={styles.currentcarttotalellipse}>
