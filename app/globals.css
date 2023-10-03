@@ -1,6 +1,7 @@
 body {
   margin: 0;
   line-height: normal;
+  background-color: rgb(238, 238, 238);
 }
 
 .HeaderComponent {
@@ -8,10 +9,18 @@ body {
   top: 0px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+main {
+  font-family: 'Times New Roman', Times, serif;
+}
+
 :root {
   /* fonts */
   --font-roboto: Roboto;
-
   /* font sizes */
   --font-size-xl: 20px;
   --font-size-lg: 18px;

@@ -1,6 +1,4 @@
 import '../database/products.js';
-import Link from 'next/link';
-import { getProducts } from '../database/products.js';
 
 export const metadata = {
   title: 'Home',

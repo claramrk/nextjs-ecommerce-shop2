@@ -16,7 +16,9 @@ export default function RootLayout({ children }) {
         <header>
           <HeaderComponent className="HeaderComponent" />
         </header>
-        <div className={inter.className}>{children}</div>
+        <main>
+          <div className={inter.className}>{children}</div>
+        </main>
       </body>
     </html>
   );

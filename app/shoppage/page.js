@@ -1,4 +1,5 @@
 import '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
+import '/Users/claramrkos/projects/nextjs-ecommerce-shop2/app/shoppage/page.scss';
 import { getProducts } from '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
 import Link from 'next/link';
 
@@ -11,10 +12,10 @@ const productsFromDatabase = getProducts();
 
 export default function Home() {
   return (
-    <main className="main">
-      <div className="shoppage">
-        <div className="background" />
-        <h1 className="h1Title">Shoppage</h1>
+    <div className="shoppage">
+      <div className="background" />
+      <h1 className="h1Title">Ticketkategorien</h1>
+      <div className="productlist">
         {productsFromDatabase.map((p) => {
           return (
             <Link
@@ -22,22 +23,26 @@ export default function Home() {
               data-test-id={`product-${p.id}`}
               key={`product-${p.id}`}
             >
-              <div className="cardBlog1">
+              <div className="cardBlog">
                 <div className="content">
-                  <img
-                    className="productImage"
-                    src={p.image}
-                    height={100}
-                    alt="ProductImage"
-                  />
-                  <h2 className="producttitle}">{p.name}</h2>
-                  <p className="seeMore}">{p.price}</p>
+                  <div className="imageframe">
+                    <img
+                      className="productImage"
+                      src={p.image}
+                      height={100}
+                      alt="ProductImage"
+                    />
+                  </div>
+                  <div className="Description">
+                    <h2 className="producttitle">Ticket {p.name}</h2>
+                    <p className="seeMore">{p.price}€</p>
+                  </div>
                 </div>
               </div>
             </Link>
           );
         })}
       </div>
-    </main>
+    </div>
   );
 }

@@ -31,7 +31,9 @@ export default function HeaderComponent() {
           <div className={styles.cartbutton}>Cart</div>
         </div>
       </Link>
-      <b className={styles.logo}>E.commerce Shop</b>
+      <Link href="/shoppage">
+        <b className={styles.logo}>E.commerce Shop</b>
+      </Link>
 
       <div className={styles.currentcarttotalellipse}>
         <div className={styles.currentcartitemno} data-test-id="cart-count">
