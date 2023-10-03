@@ -46,7 +46,8 @@
   letter-spacing: 0.15em;
   display: flex;
   text-align: center;
-  justify-content: space-around;
+  align-items: flex-end;
+  justify-content: flex-end;
   writing-mode: vertical-rl;
   transform: rotate(-180deg);
   font-size: 0.8em;
@@ -63,8 +64,9 @@
   width: 250px;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 5px;
+  color: white;
 }
 
 .ticketinfo {
@@ -104,13 +106,13 @@
   font-size: 20px;
 }
 
-.showname h2 {
+.showname h3 {
   font-size: 2em;
   color: rgb(205, 205, 78);
   margin: 0px;
 }
 
-.showname h1 {
+.showname h2 {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #000000;
@@ -183,7 +185,7 @@
   align-items: center;
 }
 
-.right .showname h1 {
+.right .showname h2 {
   font-size: 18px;
 }
 

@@ -1,22 +1,12 @@
-body {
-  margin: 0;
-  line-height: normal;
-  background-image: '../public/1648563894.jpg';
-  background-size: cover;
+html {
+  margin: 0px;
+  padding: 0px;
+  background: beige;
+  color: white;
 }
 
-.HeaderComponent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #d7fec8;
-  line-height: 0px;
-  font-size: 1.25rem;
-  top: 0;
-  height: 96px;
-  max-height: 96px;
-
-  position: sticky;
+h1 {
+  text-transform: uppercase;
 }
 
 a {
@@ -25,24 +15,7 @@ a {
 }
 
 main {
-  padding: 0px 100px;
-}
-
-:root {
-  /* fonts */
-  --font-roboto: Roboto;
-  /* font sizes */
-  --font-size-xl: 20px;
-  --font-size-lg: 18px;
-  --font-size-sm: 14px;
-
-  /* Colors */
-  --color-black: #000;
-  --color-white: #fff;
-  --color-gray: rgba(0, 0, 0, 0.5);
-  --color-silver: #c9b8b8;
-
-  /* Border radiuses */
-  --br-8xs: 5px;
-  --br-11xs: 2px;
+  margin: 100px;
+  position: absolute;
+  color: white;
 }

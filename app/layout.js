@@ -1,5 +1,5 @@
-import './globals.modules.scss';
 import { Inter } from 'next/font/google';
+import styles from './globals.modules.scss';
 import HeaderComponent from './HeaderComponent';
 
 export const metadata = {
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <header>
-          <HeaderComponent className="HeaderComponent" />
+          <HeaderComponent className={styles.HeaderComponent} />
         </header>
         <main>
           <div>{children}</div>

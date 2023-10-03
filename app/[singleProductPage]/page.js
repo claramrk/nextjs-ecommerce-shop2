@@ -1,6 +1,8 @@
 import { getProductsByID } from '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
 import Link from 'next/link';
+import TicketComponent from '../shoppage/TicketComponent';
 import AddToCartFormComponent from './AddToCartFormComponent';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Product',
@@ -11,28 +13,24 @@ export default function SingleProductPage(props) {
   const singleProduct = getProductsByID(Number(props.params.singleProductPage));
   console.log(singleProduct);
   return (
-    <div className="singleproductpage">
-      <div className="image">
-        <img
-          src={singleProduct?.image}
-          alt="ProductImage"
-          height="200"
-          data-test-id="product-image"
-        />
+    <>
+      <div class={styles.main}>
+        <div classname={styles.imagesection}>
+          <TicketComponent
+            src={singleProduct?.image}
+            name={singleProduct?.name}
+            price={singleProduct?.price}
+          />
+        </div>
+        <div className={styles.formsection}>
+          <AddToCartFormComponent singleProductID={singleProduct.id} />
+          <Link href="/cartPage" data-test-id="cart-link">
+            <button className={styles.primarybutton}>
+              View all products in Cart
+            </button>
+          </Link>
+        </div>
       </div>
-      <div className="productdescriptiontemplate">
-        <h1 className="h1">{`Ticket ${singleProduct?.name}`}</h1>
-        <h3>Price:</h3>
-        <p className="price" data-test-id="product-price">
-          {singleProduct?.price}
-        </p>
-        <AddToCartFormComponent singleProductID={singleProduct.id} />
-        <Link href="/cartPage" data-test-id="cart-link">
-          <div className="buttonSecondary">
-            <button className="cartbutton">View all products in Cart</button>
-          </div>
-        </Link>
-      </div>
-    </div>
+    </>
   );
 }

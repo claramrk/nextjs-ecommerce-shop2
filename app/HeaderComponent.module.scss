@@ -1,73 +1,60 @@
-.HeaderComponent {
-  position: fixed;
-  top: 0px;
+.header {
+  width: 95vw;
+  position: sticky;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-size: var(--font-size-lg);
+  color: white;
+  font-family: var(--font-roboto);
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: solid white 1px;
 }
 
-.background2,
-.background3 {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.background2 {
-  background-color: #fff;
-}
-.background3 {
-  border-radius: var(--br-8xs);
-  border: 1px solid var(--color-black);
-  box-sizing: border-box;
-}
-.cartbutton {
-  position: absolute;
-  width: calc(100% - 33px);
-  top: calc(50% - 12px);
-  left: 17px;
-  line-height: 134.77%;
+.navsection {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-family: var(--font-roboto);
+  justify-content: space-between;
+  gap: 10px;
+  color: white;
 }
-.buttonSecondary {
-  position: absolute;
-  height: 62.5%;
-  width: 9.72%;
-  top: 18.75%;
-  right: 2.78%;
-  bottom: 18.75%;
-  left: 87.5%;
-}
+
 .logo {
-  position: absolute;
-  top: 28.13%;
-  left: 2.78%;
   font-size: 24px;
   text-transform: uppercase;
   text-align: left;
+  color: white;
 }
 .currentcarttotalellipse {
-  position: absolute;
   height: 30px;
   width: 30px;
-  top: 40%;
-  right: 0;
-  bottom: -40.62%;
-  left: 95.49%;
   border-radius: 50%;
   background-color: #e75050;
+
+  .currentcartitemno {
+    color: white;
+  }
 }
-.currentcartitemno {
-  color: var(--color-white);
+
+.primarybutton {
+  border: 1px solid gray;
+  padding: 10px 30px;
+  margin-top: 10px;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 2px;
+  font-weight: 400px;
+  letter-spacing: 4px;
+  line-height: 20px;
+  transition: 0.2s ease-in-out;
+  font-size: 13px;
 }
-.header {
-  position: relative;
-  width: 100%;
-  height: 64px;
-  text-align: center;
-  font-size: var(--font-size-lg);
-  color: var(--color-black);
-  font-family: var(--font-roboto);
+
+.primarybutton:hover {
+  background-color: gray;
+  color: white;
+  font-weight: mf-400;
 }

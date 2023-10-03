@@ -18,7 +18,7 @@ export default function TicketComponent(props) {
                 <span>TICKET</span>
               </p>
               <div class={styles.ticketnumber}>
-                <p>#TicketID</p>
+                <p>#########</p>
               </div>
             </div>
           </div>
@@ -29,8 +29,8 @@ export default function TicketComponent(props) {
               <span>JAHR</span>
             </p>
             <div class={styles.showname}>
-              <h1>Hermannshöhle</h1>
-              <h2>{props.name}</h2>
+              <h2>Hermannshöhle</h2>
+              <h3>{props.name}</h3>
             </div>
             <p class={styles.location}>
               <span>Kirchberg am Wechsel</span>
@@ -51,7 +51,7 @@ export default function TicketComponent(props) {
             </div>
             <div class={styles.infosection}>
               <div class={styles.showname}>
-                <h1>1x {props.name}</h1>
+                <h2>1x {props.name}</h2>
               </div>
               <div class={styles.time}>
                 <p>UHRZEIT | DATUM</p>
@@ -61,7 +61,7 @@ export default function TicketComponent(props) {
                 <p>{props.price}€</p>
               </div>
               <div class={styles.barcode}></div>
-              <p class={styles.ticketnumber}>#TicketID</p>
+              <p class={styles.ticketnumber}>#########</p>
             </div>
           </div>
         </div>

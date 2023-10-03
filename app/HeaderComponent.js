@@ -18,30 +18,30 @@ export default function HeaderComponent() {
   }
 
   return (
-    <div className={styles.header}>
-      <div className={styles.background2} />
-
-      <div className={styles.cartbutton}>
-        <a href="/shoppage" data-test-id="products-link">
-          Products
-        </a>
-      </div>
-
-      <Link href="/cartPage" data-test-id="cart-link">
-        <div className={styles.buttonSecondary}>
-          <div className={styles.background3} />
-          <div className={styles.cartbutton}>Cart</div>
+    <>
+      <div className={styles.header}>
+        <div className={styles.logosection}>
+          <Link href="/shoppage">
+            <b className={styles.logo}>Hermannshöhle</b>
+          </Link>
         </div>
-      </Link>
-      <Link href="/shoppage">
-        <b className={styles.logo}>Hermannshöhle</b>
-      </Link>
+        <div className={styles.navsection}>
+          <div className={styles.primarybutton}>
+            <a href="/shoppage" data-test-id="products-link">
+              Tickets
+            </a>
+          </div>
 
-      <div className={styles.currentcarttotalellipse}>
-        <div className={styles.currentcartitemno} data-test-id="cart-count">
-          {cartCookie ? sumQuantity() : '0'}
+          <Link href="/cartPage" data-test-id="cart-link">
+            <div className={styles.primarybutton}>Cart</div>
+          </Link>
+          <div className={styles.currentcarttotalellipse}>
+            <div className={styles.currentcartitemno} data-test-id="cart-count">
+              {cartCookie ? sumQuantity() : '0'}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
