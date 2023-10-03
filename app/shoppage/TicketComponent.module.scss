@@ -29,7 +29,7 @@
 .image {
   height: auto;
   width: auto;
-  background-image: url('https://familienausflug.info/img/4567/ausflugsziel-hermannsh%C3%B6hle-17088.jpg');
+  // background-image: url('https://familienausflug.info/img/4567/ausflugsziel-hermannsh%C3%B6hle-17088.jpg');
   background-size: contain;
   opacity: 0.85;
 }
@@ -126,13 +126,13 @@
 }
 
 .time {
-  color: #4a437e;
+  color: rgb(205, 205, 78);
   font-weight: 700;
   margin: 0px;
 }
 
 .price {
-  color: #4a437e;
+  color: #000000;
   font-weight: 700;
 }
 

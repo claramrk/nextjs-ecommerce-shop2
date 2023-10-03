@@ -25,7 +25,7 @@ export default function Home() {
               data-test-id={`product-${p.id}`}
               key={`product-${p.id}`}
             >
-              <div className="cardBlog">
+              {/*   <div className="cardBlog">
                 <div className="content">
                   <div className="imageframe">
                     <img
@@ -40,12 +40,12 @@ export default function Home() {
                     <p className="seeMore">{p.price}€</p>
                   </div>
                 </div>
-              </div>
+          </div> */}
+              <TicketComponent src={p.image} name={p.name} price={p.price} />
             </Link>
           );
         })}
       </div>
-      <TicketComponent />
     </div>
   );
 }

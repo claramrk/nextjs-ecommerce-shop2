@@ -1,11 +1,15 @@
 import styles from './TicketComponent.module.scss';
 
-export default function TicketComponent() {
+export default function TicketComponent(props) {
+  console.log(props);
   return (
     <div className={styles.ticketAll}>
       <div class={styles.ticket}>
         <div class={styles.left}>
-          <div class={styles.image}>
+          <div
+            class={styles.image}
+            style={{ backgroundImage: `url(${props.src})` }}
+          >
             <div class={styles.textinimage}>
               <p class={styles.admitone}>
                 <span>TICKET</span>
@@ -26,7 +30,7 @@ export default function TicketComponent() {
             </p>
             <div class={styles.showname}>
               <h1>Hermannshöhle</h1>
-              <h2>Kinder</h2>
+              <h2>{props.name}</h2>
             </div>
             <p class={styles.location}>
               <span>Kirchberg am Wechsel</span>
@@ -39,23 +43,26 @@ export default function TicketComponent() {
         </div>
         <div class={styles.right}>
           <div class={styles.rightinfocontainer}>
-            <img
-              className={styles.barcode}
-              src="https://cdn.pixabay.com/photo/2022/02/07/19/13/barcode-7000118_960_720.png"
-            />
-            <div class={styles.showname}>
-              <h1>1 Kind</h1>
+            <div class={styles.barcodesection}>
+              <img
+                className={styles.barcode}
+                src="https://cdn.pixabay.com/photo/2022/02/07/19/13/barcode-7000118_960_720.png"
+              />
             </div>
-            <div class={styles.time}>
-              <p>UHRZEIT</p>
-              <p>DATUM</p>
-            </div>
+            <div class={styles.infosection}>
+              <div class={styles.showname}>
+                <h1>1x {props.name}</h1>
+              </div>
+              <div class={styles.time}>
+                <p>UHRZEIT | DATUM</p>
+              </div>
 
-            <div class={styles.price}>
-              <p>Preis</p>
+              <div class={styles.price}>
+                <p>{props.price}€</p>
+              </div>
+              <div class={styles.barcode}></div>
+              <p class={styles.ticketnumber}>#TicketID</p>
             </div>
-            <div class={styles.barcode}></div>
-            <p class={styles.ticketnumber}>#20030220</p>
           </div>
         </div>
       </div>
