@@ -26,13 +26,8 @@ main {
   gap: 5%;
   justify-content: space-around;
   background-size: cover;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  background-color: #fff;
-  transition: transform 0.2s ease-in-out;
+
   text-decoration: none;
-  color: #333;
 }
 
 .primarybutton {
@@ -69,11 +64,8 @@ main {
     padding-bottom: 6px;
     font-size: 1rem;
     font-weight: 400;
-    color: darken(gray, 30%);
     transition: border-color 0.2s ease-in-out;
-    :focus {
-      border-color: darken(gray, 30%);
-    }
+
     :not(:last-of-type) {
       margin-bottom: 20px;
     }

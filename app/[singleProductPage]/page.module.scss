@@ -82,7 +82,16 @@
   }
 }
 
-.quantityinput {
+.input {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  color: gray;
+  max-width: 50px;
+  &::placeholder {
+    letter-spacing: 0.1em;
+    color: gray;
+  }
   width: 100%;
   border-bottom: 1px solid gray;
   padding-bottom: 6px;

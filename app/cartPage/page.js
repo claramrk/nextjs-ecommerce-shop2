@@ -82,22 +82,23 @@ export default function CartPage() {
                   height="200"
                   data-test-id="product-image"
             />*/}
-                    <TicketComponent
-                      src={p?.image}
-                      name={p?.name}
-                      price={p?.price}
-                    />
+                    <div className={styles.ticket}>
+                      <TicketComponent
+                        src={p?.image}
+                        name={p?.name}
+                        price={p?.price}
+                      />
+                    </div>
                     <div className={styles.cartinfo}>
+                      <h2>Ticket: {p?.name}</h2>
                       <div
                         className={styles.Quantity}
                         data-test-id={`cart-product-quantity-${p.id}`}
                       >
-                        <p>{`Quantity: ${p.quantity}`}</p>
+                        <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
                       </div>
-                      <p>Price per Item:</p>
-                      <p>{p.price}</p>
                       <div className={styles.subtotalP1}>
-                        Product subtotal: {multiplySubtotalPricePerItem(p.id)}
+                        Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
                       </div>
                       <form>
                         <CartRemoveButton singleProductID={p.id} />
@@ -114,13 +115,13 @@ export default function CartPage() {
           <>
             <h2>Total</h2>
             <div className={styles.quantity}>
-              Quantity:
+              Ticketanzahl:
               <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
             </div>
             <div className={styles.price}>
-              Price:
+              Summe:
               <p data-test-id="cart-total">
-                {cartCookie ? multiplySubtotalPrices() : '0'}
+                {cartCookie ? multiplySubtotalPrices() : '0'}€
               </p>
             </div>
             <Link href="/checkoutPage">
@@ -128,7 +129,7 @@ export default function CartPage() {
                 className={styles.primarybutton}
                 disabled={!sumQuantity() > 0}
               >
-                Checkout
+                Tickets bestellen
               </button>
             </Link>
             <form>
@@ -140,7 +141,9 @@ export default function CartPage() {
         )}
 
         <Link href="/shoppage">
-          <button className={styles.primarybutton}>Continue Shopping</button>
+          <button className={styles.primarybutton}>
+            Weitere Tickets hinzufügen
+          </button>
         </Link>
       </div>
     </div>

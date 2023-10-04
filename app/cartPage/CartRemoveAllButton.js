@@ -13,7 +13,7 @@ export default function CartRemoveAllButton(props) {
         await removeAllItemsFromCookies(props.singleProductID)
       }
     >
-      Remove All
+      Alle Tickets entfernen
     </button>
   );
 }

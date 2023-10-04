@@ -10,7 +10,7 @@ export default function CartRemoveButton(props) {
       className={styles.primarybutton}
       formAction={async () => await removeAllItemsFromCookies()}
     >
-      Remove Item
+      Ticket entfernen
     </button>
   );
 }

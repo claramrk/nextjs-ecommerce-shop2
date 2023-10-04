@@ -23,7 +23,7 @@ export default function AddToCartFormComponent(props) {
         id="quantity"
         type="number"
         pattern="[0-9]*"
-        className={styles.quantityinput}
+        className={styles.input}
         value={quantityValue}
         data-test-id="product-quantity"
         min="1"
