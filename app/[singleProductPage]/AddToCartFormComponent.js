@@ -15,9 +15,9 @@ export default function AddToCartFormComponent(props) {
 
   return (
     <form className={styles.forms}>
-      <legend>Add to Cart</legend>
+      <legend>Zum Einkaufswagen hinzufügen</legend>
       <label htmlFor="quantity" className={styles.quantitylabel}>
-        Quantity:
+        Anzahl:
       </label>
       <input
         id="quantity"
@@ -39,7 +39,7 @@ export default function AddToCartFormComponent(props) {
           await setQuantityInCookies(props.singleProductID, quantityValue)
         }
       >
-        Add to Cart
+        Ticket hinzufügen
       </button>
     </form>
   );

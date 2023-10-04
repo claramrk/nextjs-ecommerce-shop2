@@ -5,11 +5,11 @@
   text-align: center;
   align-items: center;
   font-size: var(--font-size-lg);
-  color: white;
+  color: black;
   font-family: var(--font-roboto);
   justify-content: space-between;
   padding: 20px 40px;
-  border-bottom: solid white 1px;
+  border-bottom: solid black 1px;
 }
 
 .navsection {
@@ -19,14 +19,17 @@
   font-family: var(--font-roboto);
   justify-content: space-between;
   gap: 10px;
-  color: white;
+  color: black;
 }
 
 .logo {
   font-size: 24px;
   text-transform: uppercase;
   text-align: left;
-  color: white;
+  color: black;
+  font-weight: 200;
+  letter-spacing: 4px;
+  line-height: 20px;
 }
 .currentcarttotalellipse {
   height: 30px;
@@ -43,7 +46,7 @@
   border: 1px solid gray;
   padding: 10px 30px;
   margin-top: 10px;
-  color: white;
+  color: black;
   text-transform: uppercase;
   border-radius: 2px;
   font-weight: 400px;
@@ -53,8 +56,14 @@
   font-size: 13px;
 }
 
+.primarybutton svg {
+  width: 7%;
+  fill: var(--main-color);
+  transition: all 0.3s;
+}
+
 .primarybutton:hover {
   background-color: gray;
-  color: white;
+  color: black;
   font-weight: mf-400;
 }

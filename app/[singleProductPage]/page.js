@@ -14,6 +14,14 @@ export default function SingleProductPage(props) {
   console.log(singleProduct);
   return (
     <>
+      <Link href="/shoppage" data-test-id="cart-link">
+        <button className={styles.primarybutton}>
+          Zurück zu allen Tickets
+        </button>
+      </Link>
+      <br />
+      <br />
+
       <div class={styles.main}>
         <div classname={styles.imagesection}>
           <TicketComponent
@@ -26,7 +34,7 @@ export default function SingleProductPage(props) {
           <AddToCartFormComponent singleProductID={singleProduct.id} />
           <Link href="/cartPage" data-test-id="cart-link">
             <button className={styles.primarybutton}>
-              View all products in Cart
+              Einkaufswagen ansehen
             </button>
           </Link>
         </div>

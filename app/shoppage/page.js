@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <div className="shoppage">
       <div className="background" />
-      <h1 className="h1Title">Ticketkategorien</h1>
       <div className="productlist">
         {productsFromDatabase.map((p) => {
           return (
