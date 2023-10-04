@@ -10,7 +10,7 @@ image varchar(100) );
 `;
 }
 
-export async function down(sql) {
+export async function down(sql: Sql) {
   await sql`
   DROP TABLE products;
   `;
