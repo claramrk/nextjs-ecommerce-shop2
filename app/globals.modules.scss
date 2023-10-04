@@ -49,27 +49,22 @@ main {
 }
 
 /* Input fields */
-.forms {
-  legend {
-    font-size: 18px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 20px;
-    margin-bottom: 40px;
+.input {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  color: gray;
+  max-width: 50px;
+  &::placeholder {
+    letter-spacing: 0.1em;
+    color: gray;
   }
-  .input {
-    width: 100%;
-    border-bottom: 1px solid gray;
-    padding-bottom: 6px;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: border-color 0.2s ease-in-out;
-
-    :not(:last-of-type) {
-      margin-bottom: 20px;
-    }
-  }
+  width: 100%;
+  border-bottom: 1px solid gray;
+  padding-bottom: 6px;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: border-color 0.2s ease-in-out;
 }
 
 .formsection {

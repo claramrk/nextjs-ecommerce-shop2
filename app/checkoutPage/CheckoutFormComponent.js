@@ -1,85 +1,102 @@
 'use client';
 import { redirect } from 'next/navigation';
 import { removeAllItemsFromCookies } from './CheckoutFormAction';
+import styles from './page.module.scss';
 
 export default function CheckoutPageFormComponent() {
   return (
-    <form className="checkout-form">
-      <div className="Shipping Information">
+    <form className={styles.checkoutform}>
+      <div className={styles.ShippingInformation}>
         <h2>Shipping Information</h2>
 
-        <div className="FirstName">
+        <div className={styles.FirstName}>
           <label htmlFor="FirstName">First Name:</label>
           <input
-            className="FirstName"
+            className={styles.input}
             data-test-id="checkout-first-name"
             required
           />
         </div>
-        <div className="LastName">
+        <div className={styles.LastName}>
           <label htmlFor="LastName">First Name:</label>
           <input
-            className="LastName"
+            className={styles.input}
             data-test-id="checkout-last-name"
             required
           />
         </div>
-        <div className="email">
+        <div className={styles.email}>
           <label htmlFor="email">Email:</label>
-          <input className="email" data-test-id="checkout-email" required />
+          <input
+            className={styles.input}
+            data-test-id="checkout-email"
+            required
+          />
         </div>
-        <div className="address">
+        <div className={styles.address}>
           <label htmlFor="address">Address:</label>
-          <input className="address" data-test-id="checkout-address" required />
+          <input
+            className={styles.input}
+            data-test-id="checkout-address"
+            required
+          />
         </div>
-        <div className="city">
+        <div className={styles.city}>
           <label htmlFor="city">City:</label>
-          <input className="city" data-test-id="checkout-city" required />
+          <input
+            className={styles.input}
+            data-test-id="checkout-city"
+            required
+          />
         </div>
-        <div className="postal-code">
+        <div className={styles.postalcode}>
           <label htmlFor="postal-code">Postal Code:</label>
           <input
-            className="postal-code"
+            className={styles.input}
             data-test-id="checkout-postal-code"
             required
           />
         </div>
-        <div className="country">
+        <div className={styles.country}>
           <label htmlFor="country">Country:</label>
-          <input className="country" data-test-id="checkout-country" required />
+          <input
+            className={styles.input}
+            data-test-id="checkout-country"
+            required
+          />
         </div>
       </div>
-      <div className="payment-information">
+      <div className={styles.paymentinformation}>
         <h2>Payment Information</h2>
-        <div className="credit-card">
+        <div className={styles.creditcard}>
           <label htmlFor="credit-card">Credit-card:</label>
           <input
-            className="credit-card"
+            className={styles.input}
             data-test-id="checkout-credit-card"
             required
           />
         </div>
-        <div className="expiration-date">
+        <div className={styles.expirationdate}>
           <label htmlFor="expiration-date">Expiration-date:</label>
           <input
-            className="expiration-date"
+            className={styles.input}
             data-test-id="checkout-expiration-date"
             required
           />
         </div>
-        <div className="security-code">
+        <div className={styles.securitycode}>
           <label htmlFor="security-code">Security-code:</label>
           <input
-            className="security-code"
+            className={styles.input}
             data-test-id="checkout-security-code"
             required
           />
         </div>
       </div>
-      <div className="confirm-order">
+      <div className={styles.confirmorder}>
         <h2>Confirm your Order</h2>
         <button
-          className="cartbutton"
+          className={styles.primarybutton}
           formAction={async () => {
             await removeAllItemsFromCookies();
             redirect('/thankYouPage');
