@@ -1,10 +1,20 @@
 /* Shoppage container */
+.cartpage {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
 .main {
   padding: 20px;
   text-align: center;
   display: flex;
+}
+
+.totalpriceandquantity {
+  padding: 20px;
+  text-align: center;
   gap: 5%;
-  justify-content: space-around;
   background-size: cover;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -48,6 +58,25 @@
   justify-content: space-between;
 }
 
+/* Product card container */
+.card {
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 30px;
+  background-color: #fff;
+  transition: transform 0.2s ease-in-out;
+  text-decoration: none;
+  color: #333;
+}
+
+.cardBlog:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Product image */
 .productImage {
   width: 200px; /* width of container */
@@ -59,12 +88,6 @@
 .producttitle {
   font-size: 18px;
   margin: 10px 0;
-}
-
-/* Product price */
-.seeMore {
-  font-size: 16px;
-  color: #ff6600; /* Change the color as needed */
 }
 
 /* Input fields */

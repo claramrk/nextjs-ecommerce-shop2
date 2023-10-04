@@ -1,9 +1,10 @@
-import './page.module.css';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { products } from '../../database/products';
+import TicketComponent from '../shoppage/TicketComponent';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import CartRemoveButton from './CartRemoveButton';
+import styles from './page.module.scss';
 
 export default function CartPage() {
   // get and parse cookies
@@ -60,18 +61,19 @@ export default function CartPage() {
 
   // JSX Code return
   return (
-    <div className="cartpage">
-      <h1 className="cart">Cart</h1>
-
-      {matchingProductFromCookieOnlyDefined.length > 0
-        ? matchingProductFromCookieOnlyDefined.map((p) => {
-            return (
-              <div
-                className="ProductCard"
-                data-test-id={`cart-product-${p.id}`}
-                key={`cart-product-${p.id}`}
-              >
-                <div className="title">
+    <div className={styles.cartpage}>
+      <div className={styles.productlist}>
+        {matchingProductFromCookieOnlyDefined.length > 0
+          ? matchingProductFromCookieOnlyDefined.map((p) => {
+              return (
+                <div className={styles.main}>
+                  <div
+                    className={styles.card}
+                    data-test-id={`cart-product-${p.id}`}
+                    key={`cart-product-${p.id}`}
+                  >
+                    {/*
+                  <div className={styles.title}>
                   <h2>{p.name}</h2>
                 </div>
                 <img
@@ -79,46 +81,55 @@ export default function CartPage() {
                   alt="ProductImage"
                   height="200"
                   data-test-id="product-image"
-                />
-                <div
-                  className="Quantity"
-                  data-test-id={`cart-product-quantity-${p.id}`}
-                >
-                  <p>{`Quantity: ${p.quantity}`}</p>
+            />*/}
+                    <TicketComponent
+                      src={p?.image}
+                      name={p?.name}
+                      price={p?.price}
+                    />
+                    <div className={styles.cartinfo}>
+                      <div
+                        className={styles.Quantity}
+                        data-test-id={`cart-product-quantity-${p.id}`}
+                      >
+                        <p>{`Quantity: ${p.quantity}`}</p>
+                      </div>
+                      <p>Price per Item:</p>
+                      <p>{p.price}</p>
+                      <div className={styles.subtotalP1}>
+                        Product subtotal: {multiplySubtotalPricePerItem(p.id)}
+                      </div>
+                      <form>
+                        <CartRemoveButton singleProductID={p.id} />
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <p>Price per Item:</p>
-                <p>{p.price}</p>
-                <div className="subtotalP1">
-                  Product subtotal: {multiplySubtotalPricePerItem(p.id)}
-                </div>
-                <form>
-                  <CartRemoveButton singleProductID={p.id} />
-                </form>
-              </div>
-            );
-          })
-        : 'Your Cart is empty'}
-
-      <div className="totalpriceandquantity">
+              );
+            })
+          : 'Your Cart is empty'}
+      </div>
+      <div className={styles.totalpriceandquantity}>
         {matchingProductFromCookieOnlyDefined.length > 0 ? (
           <>
             <h2>Total</h2>
-            <div className="quantity">
+            <div className={styles.quantity}>
               Quantity:
               <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
             </div>
-            <div className="price">
+            <div className={styles.price}>
               Price:
               <p data-test-id="cart-total">
                 {cartCookie ? multiplySubtotalPrices() : '0'}
               </p>
             </div>
             <Link href="/checkoutPage">
-              <div className="buttonSecondary">
-                <button className="cartbutton" disabled={!sumQuantity() > 0}>
-                  Checkout
-                </button>
-              </div>
+              <button
+                className={styles.primarybutton}
+                disabled={!sumQuantity() > 0}
+              >
+                Checkout
+              </button>
             </Link>
             <form>
               <CartRemoveAllButton />
@@ -127,10 +138,9 @@ export default function CartPage() {
         ) : (
           ''
         )}
+
         <Link href="/shoppage">
-          <div className="buttonSecondary">
-            <button className="cartbutton">Continue Shopping</button>
-          </div>
+          <button className={styles.primarybutton}>Continue Shopping</button>
         </Link>
       </div>
     </div>
