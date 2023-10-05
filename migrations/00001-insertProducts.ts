@@ -43,7 +43,7 @@ VALUES (${product.name}, ${product.price}, ${product.image})
 export async function down(sql: Sql) {
   for (const product of products) {
     await sql`
-DELETE FROM animals WHERE id =${product.id}
+DELETE FROM products WHERE id =${product.id}
   `;
   }
 }

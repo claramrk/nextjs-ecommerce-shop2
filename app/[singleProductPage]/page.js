@@ -11,7 +11,6 @@ export const metadata = {
 
 export default function SingleProductPage(props) {
   const singleProduct = getProductsByID(Number(props.params.singleProductPage));
-  console.log(singleProduct);
   return (
     <>
       <Link href="/shoppage" data-test-id="cart-link">

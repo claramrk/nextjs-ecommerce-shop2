@@ -1,7 +1,6 @@
 import styles from './TicketComponent.module.scss';
 
 export default function TicketComponent(props) {
-  console.log(props);
   return (
     <div className={styles.ticketAll}>
       <div class={styles.ticket}>

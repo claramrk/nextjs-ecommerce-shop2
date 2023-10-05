@@ -18,11 +18,6 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
         { id: singleProductFromDatabase.id, quantity: quantityValue },
       ]),
     );
-    console.log(
-      JSON.stringify([
-        { id: singleProductFromDatabase.id, quantity: quantityValue },
-      ]),
-    );
   } else {
     const singleProductToUpdate = parsedCartCookie.find(
       (c) => c.id === singleProductID,

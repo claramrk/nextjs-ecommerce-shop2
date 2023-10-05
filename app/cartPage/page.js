@@ -66,13 +66,12 @@ export default function CartPage() {
         {matchingProductFromCookieOnlyDefined.length > 0
           ? matchingProductFromCookieOnlyDefined.map((p) => {
               return (
-                <div className={styles.main}>
-                  <div
-                    className={styles.card}
-                    data-test-id={`cart-product-${p.id}`}
-                    key={`cart-product-${p.id}`}
-                  >
-                    {/*
+                <div
+                  className={styles.card}
+                  data-test-id={`cart-product-${p.id}`}
+                  key={`cart-product-${p.id}`}
+                >
+                  {/*
                   <div className={styles.title}>
                   <h2>{p.name}</h2>
                 </div>
@@ -82,28 +81,27 @@ export default function CartPage() {
                   height="200"
                   data-test-id="product-image"
             />*/}
-                    <div className={styles.ticket}>
-                      <TicketComponent
-                        src={p?.image}
-                        name={p?.name}
-                        price={p?.price}
-                      />
+                  <div className={styles.ticket}>
+                    <TicketComponent
+                      src={p?.image}
+                      name={p?.name}
+                      price={p?.price}
+                    />
+                  </div>
+                  <div className={styles.cartinfo}>
+                    <h2>Ticket: {p?.name}</h2>
+                    <div
+                      className={styles.Quantity}
+                      data-test-id={`cart-product-quantity-${p.id}`}
+                    >
+                      <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
                     </div>
-                    <div className={styles.cartinfo}>
-                      <h2>Ticket: {p?.name}</h2>
-                      <div
-                        className={styles.Quantity}
-                        data-test-id={`cart-product-quantity-${p.id}`}
-                      >
-                        <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
-                      </div>
-                      <div className={styles.subtotalP1}>
-                        Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
-                      </div>
-                      <form>
-                        <CartRemoveButton singleProductID={p.id} />
-                      </form>
+                    <div className={styles.subtotalP1}>
+                      Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
                     </div>
+                    <form>
+                      <CartRemoveButton singleProductID={p.id} />
+                    </form>
                   </div>
                 </div>
               );

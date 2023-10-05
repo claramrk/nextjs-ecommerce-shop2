@@ -1,5 +1,24 @@
 import 'server-only';
 
+/*
+
+import { cache } from 'react';
+import { Product } from '../migrations/00000-createTableProducts';
+import { sql } from './connect';
+
+// get database sql;
+
+export const getProductsSQL = cache(async () => {
+  const products = await sql<Product[]>`
+    SELECT * FROM products
+  `;
+  console.log(products);
+  return products;
+});
+*/
+
+// use hardcoded database in project
+
 export const products = [
   {
     id: 1,

@@ -4,7 +4,6 @@ import { removeAllItemsFromCookies } from './CartRemoveAllAction';
 import styles from './page.module.scss';
 
 export default function CartRemoveAllButton(props) {
-  console.log(props);
   return (
     <button
       className={styles.primarybutton}

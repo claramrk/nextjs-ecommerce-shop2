@@ -10,7 +10,6 @@ export async function removeAllItemsFromCookies() {
       : JSON.parse(cartCookie);
 
   await parsedCartCookie.splice(0, parsedCartCookie.length);
-  console.log(parsedCartCookie);
   await cookies().set('cart', JSON.stringify([...parsedCartCookie]));
 }
 removeAllItemsFromCookies().catch((error) => {
