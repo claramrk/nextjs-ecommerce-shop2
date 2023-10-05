@@ -1,8 +1,7 @@
-import '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
-import '/Users/claramrkos/projects/nextjs-ecommerce-shop2/app/shoppage/page.scss';
-import { getProducts } from '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
-import Image from 'next/image';
+import '../../database/products';
+import './page.scss';
 import Link from 'next/link';
+import { getProductsSQL } from '../../database/products';
 import TicketComponent from './TicketComponent';
 
 export const metadata = {
@@ -10,9 +9,9 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-const productsFromDatabase = getProducts();
+export default async function Home() {
+  const productsFromDatabase = await getProductsSQL();
 
-export default function Home() {
   return (
     <div className="shoppage">
       <div className="background" />

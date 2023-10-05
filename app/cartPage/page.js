@@ -1,12 +1,14 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
-import { products } from '../../database/products';
+import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../shoppage/TicketComponent';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import CartRemoveButton from './CartRemoveButton';
 import styles from './page.module.scss';
 
-export default function CartPage() {
+export default async function CartPage() {
+  const products = await getProductsSQL();
+
   // get and parse cookies
   const cartCookie = cookies().get('cart')?.value;
   const parsedCartCookie =

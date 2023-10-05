@@ -1,6 +1,7 @@
 import { Sql } from 'postgres';
+import { Product } from './00000-createTableProducts';
 
-const products = [
+const products: Product[] = [
   {
     id: 1,
     name: 'Kinder',

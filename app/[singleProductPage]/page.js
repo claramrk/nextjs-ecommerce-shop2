@@ -1,5 +1,5 @@
-import { getProductsByID } from '/Users/claramrkos/projects/nextjs-ecommerce-shop2/database/products.js';
 import Link from 'next/link';
+import { getProductSQLById } from '../../database/products';
 import TicketComponent from '../shoppage/TicketComponent';
 import AddToCartFormComponent from './AddToCartFormComponent';
 import styles from './page.module.scss';
@@ -9,8 +9,10 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default function SingleProductPage(props) {
-  const singleProduct = getProductsByID(Number(props.params.singleProductPage));
+export default async function SingleProductPage(props) {
+  const singleProduct = await getProductSQLById(
+    Number(props.params.singleProductPage),
+  );
   return (
     <>
       <Link href="/shoppage" data-test-id="cart-link">

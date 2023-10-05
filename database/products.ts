@@ -1,10 +1,7 @@
 import 'server-only';
-
-/*
-
 import { cache } from 'react';
+import { sql } from '../database/connect';
 import { Product } from '../migrations/00000-createTableProducts';
-import { sql } from './connect';
 
 // get database sql;
 
@@ -12,10 +9,22 @@ export const getProductsSQL = cache(async () => {
   const products = await sql<Product[]>`
     SELECT * FROM products
   `;
-  console.log(products);
   return products;
 });
-*/
+
+export const getProductSQLById = cache(async (id: number) => {
+  // Postgres always returns an array
+  const [product] = await sql<Product[]>`
+    SELECT
+      *
+    FROM
+      products
+    WHERE
+      id = ${id}
+  `;
+  return product;
+});
+/*
 
 // use hardcoded database in project
 
@@ -54,6 +63,7 @@ export function getProducts() {
   return products;
 }
 
-export function getProductsByID(id) {
+export function getProductsByID(id:number) {
   return products.find((p) => p.id === id);
 }
+*/

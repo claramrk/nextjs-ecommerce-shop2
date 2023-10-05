@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "ley"
+    "migrate": "ley --require tsm"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
