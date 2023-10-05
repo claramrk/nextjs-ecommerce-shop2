@@ -1,5 +1,4 @@
 import CheckoutPageFormComponent from './CheckoutFormComponent';
-import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Products',
@@ -8,9 +7,9 @@ export const metadata = {
 
 export default function CheckoutPage() {
   return (
-    <div className={styles.checkoutPage}>
-      <h1 className={styles.h1}>Confirm Order</h1>
-      <div className={styles.inputAll}>
+    <div>
+      <h1>Confirm Order</h1>
+      <div>
         <CheckoutPageFormComponent />
       </div>
     </div>

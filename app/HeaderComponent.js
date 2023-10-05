@@ -18,7 +18,7 @@ export default function HeaderComponent() {
 
   return (
     <div className={styles.header}>
-      <div className={styles.logosection}>
+      <div>
         <Link href="/shoppage">
           <b className={styles.logo}>Hermannshöhle</b>
         </Link>
@@ -32,7 +32,6 @@ export default function HeaderComponent() {
 
         <Link href="/cartPage" data-test-id="cart-link">
           <div className={styles.primarybutton}>
-            {' '}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path d="m397.78 316h-205.13a15 15 0 0 1 -14.65-11.67l-34.54-150.48a15 15 0 0 1 14.62-18.36h274.27a15 15 0 0 1 14.65 18.36l-34.6 150.48a15 15 0 0 1 -14.62 11.67zm-193.19-30h181.25l27.67-120.48h-236.6z" />
               <path d="m222 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z" />

@@ -52,7 +52,7 @@ export default async function CartPage() {
           const priceXQuantity = products[i].price * c.quantity;
           return priceXQuantity;
         }
-      }
+      }return subtotalPrices
     });
 
     const sumTotal = subtotalPrices.reduce((accumulator, object) => {

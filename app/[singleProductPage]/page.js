@@ -24,7 +24,7 @@ export default async function SingleProductPage(props) {
       <br />
 
       <div className={styles.main}>
-        <div className={styles.imagesection}>
+        <div>
           <TicketComponent
             src={singleProduct?.image}
             name={singleProduct?.name}
