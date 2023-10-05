@@ -21,8 +21,8 @@ export default function SingleProductPage(props) {
       <br />
       <br />
 
-      <div class={styles.main}>
-        <div classname={styles.imagesection}>
+      <div className={styles.main}>
+        <div className={styles.imagesection}>
           <TicketComponent
             src={singleProduct?.image}
             name={singleProduct?.name}

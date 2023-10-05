@@ -81,22 +81,19 @@ export default function CartPage() {
                   height="200"
                   data-test-id="product-image"
             />*/}
-                  <div className={styles.ticket}>
+                  <div>
                     <TicketComponent
-                      src={p?.image}
-                      name={p?.name}
-                      price={p?.price}
+                      src={p.image}
+                      name={p.name}
+                      price={p.price}
                     />
                   </div>
-                  <div className={styles.cartinfo}>
-                    <h2>Ticket: {p?.name}</h2>
-                    <div
-                      className={styles.Quantity}
-                      data-test-id={`cart-product-quantity-${p.id}`}
-                    >
+                  <div>
+                    <h2>Ticket: {p.name}</h2>
+                    <div data-test-id={`cart-product-quantity-${p.id}`}>
                       <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
                     </div>
-                    <div className={styles.subtotalP1}>
+                    <div>
                       Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
                     </div>
                     <form>
@@ -112,11 +109,11 @@ export default function CartPage() {
         {matchingProductFromCookieOnlyDefined.length > 0 ? (
           <>
             <h2>Total</h2>
-            <div className={styles.quantity}>
+            <div>
               Ticketanzahl:
               <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
             </div>
-            <div className={styles.price}>
+            <div>
               Summe:
               <p data-test-id="cart-total">
                 {cartCookie ? multiplySubtotalPrices() : '0'}€

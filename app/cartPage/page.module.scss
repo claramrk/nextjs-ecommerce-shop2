@@ -115,11 +115,7 @@
   padding-bottom: 6px;
   font-size: 1rem;
   font-weight: 400;
-  color: darken(gray, 30%);
   transition: border-color 0.2s ease-in-out;
-  :focus {
-    border-color: darken(gray, 30%);
-  }
 }
 
 .formsection {

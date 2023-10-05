@@ -5,11 +5,11 @@ import styles from './page.module.scss';
 
 export default function CheckoutPageFormComponent() {
   return (
-    <form className={styles.checkoutform}>
+    <form>
       <div className={styles.ShippingInformation}>
         <h2>Shipping Information</h2>
 
-        <div className={styles.FirstName}>
+        <div>
           <label htmlFor="FirstName">First Name:</label>
           <input
             className={styles.input}
@@ -17,7 +17,7 @@ export default function CheckoutPageFormComponent() {
             required
           />
         </div>
-        <div className={styles.LastName}>
+        <div>
           <label htmlFor="LastName">First Name:</label>
           <input
             className={styles.input}
@@ -25,7 +25,7 @@ export default function CheckoutPageFormComponent() {
             required
           />
         </div>
-        <div className={styles.email}>
+        <div>
           <label htmlFor="email">Email:</label>
           <input
             className={styles.input}
@@ -33,7 +33,7 @@ export default function CheckoutPageFormComponent() {
             required
           />
         </div>
-        <div className={styles.address}>
+        <div>
           <label htmlFor="address">Address:</label>
           <input
             className={styles.input}
@@ -41,7 +41,7 @@ export default function CheckoutPageFormComponent() {
             required
           />
         </div>
-        <div className={styles.city}>
+        <div>
           <label htmlFor="city">City:</label>
           <input
             className={styles.input}
@@ -49,7 +49,7 @@ export default function CheckoutPageFormComponent() {
             required
           />
         </div>
-        <div className={styles.postalcode}>
+        <div>
           <label htmlFor="postal-code">Postal Code:</label>
           <input
             className={styles.input}
