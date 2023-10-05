@@ -4,28 +4,28 @@ import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../shoppage/TicketComponent';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import CartRemoveButton from './CartRemoveButton';
+import ChangeQuantityFormComponent from './ChangeQuantityFormComponent';
 import styles from './page.module.scss';
 
 export default async function CartPage() {
   const products = await getProductsSQL();
 
   // get and parse cookies
-  const cartCookie = cookies().get('cart')?.value;
+  const cartCookie = await cookies().get('cart')?.value;
   const parsedCartCookie =
     !cartCookie || JSON.parse(cartCookie).length === 0
       ? []
       : JSON.parse(cartCookie);
 
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
-  const databaseProductsInCart = products.map((product) => {
+  const databaseProductsInCart = await products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
       (cookieObject) => product.id === cookieObject.id,
     );
     return { ...product, quantity: matchingProductFromCookie?.quantity };
   });
-  const matchingProductFromCookieOnlyDefined = databaseProductsInCart.filter(
-    (e) => e.quantity !== undefined,
-  );
+  const matchingProductFromCookieOnlyDefined =
+    await databaseProductsInCart.filter((e) => e.quantity !== undefined);
 
   // summing quantity of all products
   function sumQuantity() {
@@ -52,7 +52,7 @@ export default async function CartPage() {
           const priceXQuantity = products[i].price * c.quantity;
           return priceXQuantity;
         }
-      }return subtotalPrices
+      }
     });
 
     const sumTotal = subtotalPrices.reduce((accumulator, object) => {
@@ -95,6 +95,7 @@ export default async function CartPage() {
                     <div data-test-id={`cart-product-quantity-${p.id}`}>
                       <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
                     </div>
+                    <ChangeQuantityFormComponent quantity={p.quantity} />
                     <div>
                       Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
                     </div>
