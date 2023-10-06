@@ -22,9 +22,8 @@ export default function mainpage() {
           type="video/mp4"
         />
       </video>
-      <Example />
       <h1>Hermannshöhle</h1>
-      <p>
+      <p className={styles.p}>
         Die Hermannshöhle ist die größte Tropfsteinhöhle und das wichtigstes
         Fledermaus-Winterquartier Niederösterreichs. Der Höhlenbesuch ist ein
         Naturerlebnis in einer nahen, jedoch so unbekannten Welt. Tropfsteine,
