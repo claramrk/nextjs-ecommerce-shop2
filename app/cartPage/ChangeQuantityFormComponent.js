@@ -1,19 +1,19 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { setQuantityInCookies } from './ChangeQuantityFormAction';
 import styles from './page.module.scss';
 
 export default function AddToCartFormComponent(props) {
   const [quantityValue, setQuantityValue] = useState(props.quantity);
-  const router = useRouter();
 
   const preventMinus = (e) => {
     if (e.code === 'Minus') {
       e.preventDefault();
     }
   };
+
+  console.log(props);
 
   return (
     <form className={styles.forms}>
@@ -37,7 +37,6 @@ export default function AddToCartFormComponent(props) {
         data-test-id="product-add-to-cart"
         formAction={async () => {
           await setQuantityInCookies(props.singleProductID, quantityValue);
-          router.refresh();
         }}
       >
         Ticket hinzufügen

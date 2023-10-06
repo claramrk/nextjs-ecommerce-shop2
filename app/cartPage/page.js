@@ -17,6 +17,7 @@ export default async function CartPage() {
       ? []
       : JSON.parse(cartCookie);
 
+  console.log(parsedCartCookie);
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = await products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
@@ -46,7 +47,10 @@ export default async function CartPage() {
 
   // multiplying total price
   function multiplySubtotalPrices() {
-    const subtotalPrices = parsedCartCookie.map((c) => {
+    const parsedCartCookieOnlyDefined = parsedCartCookie.filter(
+      (e) => e.id !== undefined,
+    );
+    const subtotalPrices = parsedCartCookieOnlyDefined.map((c) => {
       for (let i = 0; i < products.length; i++) {
         if (products[i].id === c.id) {
           const priceXQuantity = products[i].price * c.quantity;
@@ -95,7 +99,10 @@ export default async function CartPage() {
                     <div data-test-id={`cart-product-quantity-${p.id}`}>
                       <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
                     </div>
-                    <ChangeQuantityFormComponent quantity={p.quantity} />
+                    <ChangeQuantityFormComponent
+                      quantity={p.quantity}
+                      singleProductID={p.id}
+                    />
                     <div>
                       Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
                     </div>

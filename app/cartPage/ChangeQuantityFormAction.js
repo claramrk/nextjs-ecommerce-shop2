@@ -11,6 +11,8 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
       ? []
       : JSON.parse(cartCookie);
 
+  console.log(singleProductID);
+
   if (cartCookie === undefined) {
     cookies().set(
       'cart',
