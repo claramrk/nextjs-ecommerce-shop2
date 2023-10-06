@@ -39,7 +39,7 @@ export default function AddToCartFormComponent(props) {
           await setQuantityInCookies(props.singleProductID, quantityValue);
         }}
       >
-        Ticket hinzufügen
+        Ticketanzahl ändern
       </button>
     </form>
   );

@@ -15,14 +15,6 @@ export default async function SingleProductPage(props) {
   );
   return (
     <>
-      <Link href="/shoppage" data-test-id="cart-link">
-        <button className={styles.primarybutton}>
-          Zurück zu allen Tickets
-        </button>
-      </Link>
-      <br />
-      <br />
-
       <div className={styles.main}>
         <div>
           <TicketComponent
@@ -40,6 +32,13 @@ export default async function SingleProductPage(props) {
           </Link>
         </div>
       </div>
+      <Link href="/shoppage" data-test-id="cart-link">
+        <button className={styles.primarybutton}>
+          Zurück zu allen Tickets
+        </button>
+      </Link>
+      <br />
+      <br />
     </>
   );
 }

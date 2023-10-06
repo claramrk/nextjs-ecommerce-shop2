@@ -1,6 +1,5 @@
 import '../database/products';
 import styles from './page.module.scss';
-import Example from './SlideShowContainer';
 
 export const metadata = {
   title: 'Home',

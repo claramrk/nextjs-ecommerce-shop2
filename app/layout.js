@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         <header>
           <HeaderComponent />
         </header>
-        <main>
+        <main className="mainBackground">
           <div>{children}</div>
         </main>
       </body>

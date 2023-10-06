@@ -1,3 +1,19 @@
+.body {
+  background-image: url('https://image.jimcdn.com/app/cms/image/transf/dimension=1920x400:format=jpg/path/sfa1e985dff417ba4/image/i234d59361be284db/version/1646756758/image.jpg');
+}
+
+.mainpage {
+  padding: 20px;
+  gap: 5%;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: #fff;
+  transition: transform 0.2s ease-in-out;
+  text-decoration: none;
+  color: #333;
+}
 .p {
   text-align: justify;
 }

@@ -14,7 +14,6 @@ export default async function Home() {
 
   return (
     <div className="shoppage">
-      <div className="background" />
       <div className="productlist">
         {productsFromDatabase.map((p) => {
           return (

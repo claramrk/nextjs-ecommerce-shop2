@@ -96,13 +96,14 @@ export default async function CartPage() {
                   </div>
                   <div>
                     <h2>Ticket: {p.name}</h2>
-                    <div data-test-id={`cart-product-quantity-${p.id}`}>
-                      <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
-                    </div>
+
                     <ChangeQuantityFormComponent
                       quantity={p.quantity}
                       singleProductID={p.id}
                     />
+                    <div data-test-id={`cart-product-quantity-${p.id}`}>
+                      <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
+                    </div>
                     <div>
                       Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
                     </div>
