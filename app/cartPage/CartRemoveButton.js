@@ -8,6 +8,7 @@ export default function CartRemoveButton() {
     <button
       className={styles.primarybutton}
       formAction={async () => await removeAllItemsFromCookies()}
+      style={{ backgroundColor: '#e0b4b4' }}
     >
       Ticket entfernen
     </button>

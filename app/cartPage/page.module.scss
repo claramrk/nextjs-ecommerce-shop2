@@ -14,6 +14,7 @@
 
 .totalpriceandquantity {
   position: fixed;
+
   top: 30%;
   left: 80%;
 
@@ -38,7 +39,7 @@
 }
 
 .primarybutton {
-  border: 1px solid gray;
+  border: 1px solid #808080;
   padding: 10px 30px;
   margin-top: 30px;
   text-transform: uppercase;
@@ -53,7 +54,7 @@
 }
 
 .primarybutton:hover {
-  background-color: gray;
+  background-color: hsl(0, 0%, 50%);
   color: black;
 }
 

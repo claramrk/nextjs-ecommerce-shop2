@@ -25,14 +25,19 @@ export default function AddToCartFormComponent(props) {
         pattern="[0-9]*"
         className={styles.input}
         value={quantityValue}
-        data-test-id="product-quantity"
         min="1"
         onChange={(event) => {
           setQuantityValue(event.currentTarget.value);
           preventMinus(event.currentTarget.value);
+          setQuantityInCookies(
+            props.singleProductID,
+            event.currentTarget.value,
+          ).catch((error) => {
+            console.log(error);
+          });
         }}
       />
-      <button
+      {/* <button
         className={styles.primarybutton}
         data-test-id="product-add-to-cart"
         formAction={async () => {
@@ -41,6 +46,7 @@ export default function AddToCartFormComponent(props) {
       >
         Ticketanzahl ändern
       </button>
+      */}
     </form>
   );
 }

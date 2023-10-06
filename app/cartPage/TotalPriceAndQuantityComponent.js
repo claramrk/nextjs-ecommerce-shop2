@@ -89,9 +89,6 @@ export default async function TotalPriceAndQuantity() {
               Tickets bestellen
             </button>
           </Link>
-          <form>
-            <CartRemoveAllButton />
-          </form>
         </>
       ) : (
         ''
@@ -102,6 +99,13 @@ export default async function TotalPriceAndQuantity() {
           Weitere Tickets hinzufügen
         </button>
       </Link>
+      {matchingProductFromCookieOnlyDefined.length > 0 ? (
+        <form>
+          <CartRemoveAllButton />
+        </form>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
