@@ -1,3 +1,4 @@
+import TotalPriceAndQuantity from '../cartPage/TotalPriceAndQuantityComponent';
 import CheckoutPageFormComponent from './CheckoutFormComponent';
 import styles from './page.module.scss';
 
@@ -13,6 +14,7 @@ export default function CheckoutPage() {
         <h1>Confirm Order</h1>
         <CheckoutPageFormComponent />
       </div>
+      <TotalPriceAndQuantity />
     </div>
   );
 }

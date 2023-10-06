@@ -2,6 +2,7 @@ import '../../database/products';
 import './page.scss';
 import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
+import TotalPriceAndQuantity from '../cartPage/TotalPriceAndQuantityComponent';
 import TicketComponent from './TicketComponent';
 
 export const metadata = {
@@ -43,6 +44,7 @@ export default async function Home() {
           );
         })}
       </div>
+      <TotalPriceAndQuantity />
     </div>
   );
 }
