@@ -17,7 +17,6 @@ export default async function TotalPriceAndQuantity() {
       ? []
       : JSON.parse(cartCookie);
 
-  console.log(parsedCartCookie);
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = await products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
@@ -71,6 +70,31 @@ export default async function TotalPriceAndQuantity() {
       {matchingProductFromCookieOnlyDefined.length > 0 ? (
         <>
           <h2>Total</h2>
+          <table className="audit table">
+            <tbody className="table-body">
+              {matchingProductFromCookieOnlyDefined.map((g) => {
+                return (
+                  <tr
+                    className="ExampleGuest"
+                    key={`uniqueID-${g.firstName}-${g.id}`}
+                  >
+                    <td>{g.quantity}</td>
+                    <td>x</td>
+                    <td>{g.name}</td>
+                    <td>.....</td>
+                    <td>{multiplySubtotalPricePerItem(g.id)}€</td>
+                  </tr>
+                );
+              })}
+              <tr>
+                <td>{cartCookie ? sumQuantity() : '0'}</td>
+                <td>x</td>
+                <td>Tickets</td>
+                <td>.....</td>
+                <td>{cartCookie ? multiplySubtotalPrices() : '0'}€</td>
+              </tr>
+            </tbody>
+          </table>
           <div>
             Ticketanzahl:
             <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>

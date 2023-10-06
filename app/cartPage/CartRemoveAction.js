@@ -8,6 +8,11 @@ export async function removeItemFromCookies(props) {
     !cartCookie || JSON.parse(cartCookie).length === 0
       ? []
       : JSON.parse(cartCookie);
+
+  if (!props) {
+    console.log('error - no id');
+  }
+
   const singleProductToUpdateIndex = await parsedCartCookie.indexOf(
     parsedCartCookie.find((c) => c.id === props),
   );

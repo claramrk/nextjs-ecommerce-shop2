@@ -13,8 +13,6 @@ export default function AddToCartFormComponent(props) {
     }
   };
 
-  console.log(props);
-
   return (
     <form className={styles.forms}>
       <legend>Zum Einkaufswagen hinzufügen</legend>
@@ -27,7 +25,9 @@ export default function AddToCartFormComponent(props) {
         value={quantityValue}
         min="1"
         onChange={(event) => {
-          setQuantityValue(event.currentTarget.value);
+          if (props.singleProductID) {
+            setQuantityValue(event.currentTarget.value);
+          }
           preventMinus(event.currentTarget.value);
           setQuantityInCookies(
             props.singleProductID,
@@ -37,7 +37,8 @@ export default function AddToCartFormComponent(props) {
           });
         }}
       />
-      {/* <button
+      {/*
+      <button
         className={styles.primarybutton}
         data-test-id="product-add-to-cart"
         formAction={async () => {
@@ -46,7 +47,7 @@ export default function AddToCartFormComponent(props) {
       >
         Ticketanzahl ändern
       </button>
-      */}
+*/}
     </form>
   );
 }
