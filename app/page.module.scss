@@ -1,0 +1,18 @@
+.p {
+  text-align: justify;
+}
+
+.eachslideeffect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
+
+.eachslideeffect span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}

@@ -1,4 +1,4 @@
-import './globals.modules.scss';
+import './globals.scss';
 import HeaderComponent from './HeaderComponent';
 
 export const metadata = {
