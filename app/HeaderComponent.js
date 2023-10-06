@@ -19,7 +19,7 @@ export default function HeaderComponent() {
   return (
     <div className={styles.header}>
       <div>
-        <Link href="/shoppage">
+        <Link href="../">
           <b className={styles.logo}>Hermannshöhle</b>
         </Link>
       </div>
