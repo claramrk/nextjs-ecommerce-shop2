@@ -1,5 +1,6 @@
 import '../database/products';
 import styles from './page.module.scss';
+import SlideShowContainer from './SlideShowContainer';
 
 export const metadata = {
   title: 'Home',
@@ -9,18 +10,7 @@ export const metadata = {
 export default function mainpage() {
   return (
     <div className={styles.mainpage}>
-      <video
-        id="background-video"
-        autoPlay
-        loop
-        muted
-        poster="https://image.jimcdn.com/app/cms/image/transf/dimension=1920x400:format=jpg/path/sfa1e985dff417ba4/image/i234d59361be284db/version/1646756758/image.jpg"
-      >
-        <source
-          src="https://www.youtube.com/embed/c1TmbDoj7Tg?si=5Ju0VqMsyhOeXvRy"
-          type="video/mp4"
-        />
-      </video>
+      <SlideShowContainer />
       <h1>Hermannshöhle</h1>
       <p className={styles.p}>
         Die Hermannshöhle ist die größte Tropfsteinhöhle und das wichtigstes
