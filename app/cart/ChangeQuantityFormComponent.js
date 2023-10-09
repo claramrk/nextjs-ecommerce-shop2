@@ -9,7 +9,7 @@ export default function AddToCartFormComponent(props) {
 
   return (
     <form className={styles.forms}>
-      <legend>Zum Einkaufswagen hinzufügen</legend>
+      <legend>Ticket {props.name}</legend>
       <label htmlFor="quantity">Anzahl:</label>
       <input
         id="quantity"

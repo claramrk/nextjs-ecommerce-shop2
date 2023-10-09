@@ -95,11 +95,10 @@ export default async function Cart() {
                     />
                   </div>
                   <div>
-                    <h2>Ticket: {p.name}</h2>
-
                     <ChangeQuantityFormComponent
                       quantity={p.quantity}
                       singleProductID={p.id}
+                      name={p.name}
                     />
                     <div data-test-id={`cart-product-quantity-${p.id}`}>
                       <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
