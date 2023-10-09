@@ -2,7 +2,7 @@ import '../../database/products';
 import './page.scss';
 import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
-import TotalPriceAndQuantity from '../cartPage/TotalPriceAndQuantityComponent';
+import TotalPriceAndQuantity from '../cart/TotalPriceAndQuantityComponent';
 import TicketComponent from './TicketComponent';
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default async function Home() {
+export default async function Products() {
   const productsFromDatabase = await getProductsSQL();
 
   return (

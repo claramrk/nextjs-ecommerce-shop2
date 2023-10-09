@@ -99,7 +99,7 @@ export default function CheckoutPageFormComponent() {
           className={styles.primarybutton}
           formAction={async () => {
             await removeAllItemsFromCookies();
-            redirect('/thankYouPage');
+            redirect('/thankYou');
           }}
         >
           Confirm Order

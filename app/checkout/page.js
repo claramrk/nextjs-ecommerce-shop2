@@ -1,4 +1,4 @@
-import TotalPriceAndQuantity from '../cartPage/TotalPriceAndQuantityComponent';
+import TotalPriceAndQuantity from '../cart/TotalPriceAndQuantityComponent';
 import CheckoutPageFormComponent from './CheckoutFormComponent';
 import styles from './page.module.scss';
 
@@ -7,7 +7,7 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default function CheckoutPage() {
+export default function Checkout() {
   return (
     <div>
       <div className={styles.main}>

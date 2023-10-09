@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getProductSQLById } from '../../database/products';
-import TicketComponent from '../shoppage/TicketComponent';
+import TicketComponent from '../products/TicketComponent';
 import AddToCartFormComponent from './AddToCartFormComponent';
 import styles from './page.module.scss';
 
@@ -9,9 +9,9 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default async function SingleProductPage(props) {
+export default async function SingleProduct(props) {
   const singleProduct = await getProductSQLById(
-    Number(props.params.singleProductPage),
+    Number(props.params.singleProduct),
   );
   return (
     <>
@@ -25,14 +25,14 @@ export default async function SingleProductPage(props) {
         </div>
         <div className={styles.formsection}>
           <AddToCartFormComponent singleProductID={singleProduct.id} />
-          <Link href="/cartPage" data-test-id="cart-link">
+          <Link href="/cart" data-test-id="cart-link">
             <button className={styles.primarybutton}>
               Einkaufswagen ansehen
             </button>
           </Link>
         </div>
       </div>
-      <Link href="/shoppage" data-test-id="cart-link">
+      <Link href="/products" data-test-id="cart-link">
         <button className={styles.primarybutton}>
           Zurück zu allen Tickets
         </button>

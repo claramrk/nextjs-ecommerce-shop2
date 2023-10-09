@@ -1,14 +1,13 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
-import TicketComponent from '../shoppage/TicketComponent';
-import CartRemoveAllButton from './CartRemoveAllButton';
+import TicketComponent from '../products/TicketComponent';
 import CartRemoveButton from './CartRemoveButton';
 import ChangeQuantityFormComponent from './ChangeQuantityFormComponent';
 import styles from './page.module.scss';
 import TotalPriceAndQuantity from './TotalPriceAndQuantityComponent';
 
-export default async function CartPage() {
+export default async function Cart() {
   const products = await getProductsSQL();
 
   // get and parse cookies
@@ -69,7 +68,6 @@ export default async function CartPage() {
   // JSX Code return
   return (
     <div className={styles.cartpage}>
-
       <div className={styles.productlist}>
         {matchingProductFromCookieOnlyDefined.length > 0
           ? matchingProductFromCookieOnlyDefined.map((p) => {
@@ -116,7 +114,14 @@ export default async function CartPage() {
                 </div>
               );
             })
-          : 'Your Cart is empty'}
+          : 'Keine Tickets im Einkaufswagen'}
+        <Link href="/products">
+          <button className={styles.primarybutton}>
+            {parsedCartCookie.length > 0
+              ? 'Weitere Tickets hinzufügen '
+              : 'Tickets hinzufügen'}
+          </button>
+        </Link>
       </div>
       <TotalPriceAndQuantity />
     </div>

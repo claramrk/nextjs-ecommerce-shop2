@@ -1,10 +1,7 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
-import TicketComponent from '../shoppage/TicketComponent';
 import CartRemoveAllButton from './CartRemoveAllButton';
-import CartRemoveButton from './CartRemoveButton';
-import ChangeQuantityFormComponent from './ChangeQuantityFormComponent';
 import styles from './page.module.scss';
 
 export default async function TotalPriceAndQuantity() {
@@ -70,12 +67,12 @@ export default async function TotalPriceAndQuantity() {
       {matchingProductFromCookieOnlyDefined.length > 0 ? (
         <>
           <h2>Total</h2>
-          <table className="audit table">
+          <table className="audittable">
             <tbody className="table-body">
               {matchingProductFromCookieOnlyDefined.map((g) => {
                 return (
                   <tr
-                    className="ExampleGuest"
+                    className="ticketsummary"
                     key={`uniqueID-${g.firstName}-${g.id}`}
                   >
                     <td>{g.quantity}</td>
@@ -105,7 +102,7 @@ export default async function TotalPriceAndQuantity() {
               {cartCookie ? multiplySubtotalPrices() : '0'}€
             </p>
           </div>
-          <Link href="/checkoutPage">
+          <Link href="/checkout">
             <button
               className={styles.primarybutton}
               disabled={!sumQuantity() > 0}
@@ -118,9 +115,11 @@ export default async function TotalPriceAndQuantity() {
         ''
       )}
 
-      <Link href="/shoppage">
+      <Link href="/products">
         <button className={styles.primarybutton}>
-          Weitere Tickets hinzufügen
+          {parsedCartCookie.length > 0
+            ? 'Weitere Tickets hinzufügen '
+            : 'Tickets hinzufügen'}
         </button>
       </Link>
       {matchingProductFromCookieOnlyDefined.length > 0 ? (

@@ -44,16 +44,9 @@ export default function SlideShowContainer() {
           className={`mySlides ${index === slideIndex ? 'show' : ''}`}
         >
           <img src={slide.imgSrc} alt={slide.alt} style={{ width: '10%' }} />
+          <span className={`dot ${index === slideIndex ? 'active' : ''}`} />
         </div>
       ))}
-      <div style={{ textAlign: 'center' }}>
-        {slides.map((_, index) => (
-          <span
-            key={`${_.alt}`}
-            className={`dot ${index === slideIndex ? 'active' : ''}`}
-          />
-        ))}
-      </div>
     </div>
   );
 }
