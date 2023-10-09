@@ -7,12 +7,6 @@ import styles from './page.module.scss';
 export default function AddToCartFormComponent(props) {
   const [quantityValue, setQuantityValue] = useState(props.quantity);
 
-  const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-      e.preventDefault();
-    }
-  };
-
   return (
     <form className={styles.forms}>
       <legend>Zum Einkaufswagen hinzufügen</legend>
@@ -28,7 +22,6 @@ export default function AddToCartFormComponent(props) {
           if (props.singleProductID) {
             setQuantityValue(event.currentTarget.value);
           }
-          preventMinus(event.currentTarget.value);
           setQuantityInCookies(
             props.singleProductID,
             event.currentTarget.value,

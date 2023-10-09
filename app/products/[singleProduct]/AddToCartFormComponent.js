@@ -7,12 +7,6 @@ import styles from './page.module.scss';
 export default function AddToCartFormComponent(props) {
   const [quantityValue, setQuantityValue] = useState(1);
 
-  const preventMinus = (e) => {
-    if (e.code === 'Minus') {
-      e.preventDefault();
-    }
-  };
-
   return (
     <form className={styles.forms}>
       <legend>Zum Einkaufswagen hinzufügen</legend>
@@ -27,7 +21,6 @@ export default function AddToCartFormComponent(props) {
         min="1"
         onChange={(event) => {
           setQuantityValue(event.currentTarget.value);
-          preventMinus(event.currentTarget.value);
         }}
       />
       <button

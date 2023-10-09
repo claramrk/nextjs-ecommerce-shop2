@@ -15,11 +15,12 @@ export default async function Products() {
 
   return (
     <div className="shoppage">
+      <h1 className="necessary">Tickets</h1>
       <div className="productlist">
         {productsFromDatabase.map((p) => {
           return (
             <Link
-              href={`/${p.id}`}
+              href={`/products/${p.id}`}
               data-test-id={`product-${p.id}`}
               key={`product-${p.id}`}
             >

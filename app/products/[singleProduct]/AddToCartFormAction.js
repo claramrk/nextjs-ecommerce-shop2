@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { getProductSQLById } from '../../database/products';
+import { getProductSQLById } from '../../../database/products';
 
 export async function setQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = await getProductSQLById(singleProductID);
