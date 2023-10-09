@@ -93,19 +93,23 @@ export default async function TotalPriceAndQuantity() {
             </tbody>
           </table>
           <div>
-            Ticketanzahl:
-            <p data-test-id="quantity">{cartCookie ? sumQuantity() : '0'}</p>
+            Ticketanzahl:{' '}
+            <span data-test-id="quantity">
+              {cartCookie ? sumQuantity() : '0'}
+            </span>
           </div>
           <div>
-            Summe:
-            <p data-test-id="cart-total">
-              {cartCookie ? multiplySubtotalPrices() : '0'}€
-            </p>
+            Summe:{' '}
+            <span data-test-id="cart-total">
+              {cartCookie ? multiplySubtotalPrices() : '0'}
+            </span>
+            €
           </div>
           <Link href="/checkout">
             <button
               className={styles.primarybutton}
               disabled={!sumQuantity() > 0}
+              data-test-id="cart-checkout"
             >
               Tickets bestellen
             </button>
