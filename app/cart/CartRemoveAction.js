@@ -17,8 +17,11 @@ export async function removeItemFromCookies(props) {
     parsedCartCookie.find((c) => c.id === props),
   );
 
+  console.log(singleProductToUpdateIndex);
+
   await parsedCartCookie.splice(Number(singleProductToUpdateIndex), 1);
   await cookies().set('cart', JSON.stringify([...parsedCartCookie]));
+  console.log(parsedCartCookie);
 }
 removeItemFromCookies().catch((error) => {
   console.log(error);

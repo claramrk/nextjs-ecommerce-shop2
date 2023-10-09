@@ -69,15 +69,15 @@ export default async function Cart() {
   return (
     <div className={styles.cartpage}>
       <div className={styles.productlist}>
-        {matchingProductFromCookieOnlyDefined.length > 0
-          ? matchingProductFromCookieOnlyDefined.map((p) => {
-              return (
-                <div
-                  className={styles.card}
-                  data-test-id={`cart-product-${p.id}`}
-                  key={`cart-product-${p.id}`}
-                >
-                  {/*
+        {matchingProductFromCookieOnlyDefined.length > 0 ? (
+          matchingProductFromCookieOnlyDefined.map((p) => {
+            return (
+              <div
+                className={styles.card}
+                data-test-id={`cart-product-${p.id}`}
+                key={`cart-product-${p.id}`}
+              >
+                {/*
                   <div className={styles.title}>
                   <h2>{p.name}</h2>
                 </div>
@@ -87,40 +87,51 @@ export default async function Cart() {
                   height="200"
                   data-test-id="product-image"
             />*/}
-                  <div>
-                    <TicketComponent
-                      src={p.image}
-                      name={p.name}
-                      price={p.price}
-                    />
-                  </div>
-                  <div>
-                    <ChangeQuantityFormComponent
-                      quantity={p.quantity}
-                      singleProductID={p.id}
-                      name={p.name}
-                    />
-                    <div data-test-id={`cart-product-quantity-${p.id}`}>
-                      <p>{`Anzahl im Einkaufswagen: ${p.quantity}`}</p>
-                    </div>
-                    <div>
-                      Zwischensumme: {multiplySubtotalPricePerItem(p.id)}€
-                    </div>
-                    <form>
-                      <CartRemoveButton singleProductID={p.id} />
-                    </form>
-                  </div>
+                <div>
+                  <TicketComponent
+                    src={p.image}
+                    name={p.name}
+                    price={p.price}
+                  />
                 </div>
-              );
-            })
-          : 'Keine Tickets im Einkaufswagen'}
-        <Link href="/products">
-          <button className={styles.primarybutton}>
-            {parsedCartCookie.length > 0
-              ? 'Weitere Tickets hinzufügen '
-              : 'Tickets hinzufügen'}
-          </button>
-        </Link>
+                <div>
+                  <ChangeQuantityFormComponent
+                    quantity={p.quantity}
+                    singleProductID={p.id}
+                    name={p.name}
+                  />
+                  <div data-test-id={`cart-product-quantity-${p.id}`}>
+                    <p>
+                      Anzahl im Einkaufswagen:{' '}
+                      <span data-test-id={`cart-product-quantity${p.id}`}>
+                        {p.quantity}
+                      </span>
+                    </p>
+                  </div>
+                  <div>
+                    Zwischensumme:{' '}
+                    <span data-test-id={`cart-product-subtotal-${p.id}`}>
+                      {multiplySubtotalPricePerItem(p.id)}
+                    </span>
+                    €
+                  </div>
+                  <form>
+                    <CartRemoveButton singleProductID={p.id} />
+                  </form>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <>
+            Einkaufswagen ist leer
+            <Link href="/products">
+              <button className={styles.primarybutton}>
+                Tickets hinzufügen
+              </button>
+            </Link>
+          </>
+        )}
       </div>
       <TotalPriceAndQuantity />
     </div>

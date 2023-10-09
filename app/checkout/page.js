@@ -11,7 +11,7 @@ export default function Checkout() {
   return (
     <div>
       <div className={styles.main}>
-        <h1>Confirm Order</h1>
+        <h1>Tickets bestellen</h1>
         <CheckoutPageFormComponent />
       </div>
       <TotalPriceAndQuantity />
