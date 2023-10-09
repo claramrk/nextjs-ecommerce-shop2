@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../products/TicketComponent';
+import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveButton from './CartRemoveButton';
 import ChangeQuantityFormComponent from './ChangeQuantityFormComponent';
 import styles from './page.module.scss';
@@ -124,12 +125,16 @@ export default async function Cart() {
           })
         ) : (
           <>
-            Einkaufswagen ist leer
-            <Link href="/products">
+            Einkaufswagen ist leer{' '}
+            <RedirectButton
+              redirectPage="/products"
+              buttonText="Tickets hinzufügen"
+            />
+            {/*<Link href="/products">
               <button className={styles.primarybutton}>
                 Tickets hinzufügen
               </button>
-            </Link>
+        </Link>*/}
           </>
         )}
       </div>
