@@ -1,4 +1,5 @@
 import './globals.scss';
+import { ReactNode } from 'react';
 import HeaderComponent from './HeaderComponent';
 
 export const metadata = {
@@ -6,7 +7,11 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default function RootLayout({ children }) {
+type Props = {
+  children: ReactNode;
+};
+
+export default function RootLayout(props: Props) {
   return (
     <html lang="en">
       <body>
@@ -14,7 +19,7 @@ export default function RootLayout({ children }) {
           <HeaderComponent />
         </header>
         <main className="mainBackground">
-          <div>{children}</div>
+          <div>{props.children}</div>
         </main>
       </body>
     </html>

@@ -1,4 +1,4 @@
-import { cookies } from 'next/headers';
+// import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../products/TicketComponent';
 import { getParsedCookie, ParsedCookie } from '../util/getCookie';
@@ -48,12 +48,17 @@ export default async function Cart() {
   */
 
   // multiplying subtotal price
-  function multiplySubtotalPricePerItem(id) {
+  function multiplySubtotalPricePerItem(id: number) {
     const singleProduct = matchingProductFromCookieOnlyDefined.find(
       (p) => p.id === id,
     );
-    const priceXQuantity = singleProduct.price * singleProduct.quantity;
-    return priceXQuantity;
+    if (!singleProduct) {
+      const priceXQuantity = 0;
+      return priceXQuantity;
+    } else {
+      const priceXQuantity = singleProduct.price * singleProduct.quantity;
+      return priceXQuantity;
+    }
   }
 
   /*
