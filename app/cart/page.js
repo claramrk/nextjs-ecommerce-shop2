@@ -130,7 +130,7 @@ export default async function Cart() {
               redirectPage="/products"
               buttonText="Tickets hinzufügen"
             />
-            {/*<Link href="/products">
+            {/* <Link href="/products">
               <button className={styles.primarybutton}>
                 Tickets hinzufügen
               </button>

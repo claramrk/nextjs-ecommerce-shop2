@@ -43,10 +43,11 @@ main {
   line-height: 20px;
   transition: 0.2s ease-in-out;
   font-size: 13px;
-  :hover {
-    background-color: gray;
-    color: black;
-  }
+}
+
+.primarybutton:hover {
+  background-color: gray;
+  color: black;
 }
 
 /* Input fields */

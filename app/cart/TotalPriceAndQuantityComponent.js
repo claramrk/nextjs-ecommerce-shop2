@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
+import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import styles from './page.module.scss';
 
@@ -105,15 +106,23 @@ export default async function TotalPriceAndQuantity() {
             </span>
             €
           </div>
-          <Link href="/checkout">
-            <button
+          <RedirectButton
+            className={styles.primarybutton}
+            redirectPage="/checkout"
+            buttonText="Tickets bestellen"
+            data-test-id="cart-checkout"
+          />
+          {/*
+                      <Link href="/checkout">
+<button
               className={styles.primarybutton}
               disabled={!sumQuantity() > 0}
               data-test-id="cart-checkout"
             >
               Tickets bestellen
             </button>
-          </Link>
+                      </Link>
+ */}
         </>
       ) : (
         ''
