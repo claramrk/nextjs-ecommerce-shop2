@@ -6,7 +6,7 @@ import styles from './page.module.scss';
 export default function CheckoutPageFormComponent() {
   return (
     <form>
-      <div className={styles.ShippingInformation}>
+      <div>
         <h2>Shipping Information</h2>
 
         <div>
@@ -57,7 +57,7 @@ export default function CheckoutPageFormComponent() {
         <div>
           <label htmlFor="postal-code">Postal Code:</label>
           <input
-            className={styles.inputfield}
+            className={styles.input}
             id="postal-code"
             data-test-id="checkout-postal-code"
             required
@@ -73,9 +73,9 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
       </div>
-      <div className={styles.paymentinfo}>
+      <div>
         <h2>Payment Information</h2>
-        <div className={styles.label}>
+        <div>
           <label htmlFor="credit-card">Credit-card:</label>
           <input
             className={styles.input}
@@ -103,7 +103,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
       </div>
-      <div className={styles.confirmorder}>
+      <div>
         <h2>Confirm your Order</h2>
         <button
           data-test-id="checkout-confirm-order"

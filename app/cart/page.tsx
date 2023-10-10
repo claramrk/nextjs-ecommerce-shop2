@@ -1,26 +1,37 @@
 import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../products/TicketComponent';
+import { getParsedCookie, ParsedCookie } from '../util/getCookie';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveButton from './CartRemoveButton';
 import ChangeQuantityFormComponent from './ChangeQuantityFormComponent';
 import styles from './page.module.scss';
 import TotalPriceAndQuantity from './TotalPriceAndQuantityComponent';
 
+export const metadata = {
+  title: 'Einkaufswagen',
+  description: 'Ticketshop',
+};
+
 export default async function Cart() {
   const products = await getProductsSQL();
 
   // get and parse cookies
+  const parsedCartCookie = await getParsedCookie();
+
+  /*
   const cartCookie = await cookies().get('cart')?.value;
   const parsedCartCookie =
     !cartCookie || JSON.parse(cartCookie).length === 0
       ? []
       : JSON.parse(cartCookie);
 
+      */
+
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = await products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
-      (cookieObject) => product.id === cookieObject.id,
+      (cookieObject: ParsedCookie) => product.id === cookieObject.id,
     );
     return { ...product, quantity: matchingProductFromCookie?.quantity };
   });
@@ -28,7 +39,7 @@ export default async function Cart() {
     await databaseProductsInCart.filter((e) => e.quantity !== undefined);
 
   // summing quantity of all products
- /* function sumQuantity() {
+  /* function sumQuantity() {
     const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
       return accumulator + Number(object.quantity);
     }, 0);
@@ -44,8 +55,6 @@ export default async function Cart() {
     const priceXQuantity = singleProduct.price * singleProduct.quantity;
     return priceXQuantity;
   }
-
-
 
   /*
   // multiplying total price
@@ -69,7 +78,6 @@ export default async function Cart() {
     return sumTotal;
   }
 */
-
 
   // JSX Code return
   return (

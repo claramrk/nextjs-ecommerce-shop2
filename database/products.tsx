@@ -1,7 +1,7 @@
 import 'server-only';
 import { cache } from 'react';
-import { sql } from '../database/connect';
 import { Product } from '../migrations/00000-createTableProducts';
+import { sql } from './connect';
 
 // get database sql;
 
