@@ -13,6 +13,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="FirstName">First Name:</label>
           <input
             className={styles.input}
+            id="FirstName"
             data-test-id="checkout-first-name"
             required
           />
@@ -21,6 +22,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="LastName">First Name:</label>
           <input
             className={styles.input}
+            id="LastName"
             data-test-id="checkout-last-name"
             required
           />
@@ -29,6 +31,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="email">Email:</label>
           <input
             className={styles.input}
+            id="email"
             data-test-id="checkout-email"
             required
           />
@@ -37,6 +40,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="address">Address:</label>
           <input
             className={styles.input}
+            id="address"
             data-test-id="checkout-address"
             required
           />
@@ -45,6 +49,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="city">City:</label>
           <input
             className={styles.input}
+            id="city"
             data-test-id="checkout-city"
             required
           />
@@ -53,6 +58,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="postal-code">Postal Code:</label>
           <input
             className={styles.input}
+            id="postal-code"
             data-test-id="checkout-postal-code"
             required
           />
@@ -61,6 +67,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="country">Country:</label>
           <input
             className={styles.input}
+            id="country"
             data-test-id="checkout-country"
             required
           />
@@ -72,6 +79,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="credit-card">Credit-card:</label>
           <input
             className={styles.input}
+            id="credit-card"
             data-test-id="checkout-credit-card"
             required
           />
@@ -80,6 +88,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="expiration-date">Expiration-date:</label>
           <input
             className={styles.input}
+            id="expiration-date"
             data-test-id="checkout-expiration-date"
             required
           />
@@ -88,6 +97,7 @@ export default function CheckoutPageFormComponent() {
           <label htmlFor="security-code">Security-code:</label>
           <input
             className={styles.input}
+            id="security-code"
             data-test-id="checkout-security-code"
             required
           />
@@ -96,6 +106,7 @@ export default function CheckoutPageFormComponent() {
       <div className={styles.confirmorder}>
         <h2>Confirm your Order</h2>
         <button
+          data-test-id="checkout-confirm-order"
           className={styles.primarybutton}
           formAction={async () => {
             await removeAllItemsFromCookies();

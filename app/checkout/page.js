@@ -3,7 +3,7 @@ import CheckoutPageFormComponent from './CheckoutFormComponent';
 import styles from './page.module.scss';
 
 export const metadata = {
-  title: 'Products',
+  title: 'Thank you for your order',
   description: 'This is Claras e-commerce shop',
 };
 
