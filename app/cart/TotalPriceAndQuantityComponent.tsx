@@ -1,13 +1,13 @@
 import { cookies } from 'next/headers';
-import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
+import { Product } from '../../migrations/00000-createTableProducts';
 import { ParsedCookie } from '../util/getCookie';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import styles from './page.module.scss';
 
 export default async function TotalPriceAndQuantity() {
-  const products = await getProductsSQL();
+  const products: Product[] = await getProductsSQL();
 
   // get and parse cookies
   const cartCookie = await cookies().get('cart')?.value;
@@ -27,10 +27,14 @@ export default async function TotalPriceAndQuantity() {
     await databaseProductsInCart.filter((e) => e.quantity !== undefined);
 
   // summing quantity of all products
+
   function sumQuantity() {
-    const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
-      return accumulator + Number(object.quantity);
-    }, 0);
+    const sumTotal = parsedCartCookie.reduce(
+      (accumulator: number, object: ParsedCookie) => {
+        return accumulator + Number(object.quantity);
+      },
+      0,
+    );
     return sumTotal;
   }
 
@@ -51,20 +55,29 @@ export default async function TotalPriceAndQuantity() {
   // multiplying total price
   function multiplySubtotalPrices() {
     const parsedCartCookieOnlyDefined = parsedCartCookie.filter(
-      (e) => e.id !== undefined,
+      (c: ParsedCookie) => c.quantity !== undefined,
     );
-    const subtotalPrices = parsedCartCookieOnlyDefined.map((c) => {
-      for (let i = 0; i < products.length; i++) {
-        if (products[i].id === c.id) {
-          const priceXQuantity = products[i].price * c.quantity;
-          return priceXQuantity;
-        }
-      }
-    });
 
-    const sumTotal = subtotalPrices.reduce((accumulator, object) => {
-      return accumulator + object;
-    }, 0);
+    const subtotalPrices = parsedCartCookieOnlyDefined.map(
+      (c: ParsedCookie) => {
+        if (Array.isArray(products) && products.length > 0) {
+          for (let i = 0; i < products.length; i++) {
+            if (products[i].id === c.id) {
+              const priceXQuantity = products[i].price * c.quantity;
+              return priceXQuantity;
+            }
+          }
+        }
+        return 0;
+      },
+    );
+
+    const sumTotal = subtotalPrices.reduce(
+      (accumulator: number, object: number) => {
+        return accumulator + object;
+      },
+      0,
+    );
     return sumTotal;
   }
 
@@ -80,7 +93,7 @@ export default async function TotalPriceAndQuantity() {
                 return (
                   <tr
                     className="ticketsummary"
-                    key={`uniqueID-${g.firstName}-${g.id}`}
+                    key={`uniqueID-${g.name}-${g.id}`}
                   >
                     <td>{g.quantity}</td>
                     <td>x</td>
@@ -112,39 +125,30 @@ export default async function TotalPriceAndQuantity() {
             </span>
             €
           </div>
+        </>
+      ) : (
+        ''
+      )}
+      <RedirectButton
+        redirectPage="/products"
+        buttonText={
+          parsedCartCookie.length > 0
+            ? 'Weitere Tickets hinzufügen'
+            : 'Tickets hinzufügen'
+        }
+      />
+
+      {matchingProductFromCookieOnlyDefined.length > 0 ? (
+        <>
+          <RedirectButton redirectPage="/cart" buttonText="Zum Einkaufswagen" />
           <RedirectButton
             className={styles.primarybutton}
             redirectPage="/checkout"
             buttonText="Tickets bestellen"
             data-test-id="cart-checkout"
           />
-          {/*
-                      <Link href="/checkout">
-<button
-              className={styles.primarybutton}
-              disabled={!sumQuantity() > 0}
-              data-test-id="cart-checkout"
-            >
-              Tickets bestellen
-            </button>
-                      </Link>
- */}
-        </>
-      ) : (
-        ''
-      )}
-
-      <Link href="/products">
-        <button className={styles.primarybutton}>
-          {parsedCartCookie.length > 0
-            ? 'Weitere Tickets hinzufügen '
-            : 'Tickets hinzufügen'}
-        </button>
-      </Link>
-      {matchingProductFromCookieOnlyDefined.length > 0 ? (
-        <form>
           <CartRemoveAllButton />
-        </form>
+        </>
       ) : (
         ''
       )}
