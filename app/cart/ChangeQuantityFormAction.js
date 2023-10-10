@@ -2,14 +2,12 @@
 
 import { cookies } from 'next/headers';
 import { getProductSQLById } from '../../database/products';
+import { getParsedCookie } from '../util/getCookie';
 
 export async function setQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = await getProductSQLById(singleProductID);
   const cartCookie = await cookies().get('cart')?.value;
-  const parsedCartCookie =
-    !cartCookie || JSON.parse(cartCookie).length === 0
-      ? []
-      : JSON.parse(cartCookie);
+  const parsedCartCookie = getParsedCookie();
 
   if (!singleProductID) {
     console.log('error - no id');
@@ -41,6 +39,7 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
     }
   }
 }
+
 setQuantityInCookies().catch((error) => {
   console.log(error);
 });

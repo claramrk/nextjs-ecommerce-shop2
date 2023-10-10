@@ -4,7 +4,7 @@ export type Product = {
   id: number;
   name: string;
   price: number;
-  image: string;
+  image: string | null;
 };
 
 export async function up(sql: Sql) {
@@ -13,7 +13,7 @@ CREATE TABLE products(
 id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 name varchar(30) NOT NULL,
 price float NOT NULL,
-image varchar(300) NOT NULL);
+image varchar(300));
 `;
 }
 

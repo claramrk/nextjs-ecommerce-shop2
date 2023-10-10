@@ -4,7 +4,13 @@ import { useState } from 'react';
 import { setQuantityInCookies } from './ChangeQuantityFormAction';
 import styles from './page.module.scss';
 
-export default function AddToCartFormComponent(props) {
+type Props = {
+  singleProductID: number;
+  name: string;
+  quantity: number;
+};
+
+export default function ChangeQuantityCartFormComponent(props: Props) {
   const [quantityValue, setQuantityValue] = useState(props.quantity);
 
   return (
@@ -19,7 +25,7 @@ export default function AddToCartFormComponent(props) {
         min="1"
         onChange={(event) => {
           if (props.singleProductID) {
-            setQuantityValue(event.currentTarget.value);
+            setQuantityValue(Number(event.currentTarget.value));
           }
           setQuantityInCookies(
             props.singleProductID,
