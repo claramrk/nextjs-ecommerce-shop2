@@ -57,18 +57,9 @@ export default async function TotalPriceAndQuantity() {
     const parsedCartCookieOnlyDefined = parsedCartCookie.filter(
       (c: ParsedCookie) => c.quantity !== undefined,
     );
-
     const subtotalPrices = parsedCartCookieOnlyDefined.map(
       (c: ParsedCookie) => {
-        if (Array.isArray(products) && products.length > 0) {
-          for (let i = 0; i < products.length; i++) {
-            if (products[i].id === c.id) {
-              const priceXQuantity = products[i].price * c.quantity;
-              return priceXQuantity;
-            }
-          }
-        }
-        return 0;
+        return multiplySubtotalPricePerItem(c.id);
       },
     );
 
