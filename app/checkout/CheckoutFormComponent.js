@@ -57,13 +57,13 @@ export default function CheckoutPageFormComponent() {
         <div>
           <label htmlFor="postal-code">Postal Code:</label>
           <input
-            className={styles.input}
+            className={styles.inputfield}
             id="postal-code"
             data-test-id="checkout-postal-code"
             required
           />
         </div>
-        <div className={styles.country}>
+        <div>
           <label htmlFor="country">Country:</label>
           <input
             className={styles.input}
@@ -73,9 +73,9 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
       </div>
-      <div className={styles.paymentinformation}>
+      <div className={styles.paymentinfo}>
         <h2>Payment Information</h2>
-        <div className={styles.creditcard}>
+        <div className={styles.label}>
           <label htmlFor="credit-card">Credit-card:</label>
           <input
             className={styles.input}
@@ -84,7 +84,7 @@ export default function CheckoutPageFormComponent() {
             required
           />
         </div>
-        <div className={styles.expirationdate}>
+        <div>
           <label htmlFor="expiration-date">Expiration-date:</label>
           <input
             className={styles.input}
@@ -93,7 +93,7 @@ export default function CheckoutPageFormComponent() {
             required
           />
         </div>
-        <div className={styles.securitycode}>
+        <div>
           <label htmlFor="security-code">Security-code:</label>
           <input
             className={styles.input}

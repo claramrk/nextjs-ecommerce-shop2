@@ -15,7 +15,6 @@ export default function AddToCartFormComponent(props) {
         id="quantity"
         type="number"
         pattern="[0-9]*"
-        className={styles.input}
         value={quantityValue}
         min="1"
         onChange={(event) => {

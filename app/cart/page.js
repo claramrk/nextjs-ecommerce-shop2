@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers';
-import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../products/TicketComponent';
 import { RedirectButton } from '../util/RedirectButton';
@@ -29,12 +28,13 @@ export default async function Cart() {
     await databaseProductsInCart.filter((e) => e.quantity !== undefined);
 
   // summing quantity of all products
-  function sumQuantity() {
+ /* function sumQuantity() {
     const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
       return accumulator + Number(object.quantity);
     }, 0);
     return sumTotal;
   }
+  */
 
   // multiplying subtotal price
   function multiplySubtotalPricePerItem(id) {
@@ -45,12 +45,14 @@ export default async function Cart() {
     return priceXQuantity;
   }
 
-  const parsedCartCookieOnlyDefined = parsedCartCookie.filter(
-    (e) => e.id !== undefined,
-  );
 
+
+  /*
   // multiplying total price
   function multiplySubtotalPrices() {
+      const parsedCartCookieOnlyDefined = parsedCartCookie.filter(
+    (e) => e.id !== undefined,
+  );
     const subtotalPrices = parsedCartCookieOnlyDefined.map((c) => {
       for (let i = 0; i < products.length; i++) {
         if (products[i].id === c.id) {
@@ -60,11 +62,14 @@ export default async function Cart() {
       }
     });
 
+
     const sumTotal = subtotalPrices.reduce((accumulator, object) => {
       return accumulator + object;
     }, 0);
     return sumTotal;
   }
+*/
+
 
   // JSX Code return
   return (
