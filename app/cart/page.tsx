@@ -14,6 +14,7 @@ export const metadata = {
 };
 
 export default async function Cart() {
+  // get productsfromDatabaseSQL
   const products = await getProductsSQL();
 
   // get and parse cookies

@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getProductsSQL } from '../../database/products';
+import { ParsedCookie } from '../util/getCookie';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import styles from './page.module.scss';
@@ -18,7 +19,7 @@ export default async function TotalPriceAndQuantity() {
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = await products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
-      (cookieObject) => product.id === cookieObject.id,
+      (cookieObject: ParsedCookie) => product.id === cookieObject.id,
     );
     return { ...product, quantity: matchingProductFromCookie?.quantity };
   });
@@ -34,12 +35,17 @@ export default async function TotalPriceAndQuantity() {
   }
 
   // multiplying subtotal price
-  function multiplySubtotalPricePerItem(id) {
+  function multiplySubtotalPricePerItem(id: number) {
     const singleProduct = matchingProductFromCookieOnlyDefined.find(
       (p) => p.id === id,
     );
-    const priceXQuantity = singleProduct.price * singleProduct.quantity;
-    return priceXQuantity;
+    if (!singleProduct) {
+      const priceXQuantity = 0;
+      return priceXQuantity;
+    } else {
+      const priceXQuantity = singleProduct.price * singleProduct.quantity;
+      return priceXQuantity;
+    }
   }
 
   // multiplying total price
