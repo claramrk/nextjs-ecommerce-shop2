@@ -1,25 +1,6 @@
 import { Product } from '../../migrations/00000-createTableProducts';
 import { ParsedCookie } from './getCookie';
 
-/*
-const products = getProductsSQL();
-
-// get and parse cookies
-const cartCookie = cookies().get('cart')?.value;
-const parsedCartCookie = await getParsedCookie();
-
-// matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
-const databaseProductsInCart = await products.map((product) => {
-  const matchingProductFromCookie = parsedCartCookie.find(
-    (cookieObject: ParsedCookie) => product.id === cookieObject.id,
-  );
-  return { ...product, quantity: matchingProductFromCookie?.quantity };
-});
-const matchingProductFromCookieOnlyDefined =
-  await databaseProductsInCart.filter((e) => e.quantity !== undefined);
-
-*/
-
 // summing quantity of all products
 
 export function sumQuantity(parsedCookieFunction: ParsedCookie[]) {
