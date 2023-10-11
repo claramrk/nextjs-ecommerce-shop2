@@ -1,36 +1,4 @@
 import test, { expect } from '@playwright/test';
-import { Product } from '../migrations/00000-createTableProducts';
-
-const products: Product[] = [
-  {
-    id: 1,
-    name: 'Kinder',
-    price: 1,
-    image:
-      'https://familienausflug.info/img/4567/ausflugsziel-hermannsh%C3%B6hle-17088.jpg',
-  },
-  {
-    id: 2,
-    name: 'Ermäßigt',
-    price: 2,
-    image:
-      'https://www.wieneralpen.at/data/_wieneralpen/mediadb/cms_pictures/%7B14eb1d3d-b983-804c-8bea-18aca08e4510%7D.jpeg',
-  },
-  {
-    id: 3,
-    name: 'Gruppenmitglied',
-    price: 2.5,
-    image:
-      'https://cdn.1000things.at/app/uploads/Bildschirmfoto-2018-03-27-um-14.20.11.png',
-  },
-  {
-    id: 4,
-    name: 'Erwachsene/-r',
-    price: 3,
-    image:
-      'https://vcdn.bergfex.at/images/resized/profiles/detail/fe6/4ee19122d218070c16f9a5bfdcdebfe6.jpg?1592293387',
-  },
-];
 
 test('navigation test', async ({ page }) => {
   await page.goto('http://localhost:3000');
@@ -102,33 +70,31 @@ test('navigation test', async ({ page }) => {
       .nth(1),
   ).toBeVisible();
 
-  // example
-  /*
-data-test-id="cart-product-remove-1"
+  await page.getByRole('button', { name: 'Tickets bestellen' }).click();
+  await page.waitForURL('http://localhost:3000/checkout');
+  await expect(page).toHaveURL('http://localhost:3000/checkout');
 
-  await page.waitForURL('http://localhost:3000/products');
-  await expect(page).toHaveURL('http://localhost:3000/products');
+  await expect(page.getByTestId('checkout-first-name')).toBeVisible();
+  await expect(page.getByTestId('checkout-first-name')).toBeEmpty();
+  await page.getByTestId('checkout-first-name').fill('VornameTest');
 
+  await page.getByTestId('checkout-confirm-order').click();
+
+  await page.getByTestId('checkout-last-name').fill('NachnameTest');
+  await page.getByTestId('checkout-email').fill('EmailTest');
+  await page.getByTestId('checkout-address').fill('AddressTest');
+
+  await page.getByTestId('checkout-city').fill('CityTest');
+  await page.getByTestId('checkout-postal-code').fill('PostalcodeTest');
+  await page.getByTestId('checkout-country').fill('CountryTest');
+  await page.getByTestId('checkout-credit-card').fill('CreditCardTest');
+  await page.getByTestId('checkout-expiration-date').fill('ExpirationdateTest');
+  await page.getByTestId('checkout-security-code').fill('SecuritycodeTest');
+
+  await page.getByTestId('checkout-confirm-order').click();
+  await page.waitForURL('http://localhost:3000/thankYou');
+  await expect(page).toHaveURL('http://localhost:3000/thankYou');
   await expect(
-    page.getByRole('heading', { name: 'These are my products' }),
+    page.getByRole('heading', { name: 'Thank you for your order!' }),
   ).toBeVisible();
-
-  await expect(page.locator('[data-test-id^="product-price-"]')).toHaveCount(5);
-
-  for (const product of products) {
-    await expect(page.getByTestId(`product-price-${product.price}`)).toHaveText(
-      product.name,
-    );
-    await expect(page.getByRole('img', { name: product.name })).toBeVisible();
-    await expect(page.getByRole('link', { name: product.name })).toBeVisible();
-  }
-
-  await page.getByRole('link', { name: 'Product' }).click();
-  await page.waitForURL('http://localhost:3000/product');
-  await expect(page).toHaveURL('http://localhost:3000/product');
-
-  await expect(page.locator('[data-test-id="products-link"]')).toHaveText(
-    'This is a comment',
-
-  );  */
 });

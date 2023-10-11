@@ -10,7 +10,7 @@ export async function changeQuantityInCookies(singleProductID, quantityValue) {
   const parsedCartCookie = await getParsedCookie();
 
   if (singleProductID === undefined) {
-    console.log('setQuantityInCookies error - no id');
+    console.log('changeQuantityInCookies error - no id');
   } else if (cartCookie === undefined) {
     cookies().set(
       'cart',
