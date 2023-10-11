@@ -22,8 +22,8 @@ const matchingProductFromCookieOnlyDefined =
 
 // summing quantity of all products
 
-export async function sumQuantity(parsedCookieFunction: ParsedCookie[]) {
-  const parsedCartCookie = await parsedCookieFunction;
+export function sumQuantity(parsedCookieFunction: ParsedCookie[]) {
+  const parsedCartCookie = parsedCookieFunction;
 
   const sumTotal = parsedCartCookie.reduce(
     (accumulator: number, object: ParsedCookie) => {
@@ -35,22 +35,23 @@ export async function sumQuantity(parsedCookieFunction: ParsedCookie[]) {
 }
 
 // multiplying subtotal price
-export async function multiplySubtotalPricePerItem(
+export function multiplySubtotalPricePerItem(
   id: number,
   parsedCookieFunction: ParsedCookie[],
   getProductsSQLFunction: Product[],
 ) {
-  const products: Product[] = await getProductsSQLFunction;
-  const parsedCartCookie = await parsedCookieFunction;
+  const products: Product[] = getProductsSQLFunction;
+  const parsedCartCookie = parsedCookieFunction;
 
-  const databaseProductsInCart = await products.map((product) => {
+  const databaseProductsInCart = products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
       (cookieObject: ParsedCookie) => product.id === cookieObject.id,
     );
     return { ...product, quantity: matchingProductFromCookie?.quantity };
   });
-  const matchingProductFromCookieOnlyDefined =
-    await databaseProductsInCart.filter((e) => e.quantity !== undefined);
+  const matchingProductFromCookieOnlyDefined = databaseProductsInCart.filter(
+    (e) => e.quantity !== undefined,
+  );
   const singleProduct = matchingProductFromCookieOnlyDefined.find(
     (p) => p.id === id,
   );
@@ -64,22 +65,18 @@ export async function multiplySubtotalPricePerItem(
 }
 
 // multiplying total price
-export async function multiplySubtotalPrices(
+export function multiplySubtotalPrices(
   parsedCookieFunction: ParsedCookie[],
   getProductsSQLFunction: Product[],
 ) {
-  const parsedCartCookie = await parsedCookieFunction;
+  const products: Product[] = getProductsSQLFunction;
+  const parsedCartCookie = parsedCookieFunction;
   const parsedCartCookieOnlyDefined = parsedCartCookie.filter(
     (c: ParsedCookie) => c.quantity !== undefined,
   );
   const subtotalPrices = parsedCartCookieOnlyDefined.map((c: ParsedCookie) => {
-    return multiplySubtotalPricePerItem(
-      c.id,
-      parsedCookieFunction,
-      getProductsSQLFunction,
-    );
+    return multiplySubtotalPricePerItem(c.id, parsedCartCookie, products);
   });
-  console.log(subtotalPrices);
 
   const sumTotal = subtotalPrices.reduce((accumulator, object) => {
     return accumulator + Number(object);

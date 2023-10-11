@@ -2,7 +2,11 @@ import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import { Product } from '../../migrations/00000-createTableProducts';
 import { getParsedCookie, ParsedCookie } from '../util/getCookie';
-import { multiplySubtotalPrices } from '../util/pricexQuantityFunctions';
+import {
+  multiplySubtotalPricePerItem,
+  multiplySubtotalPrices,
+  sumQuantity,
+} from '../util/pricexQuantityFunctions';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import styles from './page.module.scss';
@@ -24,6 +28,7 @@ export default async function TotalPriceAndQuantity() {
   const matchingProductFromCookieOnlyDefined =
     await databaseProductsInCart.filter((e) => e.quantity !== undefined);
 
+  /*
   // summing quantity of all products
 
   function sumQuantity() {
@@ -35,6 +40,7 @@ export default async function TotalPriceAndQuantity() {
     );
     return sumTotal;
   }
+
 
   // multiplying subtotal price
   function multiplySubtotalPricePerItem(id: number) {
@@ -69,6 +75,7 @@ export default async function TotalPriceAndQuantity() {
     );
     return sumTotal;
   }
+*/
 
   // JSX Code return
   return (
@@ -78,7 +85,7 @@ export default async function TotalPriceAndQuantity() {
           <h2>Total</h2>
           <table className="audittable">
             <tbody className="table-body">
-              {matchingProductFromCookieOnlyDefined.map((g) => {
+              {matchingProductFromCookieOnlyDefined.map(async (g) => {
                 return (
                   <tr
                     className="ticketsummary"
@@ -88,29 +95,43 @@ export default async function TotalPriceAndQuantity() {
                     <td>x</td>
                     <td>{g.name}</td>
                     <td>.....</td>
-                    <td>{multiplySubtotalPricePerItem(g.id)}€</td>
+                    <td>
+                      {multiplySubtotalPricePerItem(
+                        g.id,
+                        parsedCartCookie,
+                        products,
+                      )}
+                      €
+                    </td>
                   </tr>
                 );
               })}
               <tr>
-                <td>{cartCookie ? sumQuantity() : '0'}</td>
+                <td>{cartCookie ? sumQuantity(parsedCartCookie) : '0'}</td>
                 <td>x</td>
                 <td>Tickets</td>
                 <td>.....</td>
-                <td>{cartCookie ? multiplySubtotalPrices() : '0'}€</td>
+                <td>
+                  {cartCookie
+                    ? multiplySubtotalPrices(parsedCartCookie, products)
+                    : '0'}
+                  €
+                </td>
               </tr>
             </tbody>
           </table>
           <div>
             Ticketanzahl:{' '}
             <span data-test-id="quantity">
-              {cartCookie ? sumQuantity() : '0'}
+              {cartCookie ? sumQuantity(parsedCartCookie) : '0'}
             </span>
           </div>
           <div>
             Summe:{' '}
             <span data-test-id="cart-total">
-              {cartCookie ? multiplySubtotalPrices() : '0'}
+              {cartCookie
+                ? multiplySubtotalPrices(parsedCartCookie, products)
+                : '0'}
             </span>
             €
           </div>
