@@ -9,20 +9,17 @@ export default function SlideShowContainer() {
     {
       imgSrc:
         'https://familienausflug.info/img/4567/ausflugsziel-hermannsh%C3%B6hle-17088.jpg',
-      alt: 'picture1',
-      text: 'Caption Text',
+      alt: 'Impressionen der Höhle 1',
     },
     {
       imgSrc:
         'https://www.wieneralpen.at/data/_wieneralpen/mediadb/cms_pictures/%7B14eb1d3d-b983-804c-8bea-18aca08e4510%7D.jpeg',
-      alt: 'picture2',
-      text: 'Caption Two',
+      alt: 'Impressionen der Höhle 2',
     },
     {
       imgSrc:
         'https://vcdn.bergfex.at/images/resized/profiles/detail/fe6/4ee19122d218070c16f9a5bfdcdebfe6.jpg?1592293387',
-      alt: 'picture3',
-      text: 'Caption Three',
+      alt: 'Impressionen der Höhle 3',
     },
   ];
 

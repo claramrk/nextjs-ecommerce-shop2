@@ -88,16 +88,6 @@ export default async function Cart() {
                 data-test-id={`cart-product-${p.id}`}
                 key={`cart-product-${p.id}`}
               >
-                {/*
-                  <div className={styles.title}>
-                  <h2>{p.name}</h2>
-                </div>
-                <img
-                  src={p.image}
-                  alt="ProductImage"
-                  height="200"
-                  data-test-id="product-image"
-            />*/}
                 <div>
                   <TicketComponent
                     src={p.image}

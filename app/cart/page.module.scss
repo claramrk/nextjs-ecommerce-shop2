@@ -13,19 +13,20 @@
 }
 
 .totalpriceandquantity {
+  display: flex;
   position: fixed;
+  justify-content: space-around;
+  align-items: center;
 
-  top: 20%;
-  left: 75%;
+  bottom: 5%;
+  left: 5%;
   right: 5%;
 
   padding: 20px;
   text-align: center;
-  gap: 5%;
   background-size: cover;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
   background-color: #fff;
   transition: transform 0.2s ease-in-out;
   text-decoration: none;

@@ -44,7 +44,7 @@ export default function TicketComponent(props) {
               <img
                 className={styles.barcode}
                 src="https://cdn.pixabay.com/photo/2022/02/07/19/13/barcode-7000118_960_720.png"
-                alt="Barcode"
+                alt=""
               />
             </div>
             <div>

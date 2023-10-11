@@ -1,6 +1,5 @@
 import '../database/products';
 import styles from './page.module.scss';
-import SlideShowContainer from './SlideShowContainer';
 
 export const metadata = {
   title: 'Home',
@@ -10,7 +9,6 @@ export const metadata = {
 export default function mainpage() {
   return (
     <div className={styles.mainpage}>
-      <SlideShowContainer />
       <h1>Hermannshöhle</h1>
       <p className={styles.p}>
         Die Hermannshöhle ist die größte Tropfsteinhöhle und das wichtigstes

@@ -1,11 +1,13 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { setQuantityInCookies } from './AddToCartFormAction';
 import styles from './page.module.scss';
 
 export default function AddToCartFormComponent(props) {
   const [quantityValue, setQuantityValue] = useState(1);
+  const router = useRouter();
 
   return (
     <form className={styles.forms}>
@@ -26,9 +28,10 @@ export default function AddToCartFormComponent(props) {
       <button
         className={styles.primarybutton}
         data-test-id="product-add-to-cart"
-        formAction={async () =>
-          await setQuantityInCookies(props.singleProductID, quantityValue)
-        }
+        formAction={async () => {
+          await setQuantityInCookies(props.singleProductID, quantityValue);
+          router.refresh();
+        }}
       >
         Ticket hinzufügen
       </button>

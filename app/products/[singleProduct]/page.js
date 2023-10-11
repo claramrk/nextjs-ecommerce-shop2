@@ -28,21 +28,21 @@ export default async function SingleProduct(props) {
           <AddToCartFormComponent singleProductID={singleProduct.id} />
         </div>
       </div>
-      <RedirectButton buttonText="Zum Einkaufswagen" redirectPage="/cart" />
+          <RedirectButton buttonText="Zum Einkaufswagen" redirectPage="/cart" />
       <RedirectButton
         buttonText="Zurück zu allen Tickets"
         redirectPage="/products"
         datatestid="cart-link"
       />
       <br />
-      <br />
+  <br />
       <div className="necessary">
         <h3>Product Summary for Drone</h3>
         <img
           src={singleProduct?.image}
           height="10"
           data-test-id="product-image"
-          alt="productimage-necessary"
+          alt="Impression of the cave as productimage"
         />
         <p className="necessary" data-test-id="product-price">
           {singleProduct?.price}
