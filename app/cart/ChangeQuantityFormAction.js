@@ -6,8 +6,8 @@ import { getParsedCookie } from '../util/getCookie';
 
 export async function setQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = await getProductSQLById(singleProductID);
-  const cartCookie = await cookies().get('cart')?.value;
-  const parsedCartCookie = getParsedCookie();
+  const cartCookie = cookies().get('cart')?.value;
+  const parsedCartCookie = await getParsedCookie();
 
   if (!singleProductID) {
     console.log('error - no id');

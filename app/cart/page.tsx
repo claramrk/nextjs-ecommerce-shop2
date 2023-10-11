@@ -20,15 +20,6 @@ export default async function Cart() {
   // get and parse cookies
   const parsedCartCookie = await getParsedCookie();
 
-  /*
-  const cartCookie = await cookies().get('cart')?.value;
-  const parsedCartCookie =
-    !cartCookie || JSON.parse(cartCookie).length === 0
-      ? []
-      : JSON.parse(cartCookie);
-
-      */
-
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = await products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(

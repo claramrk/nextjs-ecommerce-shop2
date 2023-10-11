@@ -29,7 +29,7 @@ export default function SlideShowContainer() {
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 8000); // Increase the interval to slow down the slideshow
+    }, 1000); // Increase the interval to slow down the slideshow
 
     return () => {
       clearInterval(interval);

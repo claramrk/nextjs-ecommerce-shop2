@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import { Product } from '../../migrations/00000-createTableProducts';
-import { ParsedCookie } from '../util/getCookie';
+import { getParsedCookie, ParsedCookie } from '../util/getCookie';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import styles from './page.module.scss';
@@ -11,10 +11,7 @@ export default async function TotalPriceAndQuantity() {
 
   // get and parse cookies
   const cartCookie = await cookies().get('cart')?.value;
-  const parsedCartCookie =
-    !cartCookie || JSON.parse(cartCookie).length === 0
-      ? []
-      : JSON.parse(cartCookie);
+  const parsedCartCookie = await getParsedCookie();
 
   // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
   const databaseProductsInCart = await products.map((product) => {
