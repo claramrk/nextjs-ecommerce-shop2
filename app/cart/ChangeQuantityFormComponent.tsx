@@ -42,18 +42,8 @@ export default function ChangeQuantityCartFormComponent(props: Props) {
           }
         }}
       />
+
       <p style={{ color: 'green' }}>{submitInfo}</p>
-      {/*
-      <button
-        className={styles.primarybutton}
-        data-test-id="product-add-to-cart"
-        formAction={async () => {
-          await setQuantityInCookies(props.singleProductID, quantityValue);
-        }}
-      >
-        Ticketanzahl ändern
-      </button>
-*/}
     </form>
   );
 }

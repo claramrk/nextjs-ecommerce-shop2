@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import { Product } from '../../migrations/00000-createTableProducts';
 import { getParsedCookie, ParsedCookie } from '../util/getCookie';
+import { multiplySubtotalPrices } from '../util/pricexQuantityFunctions';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveAllButton from './CartRemoveAllButton';
 import styles from './page.module.scss';
@@ -13,7 +14,7 @@ export default async function TotalPriceAndQuantity() {
   const cartCookie = await cookies().get('cart')?.value;
   const parsedCartCookie = await getParsedCookie();
 
-  // matching products from cart with database and assigning quanitity - DOESNT WORK, adds strings instead of integers
+  // matching products from cart with database and assigning quanitity
   const databaseProductsInCart = await products.map((product) => {
     const matchingProductFromCookie = parsedCartCookie.find(
       (cookieObject: ParsedCookie) => product.id === cookieObject.id,
@@ -59,7 +60,7 @@ export default async function TotalPriceAndQuantity() {
         return multiplySubtotalPricePerItem(c.id);
       },
     );
-
+    console.log(subtotalPrices);
     const sumTotal = subtotalPrices.reduce(
       (accumulator: number, object: number) => {
         return accumulator + object;
