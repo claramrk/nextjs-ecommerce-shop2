@@ -7,6 +7,7 @@ export function RedirectButton(props) {
     <form>
       <button
         className="primarybutton"
+        data-test-id={props.datatestid}
         formAction={async () => {
           return await redirect(props.redirectPage);
         }}

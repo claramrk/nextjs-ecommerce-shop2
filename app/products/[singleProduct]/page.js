@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { getProductSQLById } from '../../../database/products';
+import { RedirectButton } from '../../util/RedirectButton';
 import TicketComponent from '../TicketComponent';
 import AddToCartFormComponent from './AddToCartFormComponent';
 import styles from './page.module.scss';
@@ -28,14 +28,12 @@ export default async function SingleProduct(props) {
           <AddToCartFormComponent singleProductID={singleProduct.id} />
         </div>
       </div>
-      <Link href="/cart" data-test-id="cart-link">
-        <button className={styles.primarybutton}>Einkaufswagen ansehen</button>
-      </Link>
-      <Link href="/products" data-test-id="cart-link">
-        <button className={styles.primarybutton}>
-          Zurück zu allen Tickets
-        </button>
-      </Link>
+      <RedirectButton buttonText="Zum Einkaufswagen" redirectPage="/cart" />
+      <RedirectButton
+        buttonText="Zurück zu allen Tickets"
+        redirectPage="/products"
+        datatestid="cart-link"
+      />
       <br />
       <br />
       <div className="necessary">

@@ -40,7 +40,7 @@ export default function SlideShowContainer() {
     <div className="slideshow-container">
       {slides.map((slide, index) => (
         <div
-          key={`${slide.alt}`}
+          key={`id-${slide.alt}`}
           className={`mySlides ${index === slideIndex ? 'show' : ''}`}
         >
           <img src={slide.imgSrc} alt={slide.alt} style={{ width: '10%' }} />
