@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { setQuantityInCookies } from './ChangeQuantityFormAction';
+import { changeQuantityInCookies } from './ChangeQuantityFormAction';
 import styles from './page.module.scss';
 
 type Props = {
@@ -12,9 +12,21 @@ type Props = {
 
 export default function ChangeQuantityCartFormComponent(props: Props) {
   const [quantityValue, setQuantityValue] = useState(props.quantity);
+  const [submitInfo, setSubmitInfo] = useState('');
 
   return (
-    <form className={styles.forms}>
+    <form
+      className={styles.forms}
+      onSubmit={(event) => {
+        event.preventDefault();
+        changeQuantityInCookies(props.singleProductID, quantityValue).catch(
+          (error) => {
+            console.log(error);
+          },
+        );
+        setSubmitInfo('');
+      }}
+    >
       <legend>Ticket {props.name}</legend>
       <label htmlFor="quantity">Anzahl:</label>
       <input
@@ -26,15 +38,11 @@ export default function ChangeQuantityCartFormComponent(props: Props) {
         onChange={(event) => {
           if (props.singleProductID) {
             setQuantityValue(Number(event.currentTarget.value));
+            setSubmitInfo('Press Enter to confirm');
           }
-          setQuantityInCookies(
-            props.singleProductID,
-            event.currentTarget.value,
-          ).catch((error) => {
-            console.log(error);
-          });
         }}
       />
+      <p style={{ color: 'green' }}>{submitInfo}</p>
       {/*
       <button
         className={styles.primarybutton}

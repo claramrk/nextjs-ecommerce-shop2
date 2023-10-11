@@ -12,7 +12,7 @@ export async function setQuantityInCookies(singleProductID, quantityValue) {
       : JSON.parse(cartCookie);
 
   if (!singleProductID) {
-    console.log('error - no id');
+    console.log('setQuantityInCookies error - no id');
   }
 
   if (cartCookie === undefined) {

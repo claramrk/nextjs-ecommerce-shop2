@@ -9,20 +9,19 @@ export async function removeItemFromCookies(props) {
       ? []
       : JSON.parse(cartCookie);
 
-  if (!props) {
-    console.log('error - no id');
+  if (props === undefined) {
+    console.log('removeItemFromCookies error - no id');
+  } else {
+    const singleProductToUpdateIndex = await parsedCartCookie.indexOf(
+      parsedCartCookie.find((c) => c.id === props),
+    );
+
+    console.log('updated array:' + singleProductToUpdateIndex);
+
+    await parsedCartCookie.splice(Number(singleProductToUpdateIndex), 1);
+    await cookies().set('cart', JSON.stringify([...parsedCartCookie]));
   }
-
-  const singleProductToUpdateIndex = await parsedCartCookie.indexOf(
-    parsedCartCookie.find((c) => c.id === props),
-  );
-
-  console.log(singleProductToUpdateIndex);
-
-  await parsedCartCookie.splice(Number(singleProductToUpdateIndex), 1);
-  await cookies().set('cart', JSON.stringify([...parsedCartCookie]));
-  console.log(parsedCartCookie);
+  removeItemFromCookies().catch((error) => {
+    console.log(error);
+  });
 }
-removeItemFromCookies().catch((error) => {
-  console.log(error);
-});

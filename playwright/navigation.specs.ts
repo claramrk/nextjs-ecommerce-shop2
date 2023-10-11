@@ -76,6 +76,17 @@ test('navigation test', async ({ page }) => {
       .nth(1),
   ).toBeVisible();
 
+  await expect(
+    page
+      .getByTestId('cart-product-2')
+      .locator('div')
+      .filter({
+        hasText:
+          'TICKETTICKETTICKET#########WOCHENTAGDATUMJAHRHermannshöhleErmäßigtKirchberg am W',
+      })
+      .nth(1),
+  ).toBeVisible();
+
   await expect(page.getByTestId('cart-product-remove-1')).toBeVisible();
   await page.getByTestId('cart-product-remove-1').click();
   await expect(page.getByTestId('cart-product-remove-1')).not.toBeVisible();
@@ -86,13 +97,12 @@ test('navigation test', async ({ page }) => {
       .locator('div')
       .filter({
         hasText:
-          'TICKETTICKETTICKET#########WOCHENTAGDATUMJAHRHermannshöhleKinderKirchberg am Wec',
+          'TICKETTICKETTICKET#########WOCHENTAGDATUMJAHRHermannshöhleErmäßigtKirchberg am W',
       })
       .nth(1),
   ).toBeVisible();
 
   // example
-
   /*
 data-test-id="cart-product-remove-1"
 

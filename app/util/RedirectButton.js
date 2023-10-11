@@ -2,7 +2,6 @@
 import { redirect } from 'next/navigation';
 
 export function RedirectButton(props) {
-  console.log(props);
   return (
     <form>
       <button
