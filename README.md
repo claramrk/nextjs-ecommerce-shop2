@@ -92,7 +92,7 @@ Database
 Our ecommerce store uses a PostgreSQL database to store and manage product and order data. We connect to and query information from this database to provide users with an efficient shopping experience.
 
 TypeScript and JSDoc
-To enhance the maintainability and robustness of our code, we employ TypeScript for type-safe development and provide JSDoc comments to document React props.
+To enhance the maintainability and robustness of our code, we employ TypeScript for type-safe development.
 
 SEO
-Our ecommerce store is optimized for search engines with titles and meta descriptions on all pages. This helps improve the visibility of our store on search engines, leading to more potential customers.
+Our ecommerce store is optimized for search engines with titles and meta descriptions on all pages.
