@@ -28,14 +28,14 @@ export default async function SingleProduct(props) {
           <AddToCartFormComponent singleProductID={singleProduct.id} />
         </div>
       </div>
-          <RedirectButton buttonText="Zum Einkaufswagen" redirectPage="/cart" />
+      <RedirectButton buttonText="Zum Einkaufswagen" redirectPage="/cart" />
       <RedirectButton
         buttonText="Zurück zu allen Tickets"
         redirectPage="/products"
         datatestid="cart-link"
       />
       <br />
-  <br />
+      <br />
       <div className="necessary">
         <h3>Product Summary for Drone</h3>
         <img

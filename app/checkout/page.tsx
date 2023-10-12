@@ -10,8 +10,8 @@ export const metadata = {
 export default function Checkout() {
   return (
     <div>
+      <h1>Tickets bestellen</h1>
       <div className={styles.main}>
-        <h1>Tickets bestellen</h1>
         <CheckoutPageFormComponent />
       </div>
       <TotalPriceAndQuantity />

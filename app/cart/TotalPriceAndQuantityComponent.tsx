@@ -12,7 +12,7 @@ import CartRemoveAllButton from './CartRemoveAllButton';
 import styles from './page.module.scss';
 
 export default async function TotalPriceAndQuantity() {
-    // get products from SQL database
+  // get products from SQL database
 
   const products: Product[] = await getProductsSQL();
 
@@ -21,14 +21,14 @@ export default async function TotalPriceAndQuantity() {
   const parsedCartCookie = await getParsedCookie();
 
   // matching products from cart with database and assigning quanitity
-  const databaseProductsInCart = await products.map((product) => {const matchingProductFromCookie = parsedCartCookie.find(
+  const databaseProductsInCart = await products.map((product) => {
+    const matchingProductFromCookie = parsedCartCookie.find(
       (cookieObject: ParsedCookie) => product.id === cookieObject.id,
     );
     return { ...product, quantity: matchingProductFromCookie?.quantity };
   });
   const matchingProductFromCookieOnlyDefined =
     await databaseProductsInCart.filter((e) => e.quantity !== undefined);
-
 
   // JSX Code return
   return (
@@ -38,7 +38,7 @@ export default async function TotalPriceAndQuantity() {
           <h2>Total</h2>
           <table className="audittable">
             <tbody className="table-body">
-              {matchingProductFromCookieOnlyDefined.map(async (g) => {
+              {matchingProductFromCookieOnlyDefined.map((g) => {
                 return (
                   <tr
                     className="ticketsummary"

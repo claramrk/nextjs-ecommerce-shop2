@@ -1,10 +1,4 @@
 /* Shoppage container */
-.cartpage {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: flex-start;
-}
 
 .main {
   padding: 20px;
@@ -13,14 +7,16 @@
 }
 
 .totalpriceandquantity {
-  display: flex;
   position: fixed;
+
+  /*
+  display: flex;
   justify-content: space-around;
   align-items: center;
-
-  bottom: 5%;
-  left: 5%;
-  right: 5%;
+*/
+  top: 24%;
+  left: 82%;
+  right: 4%;
 
   padding: 20px;
   text-align: center;
