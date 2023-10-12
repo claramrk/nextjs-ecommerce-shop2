@@ -13,6 +13,7 @@ const testArray3 = [
   { id: 1, name: 'Test', price: 2, image: '', quantity: 1 },
   { id: 2, name: 'Test', price: 2.5, image: '', quantity: 'hi' },
 ];
+/*
 const testArray4 = [
   { id: 1, name: 'Test', price: 2, image: '', quantity: '1' },
   { id: 2, name: 'Test', price: 2.5, image: '', quantity: '3' },
@@ -21,6 +22,8 @@ const testArray5 = [
   { id: 1, name: 'Test', price: 2, image: '', quantity: 1 },
   { id: 2, name: 'Test', price: 2.5, image: '', quantity: true },
 ];
+
+*/
 
 test('sumQuantity', () => {
   expect(sumQuantity(testArray1)).toBe(5);
