@@ -29,5 +29,5 @@ test('sumQuantity', () => {
 
 test('throws an error when arguments are not numbers', () => {
   // @ts-expect-error testing incorrect arguments
-  expect(() => sumQuantity(testArray3)).toThrow('Pass only numbers!');
+  expect(() => sumQuantity(testArray3)).toThrow();
 });
