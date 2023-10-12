@@ -19,16 +19,14 @@ export default function HeaderComponent() {
   return (
     <div className={styles.header}>
       <div>
-        <Link href="../">
+        <Link href="/../">
           <b className={styles.logo}>Hermannshöhle</b>
         </Link>
       </div>
       <div className={styles.navsection}>
-        <div className={styles.primarybutton}>
-          <a href="/products" data-test-id="products-link">
-            Tickets
-          </a>
-        </div>
+        <Link href="/products" data-test-id="products-link">
+          <div className={styles.primarybutton}>Tickets</div>
+        </Link>
 
         <Link href="/cart" data-test-id="cart-link">
           <div className={styles.primarybutton}>

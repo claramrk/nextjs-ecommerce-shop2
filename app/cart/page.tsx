@@ -78,7 +78,7 @@ export default async function Cart() {
 
   // JSX Code return
   return (
-    <div className={styles.cartpage}>
+    <div>
       <h1>Einkaufswagen</h1>
       <div className={styles.productlist}>
         {matchingProductFromCookieOnlyDefined.length > 0 ? (
