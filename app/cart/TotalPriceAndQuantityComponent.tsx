@@ -59,7 +59,7 @@ export default async function TotalPriceAndQuantity() {
                   </tr>
                 );
               })}
-              <tr>
+              <tr style={{ backgroundColor: '#e0b4b4' }}>
                 <td>{cartCookie ? sumQuantity(parsedCartCookie) : '0'}</td>
                 <td>x</td>
                 <td>Tickets</td>
