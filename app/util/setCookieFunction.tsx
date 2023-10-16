@@ -14,10 +14,10 @@ export async function calculateQuantityNoCookiesYet(
   singleProductFromDatabase: Product,
   quantityValue: number,
 ) {
-  const cookieValue = await JSON.stringify([
+  const cookieValue = JSON.stringify([
     { id: singleProductFromDatabase.id, quantity: quantityValue },
   ]);
-  return cookieValue;
+  return await cookieValue;
 }
 
 export async function calculateQuantityInCookiesAlreadyExisting(

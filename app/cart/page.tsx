@@ -30,7 +30,6 @@ export default async function Cart() {
   const matchingProductFromCookieOnlyDefined =
     await databaseProductsInCart.filter((e) => e.quantity !== undefined);
 
-
   // multiplying subtotal price
   function multiplySubtotalPricePerItem(id: number) {
     const singleProduct = matchingProductFromCookieOnlyDefined.find(
@@ -109,9 +108,7 @@ export default async function Cart() {
                     </span>
                     €
                   </div>
-                  <form>
-                    <CartRemoveButton singleProductID={p.id} />
-                  </form>
+                  <CartRemoveButton singleProductID={p.id} />
                 </div>
               </div>
             );

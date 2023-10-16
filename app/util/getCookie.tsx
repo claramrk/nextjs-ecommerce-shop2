@@ -10,10 +10,10 @@ export type ParsedCookie = {
 };
 
 export async function getParsedCookie() {
-  const cartCookie = await cookies().get('cart')?.value;
+  const cartCookie = cookies().get('cart')?.value;
   const parsedCartCookie =
     !cartCookie || parseJson(cartCookie).length === 0
       ? []
       : parseJson(cartCookie);
-  return parsedCartCookie;
+  return await parsedCartCookie;
 }

@@ -5,10 +5,16 @@ import styles from './page.module.scss';
 
 export default function CartRemoveAllButton() {
   return (
-    <form>
+    <form
+      onSubmit={async (event) => {
+        event.preventDefault();
+        await removeAllItemsFromCookies().catch((error) => {
+          console.log(error);
+        });
+      }}
+    >
       <button
         className={styles.primarybutton}
-        formAction={async () => await removeAllItemsFromCookies()}
         style={{ backgroundColor: '#e0b4b4' }}
       >
         Alle Tickets entfernen
