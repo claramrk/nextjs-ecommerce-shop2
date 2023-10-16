@@ -21,11 +21,11 @@ export default function AddToCartFormComponent(props) {
         data-test-id="product-quantity"
         // min={1}
         onChange={(event) => {
-          if (event.currentTarget.value > 0) {
+          if (Number(event.currentTarget.value) > 0) {
             setQuantityValue(Number(event.currentTarget.value));
-          } else if (event.currentTarget.value < 0) {
+          } else if (Number(event.currentTarget.value) < 0) {
             setQuantityValue(Number(event.currentTarget.value * -1));
-          } else if (event.currentTarget.value < 0) {
+          } else if (Number(event.currentTarget.value) === 0) {
             setQuantityValue(Number(1));
           }
         }}
