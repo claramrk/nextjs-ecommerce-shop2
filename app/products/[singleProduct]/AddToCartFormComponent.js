@@ -20,13 +20,15 @@ export default function AddToCartFormComponent(props) {
       <input
         id="quantity"
         type="number"
-        // pattern="[1-9]*"
+        pattern="[1-9]"
         className={styles.input}
         value={quantityValue}
         data-test-id="product-quantity"
         min={1}
         onChange={(event) => {
-          setQuantityValue(Number(event.currentTarget.value));
+          if (event.currentTarget.value > 0) {
+            setQuantityValue(Number(event.currentTarget.value));
+          }
         }}
       />
       <button

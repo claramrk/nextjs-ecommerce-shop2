@@ -33,7 +33,7 @@ export default function ChangeQuantityCartFormComponent(props: Props) {
         className={styles.input}
         id="quantity"
         type="number"
-        // pattern="[1-9]*"
+        pattern="[1-9]*"
         value={quantityValue}
         min={1}
         onChange={(event) => {
