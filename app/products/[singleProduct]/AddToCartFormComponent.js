@@ -28,6 +28,11 @@ export default function AddToCartFormComponent(props) {
         onChange={(event) => {
           setQuantityValue(Number(event.currentTarget.value));
         }}
+        onKeyDown={(event) => {
+          if (event.key === 8) {
+            event.preventDefault();
+          }
+        }}
       />
       <button
         className={styles.primarybutton}
