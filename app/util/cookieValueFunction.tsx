@@ -30,32 +30,24 @@ export async function calculateQuantityInCookiesAlreadyExisting(
   quantityValue: number,
   parsedCookie: Cookie[],
 ) {
-  console.log(singleProductID);
-  console.log(quantityValue);
-  console.log(parsedCookie);
-
-  const parsedCartCookie = parsedCookie;
+  const parsedCartCookie = await parsedCookie;
   const singleProductToUpdate = parsedCartCookie.find(
     (c: Cookie) => c.id === singleProductID,
   );
-  console.log(singleProductToUpdate);
 
   if (singleProductToUpdate !== undefined) {
     const newQuantity =
       Number(singleProductToUpdate.quantity) + Number(quantityValue);
-    console.log(newQuantity);
 
     const newObject = { id: singleProductID, quantity: Number(newQuantity) };
-    console.log(newObject);
 
     parsedCookie[parsedCookie.indexOf(singleProductToUpdate)] = newObject;
     const cookieValue = JSON.stringify([...parsedCartCookie]);
-    console.log(cookieValue);
 
-    return await cookieValue;
+    return cookieValue;
   } else {
     const cookieValue = JSON.stringify([...parsedCartCookie]);
-    return await cookieValue;
+    return cookieValue;
   }
 
   /*

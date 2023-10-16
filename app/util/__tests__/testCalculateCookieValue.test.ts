@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals';
 import { Product } from '../../../migrations/00000-createTableProducts';
-import { calculateQuantityInCookiesAlreadyExisting } from '../cookieValueFunction';
+import { matchProductsAndAssignQuantity } from '../matchAndAssignQuantityFunction';
 
 // test database products
 
@@ -35,14 +35,6 @@ const testProducts: Product[] = [
   },
 ];
 
-const testProduct1 = {
-  id: 1,
-  name: 'Kinder',
-  price: 1,
-  image:
-    'https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sfa1e985dff417ba4/image/i707c3e4fc445bf98/version/1646756208/image.jpg',
-};
-
 // test values test 1
 export type Cookie = {
   id: number;
@@ -51,21 +43,34 @@ export type Cookie = {
 
 const testCookieArray1: Cookie[] = [
   { id: 1, quantity: 4 },
-  { id: 3, quantity: 6 },
+  { id: 4, quantity: 1 },
 ];
-const addedProduct1 = { id: 1, quantity: 2 };
 
-const expectedCookieArray1 = [
-  { id: 1, quantity: 6 },
-  { id: 3, quantity: 6 },
+const expectedProductArray1 = [
+  {
+    id: 1,
+    name: 'Kinder',
+    price: 1,
+    image:
+      'https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sfa1e985dff417ba4/image/i707c3e4fc445bf98/version/1646756208/image.jpg',
+    quantity: 4,
+  },
+  {
+    id: 4,
+    name: 'Erwachsene/-r',
+    price: 3,
+    image:
+      'https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sfa1e985dff417ba4/image/icb92504cc82f773e/version/1646756104/image.jpg',
+    quantity: 1,
+  },
 ];
-const expectedCookieArrayString1 = JSON.stringify(expectedCookieArray1);
+
+// const expectedProductArrayString1 = JSON.stringify(expectedProductArray1);
 
 test('calculateQuantityInCookiesAlreadyExisting', async () => {
-  const cookieValueTest = await calculateQuantityInCookiesAlreadyExisting(
-    Number(testProduct1.id),
-    Number(addedProduct1.quantity),
+  const cookieValueTest = await matchProductsAndAssignQuantity(
+    testProducts,
     testCookieArray1,
   );
-  expect(cookieValueTest).toBe(expectedCookieArrayString1);
+  expect(cookieValueTest).toStrictEqual(expectedProductArray1);
 });

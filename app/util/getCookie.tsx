@@ -13,11 +13,9 @@ export async function getJSONCookie() {
   const cartCookieOriginal = await cookies().get('cart')?.value;
   if (cartCookieOriginal !== undefined) {
     const cartCookie: object[] = [];
-    console.log(cartCookie);
     return cartCookie;
   } else {
-    const cartCookie = await cartCookieOriginal;
-    console.log(cartCookie);
+    const cartCookie = cartCookieOriginal;
     return cartCookie;
   }
 }

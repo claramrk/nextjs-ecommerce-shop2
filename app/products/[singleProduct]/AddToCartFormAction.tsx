@@ -46,15 +46,14 @@ export async function setQuantityInCookies(
         quantityValue,
         parsedCartCookie,
       );
-      console.log(cookieValue);
-      await cookies().set('cart', cookieValue);
+      cookies().set('cart', cookieValue);
     } else if (!singleProductToUpdate && quantityValue && parsedCartCookie) {
       const cookieValue = await calculateQuantityInCookiesNotYetExisting(
         singleProductFromDatabase,
         quantityValue,
         parsedCartCookie,
       );
-      await cookies().set('cart', cookieValue);
+      cookies().set('cart', cookieValue);
     }
   }
 }
