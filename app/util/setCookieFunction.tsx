@@ -9,14 +9,14 @@ export type ProductWithQuantity = {
   quantity: number;
 };
 
-export function calculateQuantityNoCookiesYet(
+export async function calculateQuantityNoCookiesYet(
   singleProductFromDatabase: Product,
   quantityValue: number,
 ) {
-  const cookieValue = [
+  const cookieValue = await [
     { id: singleProductFromDatabase.id, quantity: quantityValue },
   ];
-  return JSON.stringify(cookieValue);
+  return await JSON.stringify(cookieValue);
 }
 
 export async function calculateQuantityInCookiesAlreadyExisting(

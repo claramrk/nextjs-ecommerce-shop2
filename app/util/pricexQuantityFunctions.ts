@@ -15,7 +15,7 @@ export function sumQuantity(parsedCookieFunction: ProductWithQuantity[]) {
 
   const sumTotal = parsedCartCookie.reduce(
     (accumulator: number, object: ProductWithQuantity) => {
-      return accumulator + object.quantity;
+      return accumulator + Number(object.quantity);
     },
     0,
   );

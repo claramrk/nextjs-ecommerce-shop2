@@ -30,14 +30,6 @@ export default async function Cart() {
   const matchingProductFromCookieOnlyDefined =
     await databaseProductsInCart.filter((e) => e.quantity !== undefined);
 
-  // summing quantity of all products
-  /* function sumQuantity() {
-    const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
-      return accumulator + Number(object.quantity);
-    }, 0);
-    return sumTotal;
-  }
-  */
 
   // multiplying subtotal price
   function multiplySubtotalPricePerItem(id: number) {

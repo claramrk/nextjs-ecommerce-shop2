@@ -26,13 +26,18 @@ export async function setQuantityInCookies(
 
   if (!singleProductFromDatabase) {
     console.log('setQuantityInCookies error - no Product from Database ');
-  } else if (cartCookie === undefined) {
-    const cookieValue = calculateQuantityNoCookiesYet(
+  }
+
+  if (cartCookie === undefined && singleProductFromDatabase !== undefined) {
+    const cookieValue = await calculateQuantityNoCookiesYet(
       singleProductFromDatabase,
       quantityValue,
     );
-    cookies().set(cookieValue);
-  } else {
+    await cookies().set('cart', cookieValue);
+  } else if (
+    cartCookie !== undefined &&
+    singleProductFromDatabase !== undefined
+  ) {
     const singleProductToUpdate = parsedCartCookie.find(
       (c: ProductWithQuantity) => c.id === singleProductID,
     );
@@ -44,14 +49,14 @@ export async function setQuantityInCookies(
         cartCookie,
       );
 
-      // cookies().set(cookieValue);
+      await cookies().set('cart', cookieValue);
     } else {
       const cookieValue = await calculateQuantityInCookiesNotYetExisting(
         singleProductFromDatabase,
         quantityValue,
         cartCookie,
       );
-      //   cookies().set(cookieValue);
+      await cookies().set('cart', cookieValue);
     }
   }
 }

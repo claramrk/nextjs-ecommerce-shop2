@@ -13,14 +13,15 @@
     "dotenv": "^16.3.1",
     "ley": "^0.8.1",
     "next": "latest",
+    "nextjs-ecommerce-shop2": "link:",
     "postgres": "^3.3.5",
     "react": "latest",
     "react-dom": "latest",
+    "sass": "^1.68.0",
     "secure-json-parse": "^2.7.0",
     "server-only": "^0.0.1",
     "sharp": "^0.32.6",
-    "tsm": "^2.3.0",
-    "sass": "^1.68.0"
+    "tsm": "^2.3.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

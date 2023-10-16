@@ -14,6 +14,9 @@ dependencies:
   next:
     specifier: latest
     version: 13.5.4(@babel/core@7.23.0)(react-dom@18.2.0)(react@18.2.0)(sass@1.68.0)
+  nextjs-ecommerce-shop2:
+    specifier: 'link:'
+    version: 'link:'
   postgres:
     specifier: ^3.3.5
     version: 3.3.5
