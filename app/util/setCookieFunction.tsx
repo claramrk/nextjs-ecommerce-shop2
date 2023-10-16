@@ -1,5 +1,6 @@
 'use server';
 import { Product } from '../../migrations/00000-createTableProducts';
+import { getParsedCookie } from './getCookie';
 
 export type ProductWithQuantity = {
   id: number;
@@ -13,44 +14,45 @@ export async function calculateQuantityNoCookiesYet(
   singleProductFromDatabase: Product,
   quantityValue: number,
 ) {
-  const cookieValue = await [
+  const cookieValue = await JSON.stringify([
     { id: singleProductFromDatabase.id, quantity: quantityValue },
-  ];
-  return await JSON.stringify(cookieValue);
+  ]);
+  return cookieValue;
 }
 
 export async function calculateQuantityInCookiesAlreadyExisting(
   singleProductID: number,
   quantityValue: number,
-  cartCookie: string,
 ) {
-  const parsedCartCookie =
-    !cartCookie || (await JSON.parse(cartCookie).length) === 0
-      ? []
-      : await JSON.parse(cartCookie);
+  const parsedCartCookie = await getParsedCookie();
   const singleProductToUpdate = await parsedCartCookie.find(
     (c: ProductWithQuantity) => c.id === singleProductID,
   );
   parsedCartCookie[parsedCartCookie.indexOf(singleProductToUpdate)].quantity =
     Number(quantityValue);
-  // const cookieValue = JSON.stringify([...parsedCartCookie]);
-  return JSON.stringify([...parsedCartCookie]);
+  const cookieValue = JSON.stringify([...parsedCartCookie]);
+  return cookieValue;
 }
 
 export async function calculateQuantityInCookiesNotYetExisting(
   singleProductFromDatabase: Product,
   quantityValue: number,
-  cartCookie: string,
 ) {
-  const parsedCartCookie =
-    !cartCookie || (await JSON.parse(cartCookie).length) === 0
-      ? []
-      : await JSON.parse(cartCookie);
+  const parsedCartCookie = await getParsedCookie();
+
   await parsedCartCookie.push({
     id: singleProductFromDatabase.id,
     quantity: Number(quantityValue),
   });
   const cookieValue = JSON.stringify([...parsedCartCookie]);
+  return cookieValue;
+}
+
+export async function EmptyCookieArray() {
+  const parsedCartCookie = await getParsedCookie();
+  await parsedCartCookie.splice(0, parsedCartCookie.length);
+  const cookieValue = JSON.stringify([...parsedCartCookie]);
+
   return cookieValue;
 }
 

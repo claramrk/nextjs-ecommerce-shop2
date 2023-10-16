@@ -24,22 +24,6 @@ export default async function Products() {
               data-test-id={`product-${p.id}`}
               key={`product-${p.id}`}
             >
-              {/*   <div className="cardBlog">
-                <div className="content">
-                  <div className="imageframe">
-                    <img
-                      className="productImage"
-                      src={p.image}
-                      height={100}
-                      alt="ProductImage"
-                    />
-                  </div>
-                  <div className="Description">
-                    <h2 className="producttitle">Ticket {p.name}</h2>
-                    <p className="seeMore">{p.price}€</p>
-                  </div>
-                </div>
-          </div> */}
               <TicketComponent src={p.image} name={p.name} price={p.price} />
             </Link>
           );

@@ -1,20 +1,11 @@
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import styles from './HeaderComponent.module.scss';
+import { getParsedCookie } from './util/getCookie';
+import { sumQuantity } from './util/pricexQuantityFunctions';
 
-export default function HeaderComponent() {
-  const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie =
-    !cartCookie || JSON.parse(cartCookie).length === 0
-      ? []
-      : JSON.parse(cartCookie);
-
-  function sumQuantity() {
-    const sumTotal = parsedCartCookie.reduce((accumulator, object) => {
-      return accumulator + Number(object.quantity);
-    }, 0);
-    return sumTotal;
-  }
+export default async function HeaderComponent() {
+  const parsedCartCookie = await getParsedCookie();
 
   return (
     <div className={styles.header}>
@@ -40,7 +31,7 @@ export default function HeaderComponent() {
         </Link>
         <div className={styles.currentcarttotalellipse}>
           <div className={styles.currentcartitemno} data-test-id="cart-count">
-            {cartCookie ? sumQuantity() : '0'}
+            {parsedCartCookie.length > 0 ? sumQuantity(parsedCartCookie) : '0'}
           </div>
         </div>
       </div>

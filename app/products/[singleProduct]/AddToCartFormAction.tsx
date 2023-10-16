@@ -2,6 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { getProductSQLById } from '../../../database/products';
+import { getParsedCookie } from '../../util/getCookie';
 import { ProductWithQuantity } from '../../util/pricexQuantityFunctions';
 import {
   calculateQuantityInCookiesAlreadyExisting,
@@ -14,11 +15,8 @@ export async function setQuantityInCookies(
   quantityValue: number,
 ) {
   const singleProductFromDatabase = await getProductSQLById(singleProductID);
-  const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie =
-    !cartCookie || (await JSON.parse(cartCookie).length) === 0
-      ? []
-      : await JSON.parse(cartCookie);
+  const cartCookie = await cookies().get('cart')?.value;
+  const parsedCartCookie = await getParsedCookie();
 
   if (!singleProductID) {
     console.log('setQuantityInCookies error - no Product id');
@@ -46,7 +44,6 @@ export async function setQuantityInCookies(
       const cookieValue = await calculateQuantityInCookiesAlreadyExisting(
         singleProductID,
         quantityValue,
-        cartCookie,
       );
 
       await cookies().set('cart', cookieValue);
@@ -54,7 +51,6 @@ export async function setQuantityInCookies(
       const cookieValue = await calculateQuantityInCookiesNotYetExisting(
         singleProductFromDatabase,
         quantityValue,
-        cartCookie,
       );
       await cookies().set('cart', cookieValue);
     }

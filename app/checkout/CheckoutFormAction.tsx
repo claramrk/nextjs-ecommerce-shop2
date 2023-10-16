@@ -1,15 +1,13 @@
 'use server';
 import { cookies } from 'next/headers';
+import { EmptyCookieArray } from '../util/setCookieFunction';
 
 export async function removeAllItemsFromCookies() {
-  const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie =
-    !cartCookie || JSON.parse(cartCookie).length === 0
-      ? []
-      : JSON.parse(cartCookie);
+  const cookieValue = await EmptyCookieArray();
+  /* const parsedCartCookie = await getParsedCookie();
+  await parsedCartCookie.splice(0, parsedCartCookie.length);*/
 
-  await parsedCartCookie.splice(0, parsedCartCookie.length);
-  await cookies().set('cart', JSON.stringify([...parsedCartCookie]));
+  cookies().set('cart', cookieValue);
 }
 removeAllItemsFromCookies().catch((error) => {
   console.log(error);

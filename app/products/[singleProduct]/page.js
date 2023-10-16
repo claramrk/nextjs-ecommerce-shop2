@@ -13,7 +13,6 @@ export default async function SingleProduct(props) {
   const singleProduct = await getProductSQLById(
     Number(props.params.singleProduct),
   );
-  console.log(singleProduct);
   return (
     <>
       <h1 className="notnecessary">Ticket {singleProduct?.name}</h1>
