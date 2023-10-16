@@ -36,10 +36,13 @@ export default function ChangeQuantityCartFormComponent(props: Props) {
         value={quantityValue}
         min="1"
         onChange={(event) => {
-          if (props.singleProductID) {
+          /* if (props.singleProductID) {
+            setQuantityValue(Number(event.currentTarget.value));}*/
+
+          if (Number(event.currentTarget.value) > 0) {
             setQuantityValue(Number(event.currentTarget.value));
-            setSubmitInfo('Press Enter to confirm');
           }
+          setSubmitInfo('Press Enter to confirm');
         }}
       />
 
