@@ -28,6 +28,8 @@ export default function AddToCartFormComponent(props) {
         onChange={(event) => {
           if (event.currentTarget.value > 0) {
             setQuantityValue(Number(event.currentTarget.value));
+          } else if (event.currentTarget.value < 0) {
+            setQuantityValue(Number(event.currentTarget.value) * -1);
           }
         }}
       />
