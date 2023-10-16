@@ -46,9 +46,9 @@ export default async function TotalPriceAndQuantity() {
                   >
                     <td>{g.quantity}</td>
                     <td>x</td>
-                    <td>{g.name}</td>
+                    <td className={styles.left}>{g.name}</td>
                     <td>.....</td>
-                    <td>
+                    <td className={styles.right}>
                       {multiplySubtotalPricePerItem(
                         g.id,
                         parsedCartCookie,
@@ -62,9 +62,9 @@ export default async function TotalPriceAndQuantity() {
               <tr style={{ fontStyle: 'bold' }}>
                 <td>{cartCookie ? sumQuantity(parsedCartCookie) : '0'}</td>
                 <td>x</td>
-                <td>Tickets</td>
+                <td className={styles.left}>Tickets</td>
                 <td>.....</td>
-                <td>
+                <td className={styles.right}>
                   {cartCookie
                     ? multiplySubtotalPrices(parsedCartCookie, products)
                     : '0'}
@@ -73,6 +73,8 @@ export default async function TotalPriceAndQuantity() {
               </tr>
             </tbody>
           </table>
+          <br />
+
           <div>
             Ticketanzahl:{' '}
             <span data-test-id="quantity">
@@ -92,28 +94,26 @@ export default async function TotalPriceAndQuantity() {
       ) : (
         ''
       )}
-      <RedirectButton
-        redirectPage="/products"
-        buttonText={
-          parsedCartCookie.length > 0
-            ? 'Weitere Tickets hinzufügen'
-            : 'Tickets hinzufügen'
-        }
-      />
-
       {matchingProductFromCookieOnlyDefined.length > 0 ? (
         <>
-          <RedirectButton redirectPage="/cart" buttonText="Zum Einkaufswagen" />
           <RedirectButton
             className={styles.primarybutton}
             redirectPage="/checkout"
             buttonText="Tickets bestellen"
             data-test-id="cart-checkout"
           />
+          <RedirectButton redirectPage="/cart" buttonText="Zum Einkaufswagen" />
+          <RedirectButton
+            redirectPage="/products"
+            buttonText="Tickets hinzufügen"
+          />
           <CartRemoveAllButton />
         </>
       ) : (
-        ''
+        <RedirectButton
+          redirectPage="/products"
+          buttonText="Tickets hinzufügen"
+        />
       )}
     </div>
   );

@@ -9,11 +9,11 @@
 .totalpriceandquantity {
   position: fixed;
 
-  /*
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-*/
+
   top: 24%;
   left: 82%;
   right: 4%;
@@ -117,8 +117,15 @@
   }
 }
 
-.quantityinput {
-  width: 100%;
+.input {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  color: gray;
+  &::placeholder {
+    letter-spacing: 0.1em;
+    color: gray;
+  }
   border-bottom: 1px solid gray;
   padding-bottom: 6px;
   font-size: 1rem;
@@ -134,4 +141,12 @@
   background-color: #fff;
   text-decoration: none;
   color: #333;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
 }

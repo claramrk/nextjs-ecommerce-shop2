@@ -30,6 +30,7 @@ export default function ChangeQuantityCartFormComponent(props: Props) {
       <legend>Ticket {props.name}</legend>
       <label htmlFor="quantity">Anzahl:</label>
       <input
+        className={styles.input}
         id="quantity"
         type="number"
         pattern="[1-9]*"

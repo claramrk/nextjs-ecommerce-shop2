@@ -26,15 +26,6 @@ export default async function Cart() {
     products,
     parsedCartCookie,
   );
-  console.log(matchingProductFromCookieOnlyDefined);
-  /*
-  const databaseProductsInCart = await products.map((product) => {
-    const matchingProductFromCookie = parsedCartCookie.find(
-      (cookieObject: ParsedCookie) => product.id === cookieObject.id,
-    );
-    return { ...product, quantity: matchingProductFromCookie?.quantity };
-  });
-*/
 
   // multiplying subtotal price
   function multiplySubtotalPricePerItem(id: number) {
@@ -57,45 +48,44 @@ export default async function Cart() {
       <div className={styles.productlist}>
         {matchingProductFromCookieOnlyDefined.length > 0 ? (
           matchingProductFromCookieOnlyDefined.map((p) => {
-              return (
-                <div
-                  className={styles.card}
-                  data-test-id={`cart-product-${p.id}`}
-                  key={`cart-product-${p.id}`}
-                >
-                  <div>
-                    <TicketComponent
-                      src={p.image}
-                      name={p.name}
-                      price={p.price}
-                    />
-                  </div>
-                  <div>
-                    <ChangeQuantityFormComponent
-                      quantity={p.quantity}
-                      singleProductID={p.id}
-                      name={p.name}
-                    />
-                    <div data-test-id={`cart-product-quantity-${p.id}`}>
-                      <p>
-                        Anzahl im Einkaufswagen:{' '}
-                        <span data-test-id={`cart-product-quantity${p.id}`}>
-                          {p.quantity}
-                        </span>
-                      </p>
-                    </div>
-                    <div>
-                      Zwischensumme:{' '}
-                      <span data-test-id={`cart-product-subtotal-${p.id}`}>
-                        {multiplySubtotalPricePerItem(p.id)}
-                      </span>
-                      €
-                    </div>
-                    <CartRemoveButton singleProductID={p.id} />
-                  </div>
+            return (
+              <div
+                className={styles.card}
+                data-test-id={`cart-product-${p.id}`}
+                key={`cart-product-${p.id}`}
+              >
+                <div>
+                  <TicketComponent
+                    src={p.image}
+                    name={p.name}
+                    price={p.price}
+                  />
                 </div>
-              );
-
+                <div>
+                  <ChangeQuantityFormComponent
+                    quantity={p.quantity}
+                    singleProductID={p.id}
+                    name={p.name}
+                  />
+                  <div data-test-id={`cart-product-quantity-${p.id}`}>
+                    <p>
+                      Anzahl im Einkaufswagen:{' '}
+                      <span data-test-id={`cart-product-quantity${p.id}`}>
+                        {p.quantity}
+                      </span>
+                    </p>
+                  </div>
+                  <div>
+                    Zwischensumme:{' '}
+                    <span data-test-id={`cart-product-subtotal-${p.id}`}>
+                      {multiplySubtotalPricePerItem(p.id)}
+                    </span>
+                    €
+                  </div>
+                  <CartRemoveButton singleProductID={p.id} />
+                </div>
+              </div>
+            );
           })
         ) : (
           <>
@@ -104,11 +94,6 @@ export default async function Cart() {
               redirectPage="/products"
               buttonText="Tickets hinzufügen"
             />
-            {/* <Link href="/products">
-              <button className={styles.primarybutton}>
-                Tickets hinzufügen
-              </button>
-        </Link>*/}
           </>
         )}
       </div>
