@@ -7,7 +7,6 @@ import styles from './page.module.scss';
 
 export default function AddToCartFormComponent(props) {
   const [quantityValue, setQuantityValue] = useState(1);
-  // const router = useRouter();
 
   return (
     <form className={styles.forms}>
@@ -16,7 +15,7 @@ export default function AddToCartFormComponent(props) {
       <input
         id="quantity"
         type="number"
-        // pattern="[0-9]*"
+        pattern="[1-9]*"
         className={styles.input}
         value={quantityValue}
         data-test-id="product-quantity"
@@ -32,7 +31,6 @@ export default function AddToCartFormComponent(props) {
         data-test-id="product-add-to-cart"
         formAction={async () => {
           await setQuantityInCookies(props.singleProductID, quantityValue);
-          // router.refresh();
         }}
       >
         Ticket hinzufügen
