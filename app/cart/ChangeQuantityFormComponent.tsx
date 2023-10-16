@@ -41,7 +41,7 @@ export default function ChangeQuantityCartFormComponent(props: Props) {
 
           if (Number(event.currentTarget.value) > 0) {
             setQuantityValue(Number(event.currentTarget.value));
-          } else {
+          } else if (Number(event.currentTarget.value) < 0) {
             setQuantityValue(Number(event.currentTarget.value) * -1);
           }
           setSubmitInfo('Press Enter to confirm');
