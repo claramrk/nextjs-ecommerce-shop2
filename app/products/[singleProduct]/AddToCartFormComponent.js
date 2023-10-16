@@ -1,12 +1,13 @@
 'use client';
 
-// import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { setQuantityInCookies } from './AddToCartFormAction.tsx';
 import styles from './page.module.scss';
 
 export default function AddToCartFormComponent(props) {
-  const [quantityValue, setQuantityValue] = useState(1);
+  const initialQuantity = 1;
+
+  const [quantityValue, setQuantityValue] = useState(initialQuantity);
 
   return (
     <form className={styles.forms}>
@@ -15,19 +16,13 @@ export default function AddToCartFormComponent(props) {
       <input
         id="quantity"
         type="number"
-        // pattern={[1 - 9]}
+        pattern="[1 - 9]*"
         className={styles.input}
         value={quantityValue}
         data-test-id="product-quantity"
-        // min={1}
-        onChange={(event) => {
-          if (Number(event.currentTarget.value) > 0) {
-            setQuantityValue(Number(event.currentTarget.value));
-          } else if (Number(event.currentTarget.value) < 0) {
-            setQuantityValue(Number(event.currentTarget.value * -1));
-          } else if (Number(event.currentTarget.value) === 0) {
-            setQuantityValue(Number(1));
-          }
+        min={1}
+        onInput={(event) => {
+          setQuantityValue(Number(event.currentTarget.value));
         }}
       />
       <button
