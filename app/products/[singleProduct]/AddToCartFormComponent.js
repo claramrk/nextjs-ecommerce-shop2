@@ -24,13 +24,9 @@ export default function AddToCartFormComponent(props) {
         className={styles.input}
         value={quantityValue}
         data-test-id="product-quantity"
-        min="1"
+        min={1}
         onChange={(event) => {
-          if (event.currentTarget.value > 0) {
-            setQuantityValue(event.currentTarget.value);
-          } else if (event.currentTarget.value < 0) {
-            setQuantityValue(event.currentTarget.value * -1);
-          }
+          setQuantityValue(Number(event.currentTarget.value));
         }}
       />
       <button
