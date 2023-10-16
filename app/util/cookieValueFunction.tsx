@@ -31,20 +31,31 @@ export async function calculateQuantityInCookiesAlreadyExisting(
   parsedCookie: Cookie[],
 ) {
   const parsedCartCookie = await parsedCookie;
-  const singleProductToUpdate = await parsedCartCookie.find(
+  const singleProductToUpdate = parsedCartCookie.find(
     (c: Cookie) => c.id === singleProductID,
   );
-  /* parsedCartCookie[parsedCartCookie.indexOf(singleProductToUpdate)].quantity =
-    Number(quantityValue);
-    */
 
-  await parsedCartCookie.forEach((element, index) => {
+  if (singleProductToUpdate) {
+    const newQuantity =
+      Number(singleProductToUpdate.quantity) + Number(quantityValue);
+
+    const newObject = { id: singleProductID, quantity: Number(newQuantity) };
+
+    parsedCookie[parsedCookie.indexOf(await singleProductToUpdate)] = newObject;
+    const cookieValue = JSON.stringify([...parsedCartCookie]);
+    return cookieValue;
+  } else {
+    const cookieValue = JSON.stringify([...parsedCartCookie]);
+    return cookieValue;
+  }
+
+  /*
+    parsedCartCookie.forEach((element, index) => {
     if (element.id === singleProductID) {
       parsedCartCookie[index].quantity = Number(quantityValue);
     }
   });
-  const cookieValue = JSON.stringify([...parsedCartCookie]);
-  return cookieValue;
+    */
 }
 
 export async function calculateQuantityInCookiesNotYetExisting(

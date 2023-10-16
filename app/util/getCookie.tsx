@@ -9,11 +9,22 @@ export type ParsedCookie = {
   quantity: number | undefined;
 };
 
+export async function getJSONCookie() {
+  const cartCookieOriginal = await cookies().get('cart')?.value;
+  if (cartCookieOriginal !== undefined) {
+    const cartCookie: object[] = [];
+    console.log(cartCookie);
+    return cartCookie;
+  } else {
+    const cartCookie = await cartCookieOriginal;
+    console.log(cartCookie);
+    return cartCookie;
+  }
+}
+
 export async function getParsedCookie() {
-  const cartCookie = cookies().get('cart')?.value;
+  const cartCookie = await cookies().get('cart')?.value;
   const parsedCartCookie =
-    !cartCookie || parseJson(cartCookie).length === 0
-      ? []
-      : parseJson(cartCookie);
+    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
   return await parsedCartCookie;
 }

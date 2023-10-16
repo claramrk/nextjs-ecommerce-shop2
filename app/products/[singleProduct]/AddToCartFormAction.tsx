@@ -40,7 +40,7 @@ export async function setQuantityInCookies(
       (c: ProductWithQuantity) => c.id === singleProductID,
     );
 
-    if (singleProductToUpdate) {
+    if (singleProductToUpdate && parsedCartCookie && quantityValue) {
       const cookieValue = await calculateQuantityInCookiesAlreadyExisting(
         singleProductID,
         quantityValue,
@@ -48,7 +48,7 @@ export async function setQuantityInCookies(
       );
 
       await cookies().set('cart', cookieValue);
-    } else {
+    } else if (!singleProductToUpdate && quantityValue && parsedCartCookie) {
       const cookieValue = await calculateQuantityInCookiesNotYetExisting(
         singleProductFromDatabase,
         quantityValue,

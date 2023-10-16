@@ -21,6 +21,7 @@ test('sumQuantity', () => {
     calculateQuantityInCookiesAlreadyExisting(
       addedProduct1.id,
       addedProduct1.quantity,
+      testCookieArray1,
     ),
   ).toBe(expectedCookieArrayString1);
 });

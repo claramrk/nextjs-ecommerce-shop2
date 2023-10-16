@@ -1,14 +1,10 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { parseJson } from '../util/parsejson';
+import { getParsedCookie } from '../util/getCookie';
 
 export async function removeItemFromCookies(props) {
-  const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie =
-    !cartCookie || parseJson(cartCookie).length === 0
-      ? []
-      : parseJson(cartCookie);
+  const parsedCartCookie = getParsedCookie();
 
   if (props === undefined) {
     console.log('no id to remove');
