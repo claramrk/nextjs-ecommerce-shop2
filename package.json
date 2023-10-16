@@ -13,7 +13,6 @@
     "dotenv": "^16.3.1",
     "ley": "^0.8.1",
     "next": "latest",
-    "nextjs-ecommerce-shop2": "link:",
     "postgres": "^3.3.5",
     "react": "latest",
     "react-dom": "latest",
