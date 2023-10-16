@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import Link from 'next/link';
 import styles from './HeaderComponent.module.scss';
 import { getParsedCookie } from './util/getCookie';

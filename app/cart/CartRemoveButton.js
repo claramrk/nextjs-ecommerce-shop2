@@ -1,5 +1,4 @@
 'use client';
-import { EmptyCookieArray } from '../util/setCookieFunction';
 import { removeItemFromCookies } from './CartRemoveAction';
 import styles from './page.module.scss';
 
