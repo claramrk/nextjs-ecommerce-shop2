@@ -9,7 +9,12 @@ export default function AddToCartFormComponent(props) {
   const [quantityValue, setQuantityValue] = useState(1);
 
   return (
-    <form className={styles.forms}>
+    <form
+      className={styles.forms}
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+    >
       <legend>Zum Einkaufswagen hinzufügen</legend>
       <label htmlFor="quantity">Anzahl:</label>
       <input
