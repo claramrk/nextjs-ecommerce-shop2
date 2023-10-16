@@ -1,6 +1,6 @@
 'use server';
 import { cookies } from 'next/headers';
-import { EmptyCookieArray } from '../util/setCookieFunction';
+import { EmptyCookieArray } from '../util/cookieValueFunction';
 
 export async function removeAllItemsFromCookies() {
   const cookieValue = await EmptyCookieArray();

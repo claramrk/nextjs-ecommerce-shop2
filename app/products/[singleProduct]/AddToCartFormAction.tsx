@@ -2,13 +2,13 @@
 
 import { cookies } from 'next/headers';
 import { getProductSQLById } from '../../../database/products';
-import { getParsedCookie } from '../../util/getCookie';
-import { ProductWithQuantity } from '../../util/pricexQuantityFunctions';
 import {
   calculateQuantityInCookiesAlreadyExisting,
   calculateQuantityInCookiesNotYetExisting,
   calculateQuantityNoCookiesYet,
-} from '../../util/setCookieFunction';
+} from '../../util/cookieValueFunction';
+import { getParsedCookie } from '../../util/getCookie';
+import { ProductWithQuantity } from '../../util/pricexQuantityFunctions';
 
 export async function setQuantityInCookies(
   singleProductID: number,
@@ -44,6 +44,7 @@ export async function setQuantityInCookies(
       const cookieValue = await calculateQuantityInCookiesAlreadyExisting(
         singleProductID,
         quantityValue,
+        parsedCartCookie,
       );
 
       await cookies().set('cart', cookieValue);
@@ -51,6 +52,7 @@ export async function setQuantityInCookies(
       const cookieValue = await calculateQuantityInCookiesNotYetExisting(
         singleProductFromDatabase,
         quantityValue,
+        parsedCartCookie,
       );
       await cookies().set('cart', cookieValue);
     }

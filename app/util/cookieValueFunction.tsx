@@ -10,6 +10,11 @@ export type ProductWithQuantity = {
   quantity: number;
 };
 
+export type Cookie = {
+  id: number;
+  quantity: number;
+};
+
 export async function calculateQuantityNoCookiesYet(
   singleProductFromDatabase: Product,
   quantityValue: number,
@@ -23,13 +28,21 @@ export async function calculateQuantityNoCookiesYet(
 export async function calculateQuantityInCookiesAlreadyExisting(
   singleProductID: number,
   quantityValue: number,
+  parsedCookie: Cookie[],
 ) {
-  const parsedCartCookie = await getParsedCookie();
+  const parsedCartCookie = await parsedCookie;
   const singleProductToUpdate = await parsedCartCookie.find(
-    (c: ProductWithQuantity) => c.id === singleProductID,
+    (c: Cookie) => c.id === singleProductID,
   );
-  parsedCartCookie[parsedCartCookie.indexOf(singleProductToUpdate)].quantity =
+  /* parsedCartCookie[parsedCartCookie.indexOf(singleProductToUpdate)].quantity =
     Number(quantityValue);
+    */
+
+  await parsedCartCookie.forEach((element, index) => {
+    if (element.id === singleProductID) {
+      parsedCartCookie[index].quantity = Number(quantityValue);
+    }
+  });
   const cookieValue = JSON.stringify([...parsedCartCookie]);
   return cookieValue;
 }
@@ -37,14 +50,15 @@ export async function calculateQuantityInCookiesAlreadyExisting(
 export async function calculateQuantityInCookiesNotYetExisting(
   singleProductFromDatabase: Product,
   quantityValue: number,
+  parsedCookie: Cookie[],
 ) {
-  const parsedCartCookie = await getParsedCookie();
+  const parsedCartCookie = await parsedCookie;
 
   await parsedCartCookie.push({
     id: singleProductFromDatabase.id,
     quantity: Number(quantityValue),
   });
-  const cookieValue = JSON.stringify([...parsedCartCookie]);
+  const cookieValue = await JSON.stringify([...parsedCartCookie]);
   return cookieValue;
 }
 
