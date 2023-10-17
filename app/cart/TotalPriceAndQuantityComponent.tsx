@@ -1,7 +1,8 @@
 import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import { Product } from '../../migrations/00000-createTableProducts';
-import { getParsedCookie, ParsedCookie } from '../util/getCookie';
+import { ParsedCookie } from '../util/getCookie';
+import { parseJson } from '../util/parsejson';
 import {
   multiplySubtotalPricePerItem,
   multiplySubtotalPrices,
@@ -18,7 +19,8 @@ export default async function TotalPriceAndQuantity() {
 
   // get and parse cookies
   const cartCookie = await cookies().get('cart')?.value;
-  const parsedCartCookie = await getParsedCookie();
+  const parsedCartCookie =
+    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
 
   // matching products from cart with database and assigning quanitity
   const databaseProductsInCart = await products.map((product) => {

@@ -1,6 +1,7 @@
 'use server';
+import { cookies } from 'next/headers';
 import { Product } from '../../migrations/00000-createTableProducts';
-import { getParsedCookie } from './getCookie';
+import { parseJson } from './parsejson';
 
 export type ProductWithQuantity = {
   id: number;
@@ -75,7 +76,9 @@ export async function calculateQuantityInCookiesNotYetExisting(
 }
 
 export async function EmptyCookieArray() {
-  const parsedCartCookie = await getParsedCookie();
+  const cartCookie = await cookies().get('cart')?.value;
+  const parsedCartCookie =
+    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
   await parsedCartCookie.splice(0, parsedCartCookie.length);
   const cookieValue = JSON.stringify([...parsedCartCookie]);
 

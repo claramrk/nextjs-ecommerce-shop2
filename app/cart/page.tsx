@@ -1,8 +1,9 @@
 // import { cookies } from 'next/headers';
+import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../products/TicketComponent';
-import { getParsedCookie } from '../util/getCookie';
 import { matchProductsAndAssignQuantity } from '../util/matchAndAssignQuantityFunction';
+import { parseJson } from '../util/parsejson';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveButton from './CartRemoveButton';
 import ChangeQuantityFormComponent from './ChangeQuantityFormComponent';
@@ -19,7 +20,9 @@ export default async function Cart() {
   const products = await getProductsSQL();
 
   // get and parse cookies
-  const parsedCartCookie = await getParsedCookie();
+  const cartCookie = await cookies().get('cart')?.value;
+  const parsedCartCookie =
+    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
 
   // matching products from cart with database and assigning quanitity
   const matchingProductFromCookieOnlyDefined = matchProductsAndAssignQuantity(

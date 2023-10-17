@@ -2,12 +2,13 @@
 
 import { cookies } from 'next/headers';
 import { getProductSQLById } from '../../database/products';
-import { getParsedCookie } from '../util/getCookie';
+import { parseJson } from '../util/parsejson';
 
 export async function changeQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = await getProductSQLById(singleProductID);
   const cartCookie = cookies().get('cart')?.value;
-  const parsedCartCookie = await getParsedCookie();
+  const parsedCartCookie =
+    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
 
   if (singleProductID === undefined) {
     console.log('changeQuantityInCookies error - no id');

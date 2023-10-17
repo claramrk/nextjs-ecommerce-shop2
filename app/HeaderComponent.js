@@ -1,10 +1,13 @@
+import { cookies } from 'next/headers';
 import Link from 'next/link';
 import styles from './HeaderComponent.module.scss';
-import { getParsedCookie } from './util/getCookie';
+import { parseJson } from './util/parsejson';
 import { sumQuantity } from './util/pricexQuantityFunctions';
 
 export default async function HeaderComponent() {
-  const parsedCartCookie = await getParsedCookie();
+  const cartCookie = await cookies().get('cart')?.value;
+  const parsedCartCookie =
+    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
 
   return (
     <div className={styles.header}>
