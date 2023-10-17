@@ -1,4 +1,4 @@
-name: Playwright Tests and Deploy to Fly.io
+name: Playwright Tests
 on: push
 
 jobs:
@@ -8,9 +8,9 @@ jobs:
     # Update env variables with your own database credentials
     env:
       PGHOST: localhost
-      PGDATABASE: nextjs_ecommerce_shop2
-      PGUSERNAME: nextjs_ecommerce_shop2
-      PGPASSWORD: nextjs_ecommerce_shop2
+      PGDATABASE: next_ecommerce
+      PGUSERNAME: next_ecommerce
+      PGPASSWORD: next_ecommerce
     steps:
       - name: Start preinstalled PostgreSQL on Ubuntu
         run: |
@@ -18,10 +18,10 @@ jobs:
           pg_isready
       - name: Create database user
         run: |
-          sudo -u postgres psql --command="CREATE USER nextjs_ecommerce_shop2 PASSWORD 'nextjs_ecommerce_shop2'" --command="\du"
+          sudo -u postgres psql --command="CREATE USER next_ecommerce PASSWORD 'next_ecommerce'" --command="\du"
       - name: Create database and allow user
         run: |
-          sudo -u postgres createdb --owner=nextjs_ecommerce_shop2 nextjs_ecommerce_shop2
+          sudo -u postgres createdb --owner=next_ecommerce next_ecommerce
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
@@ -74,14 +74,3 @@ jobs:
         with:
           name: playwright-screenshots-videos
           path: playwright/test-results/
-  deploy:
-    name: Deploy to Fly.io
-    runs-on: ubuntu-latest
-    needs: playwright-tests
-    if: github.ref == 'refs/heads/main'
-    env:
-      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
