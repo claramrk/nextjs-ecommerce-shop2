@@ -8,9 +8,9 @@ jobs:
     # Update env variables with your own database credentials
     env:
       PGHOST: localhost
-      PGDATABASE: nextjs-ecommerce-shop2
-      PGUSERNAME: nextjs-ecommerce-shop2
-      PGPASSWORD: nextjs-ecommerce-shop2
+      PGDATABASE: nextjs_ecommerce_shop2
+      PGUSERNAME: nextjs_ecommerce_shop2
+      PGPASSWORD: nextjs_ecommerce_shop2
     steps:
       - name: Start preinstalled PostgreSQL on Ubuntu
         run: |
@@ -18,10 +18,10 @@ jobs:
           pg_isready
       - name: Create database user
         run: |
-          sudo -u postgres psql --command="CREATE USER $PGUSERNAME PASSWORD '$PGPASSWORD'" --command="\du"
+          sudo -u postgres psql --command="CREATE USER nextjs_ecommerce_shop2 PASSWORD 'nextjs_ecommerce_shop2'" --command="\du"
       - name: Create database and allow user
         run: |
-          sudo -u postgres createdb --owner=$PGUSERNAME $PGDATABASE
+          sudo -u postgres createdb --owner=nextjs_ecommerce_shop2 nextjs_ecommerce_shop2
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
