@@ -19,5 +19,4 @@ export async function removeItemFromCookies(props) {
     await parsedCartCookie.splice(Number(singleProductToUpdateIndex), 1);
     await cookies().set('cart', JSON.stringify([...parsedCartCookie]));
   }
-
 }
