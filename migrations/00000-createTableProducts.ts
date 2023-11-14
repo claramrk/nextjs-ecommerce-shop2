@@ -9,16 +9,16 @@ export type Product = {
 
 export async function up(sql: Sql) {
   await sql`
-CREATE TABLE products(
-id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-name varchar(30) NOT NULL,
-price float NOT NULL,
-image varchar(300));
-`;
+    CREATE TABLE
+      products (
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+        name VARCHAR(30) NOT NULL,
+        price FLOAT NOT NULL,
+        image VARCHAR(300)
+      );
+  `;
 }
 
 export async function down(sql: Sql) {
-  await sql`
-  DROP TABLE products;
-  `;
+  await sql` DROP TABLE products; `;
 }
