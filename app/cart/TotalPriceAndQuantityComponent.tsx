@@ -105,11 +105,11 @@ export default async function TotalPriceAndQuantity() {
             buttonText="Tickets bestellen"
             data-test-id="cart-checkout"
           />
-          <RedirectButton redirectPage="/cart" buttonText="Zum Einkaufswagen" />
+          {/*     <RedirectButton redirectPage="/cart" buttonText="Zum Einkaufswagen" />
           <RedirectButton
             redirectPage="/products"
             buttonText="Tickets hinzufügen"
-          />
+          /> */}
           <CartRemoveAllButton />
         </>
       ) : (
