@@ -7,10 +7,10 @@ export default function CheckoutPageFormComponent() {
   return (
     <form>
       <div>
-        <h2>Shipping Information</h2>
+        <h2>Lieferinformation</h2>
 
         <div>
-          <label htmlFor="FirstName">First Name:</label>
+          <label htmlFor="FirstName">Vorname:</label>
           <input
             className={styles.input}
             id="FirstName"
@@ -19,7 +19,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
         <div>
-          <label htmlFor="LastName">First Name:</label>
+          <label htmlFor="LastName">Nachname:</label>
           <input
             className={styles.input}
             id="LastName"
@@ -37,7 +37,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
         <div>
-          <label htmlFor="address">Address:</label>
+          <label htmlFor="address">Addresse:</label>
           <input
             className={styles.input}
             id="address"
@@ -46,7 +46,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
         <div>
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city">Ort:</label>
           <input
             className={styles.input}
             id="city"
@@ -55,7 +55,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
         <div>
-          <label htmlFor="postal-code">Postal Code:</label>
+          <label htmlFor="postal-code">Postleitzahl:</label>
           <input
             className={styles.input}
             id="postal-code"
@@ -64,7 +64,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
         <div>
-          <label htmlFor="country">Country:</label>
+          <label htmlFor="country">Land:</label>
           <input
             className={styles.input}
             id="country"
@@ -74,9 +74,9 @@ export default function CheckoutPageFormComponent() {
         </div>
       </div>
       <div>
-        <h2>Payment Information</h2>
+        <h2>Zahlungsinformation</h2>
         <div>
-          <label htmlFor="credit-card">Credit-card:</label>
+          <label htmlFor="credit-card">Kreditkartennummer:</label>
           <input
             className={styles.input}
             id="credit-card"
@@ -85,7 +85,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
         <div>
-          <label htmlFor="expiration-date">Expiration-date:</label>
+          <label htmlFor="expiration-date">Ablaufdatum:</label>
           <input
             className={styles.input}
             id="expiration-date"
@@ -94,7 +94,7 @@ export default function CheckoutPageFormComponent() {
           />
         </div>
         <div>
-          <label htmlFor="security-code">Security-code:</label>
+          <label htmlFor="security-code">CVV/CVC:</label>
           <input
             className={styles.input}
             id="security-code"
@@ -104,7 +104,7 @@ export default function CheckoutPageFormComponent() {
         </div>
       </div>
       <div>
-        <h2>Confirm your Order</h2>
+        <h2>Bestellung bestätigen</h2>
         <button
           data-test-id="checkout-confirm-order"
           className={styles.primarybutton}
@@ -113,7 +113,7 @@ export default function CheckoutPageFormComponent() {
             redirect('/thankYou');
           }}
         >
-          Confirm Order
+          Tickets bestellen
         </button>
       </div>
     </form>

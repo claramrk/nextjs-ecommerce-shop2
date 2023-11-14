@@ -9,7 +9,7 @@ export const metadata = {
 export default function ThankYou() {
   return (
     <div className="thankyoupage">
-      <h1 className="h1">Thank you for your order!</h1>
+      <h1 className="h1">Danke für deine Bestellung!</h1>
       <div className={styles.primarybutton}>
         <Link
           href="/products"

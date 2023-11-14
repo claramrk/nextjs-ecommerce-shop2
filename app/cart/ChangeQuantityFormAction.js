@@ -8,7 +8,9 @@ export async function changeQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = await getProductSQLById(singleProductID);
   const cartCookie = cookies().get('cart')?.value;
   const parsedCartCookie =
-    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
+    !cartCookie || JSON.parse(cartCookie).length === 0
+      ? []
+      : JSON.parse(cartCookie);
 
   if (singleProductID === undefined) {
     console.log('changeQuantityInCookies error - no id');

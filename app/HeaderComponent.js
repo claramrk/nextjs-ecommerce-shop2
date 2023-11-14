@@ -4,10 +4,10 @@ import styles from './HeaderComponent.module.scss';
 import { parseJson } from './util/parsejson';
 import { sumQuantity } from './util/pricexQuantityFunctions';
 
-export default async function HeaderComponent() {
-  const cartCookie = await cookies().get('cart')?.value;
-  const parsedCartCookie =
-    cartCookie || parseJson(cartCookie).length > 0 ? parseJson(cartCookie) : [];
+export default function HeaderComponent() {
+  const cartCookieExists = cookies().get('cart');
+  const cartCookie = cartCookieExists ? cookies().get('cart').value : 0;
+  const parsedCartCookie = cartCookie ? parseJson(cartCookie) : [];
 
   return (
     <div className={styles.header}>
