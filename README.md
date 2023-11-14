@@ -1,11 +1,10 @@
 # Ticket Store
 
-Welcome to my Ticket Store! I am building it for a tourism association in Lower Austria. This guide provides an overview of the features and requirements of the store.
+Welcome to my Ticket Store! I am building it for a tourism association in Lower Austria. This ecommerce store is a Next.js-based application designed to provide a seamless and secure shopping experience. From ticket browsing to checkout, the store offers a range of features to enhance user satisfaction. This README provides an overview of the features and requirements of the store.
 
 👷 This project is still under construction 👷
 
 ## Table of Contents
-1. [Project Overview](#project-overview)
 2. [Technology Stack](#technology-stack)
 3. [Features](#features)
 4. [Cookies](#cookies)
@@ -15,8 +14,6 @@ Welcome to my Ticket Store! I am building it for a tourism association in Lower 
 8. [Security](#security)
 9. [Deployment](#deployment)
 
-## Project Overview
-This ecommerce store is a Next.js-based application designed to provide a seamless and secure shopping experience. From ticket browsing to checkout, the store offers a range of features to enhance user satisfaction.
 
 ## Technology Stack
 The ecommerce store leverages the following technologies:
