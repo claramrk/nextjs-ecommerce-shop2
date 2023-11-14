@@ -3,7 +3,6 @@ import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../products/TicketComponent';
 import { matchProductsAndAssignQuantity } from '../util/matchAndAssignQuantityFunction';
-import { parseJson } from '../util/parsejson';
 import { RedirectButton } from '../util/RedirectButton';
 import CartRemoveButton from './CartRemoveButton';
 import ChangeQuantityFormComponent from './ChangeQuantityFormComponent';

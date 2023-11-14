@@ -2,7 +2,6 @@ import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import { Product } from '../../migrations/00000-createTableProducts';
 import { ParsedCookie } from '../util/getCookie';
-import { parseJson } from '../util/parsejson';
 import {
   multiplySubtotalPricePerItem,
   multiplySubtotalPrices,

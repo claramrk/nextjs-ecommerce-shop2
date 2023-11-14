@@ -2,7 +2,6 @@
 
 import { cookies } from 'next/headers';
 import { getProductSQLById } from '../../database/products';
-import { parseJson } from '../util/parsejson';
 
 export async function changeQuantityInCookies(singleProductID, quantityValue) {
   const singleProductFromDatabase = await getProductSQLById(singleProductID);

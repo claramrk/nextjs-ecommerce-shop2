@@ -7,7 +7,6 @@ import {
   calculateQuantityInCookiesNotYetExisting,
   calculateQuantityNoCookiesYet,
 } from '../../util/cookieValueFunction';
-import { parseJson } from '../../util/parsejson';
 import { ProductWithQuantity } from '../../util/pricexQuantityFunctions';
 
 export async function setQuantityInCookies(

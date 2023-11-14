@@ -1,7 +1,6 @@
 'use server';
 import { cookies } from 'next/headers';
 import { Product } from '../../migrations/00000-createTableProducts';
-import { parseJson } from './parsejson';
 
 export type ProductWithQuantity = {
   id: number;
