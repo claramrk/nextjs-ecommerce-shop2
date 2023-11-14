@@ -59,8 +59,6 @@ export function multiplySubtotalPrices(
 ) {
   const products: Product[] = getProductsSQLFunction;
   const parsedCartCookie = parsedCookieFunction;
-  // const parsedCartCookieOnlyDefined = parsedCartCookie.filter(
-  //    (c) => c.quantity !== undefined );
   const subtotalPrices = parsedCartCookie.map((c: ProductWithQuantity) => {
     return multiplySubtotalPricePerItem(c.id, parsedCartCookie, products);
   });

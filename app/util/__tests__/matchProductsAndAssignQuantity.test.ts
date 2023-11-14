@@ -65,8 +65,6 @@ const expectedProductArray1 = [
   },
 ];
 
-// const expectedProductArrayString1 = JSON.stringify(expectedProductArray1);
-
 test('calculateQuantityInCookiesAlreadyExisting', async () => {
   const cookieValueTest = await matchProductsAndAssignQuantity(
     testProducts,

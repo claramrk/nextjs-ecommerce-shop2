@@ -12,13 +12,15 @@ type Product = {
 // get database sql;
 export const getProductsSQL = cache(async () => {
   const products = await sql<Product[]>`
-    SELECT * FROM products
+    SELECT
+      *
+    FROM
+      products
   `;
   return products;
 });
 
 export const getProductSQLById = cache(async (id: number) => {
-  // Postgres always returns an array
   const [product] = await sql<Product[]>`
     SELECT
       *
