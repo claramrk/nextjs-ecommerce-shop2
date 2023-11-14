@@ -1,47 +1,70 @@
-# Ecommerce Store 
-Welcome to my Ecommerce Store! This document serves as a guide to understanding the features and requirements of the Next.js-based ecommerce store.
+# Ticket Store
+
+Welcome to my Ticket Store! I am building it for a tourism association in Lower Austria. This guide provides an overview of the features and requirements of the store.
+
+👷 This project is still under construction 👷
 
 ## Table of Contents
-Project Overview
-Technology Stack
-Features
-Cookies
-Database
-SEO
-Testing
-Security
-Deployment
+1. [Project Overview](#project-overview)
+2. [Technology Stack](#technology-stack)
+3. [Features](#features)
+4. [Cookies](#cookies)
+5. [Database](#database)
+6. [SEO](#seo)
+7. [Testing](#testing)
+8. [Security](#security)
+9. [Deployment](#deployment)
+
+## Project Overview
+This ecommerce store is a Next.js-based application designed to provide a seamless and secure shopping experience. From ticket browsing to checkout, the store offers a range of features to enhance user satisfaction.
 
 ## Technology Stack
-The ecommerce store is built using the following technologies:
+The ecommerce store leverages the following technologies:
 
-- Next.js for the frontend.
-- PostgreSQL for the database.
-- TypeScript for type-safe development.
-- Cookies for cart data management.
-- GitHub Actions for CI/CD.
-- Fly.io for deployment.
+- **Next.js:** Frontend development.
+- **PostgreSQL:** Database management.
+- **TypeScript:** Ensures type-safe development.
+- **Cookies:** Manages cart data securely.
+- **GitHub Actions:** Used for CI/CD.
+- **Fly.io:** Deployment for high availability.
 
 ## Features
-The ecommerce store is built using Next.js and provides the following key features to users:
+The ecommerce store offers the following key features:
 
 ### Header
-Appears on all pages and displays the number of items in the cart. Includes a link to the Cart page.
+- Appears on all pages.
+- Displays the number of items in the cart.
+- Includes a link to the Cart page.
 
 ### Products Page
-Displays a list of products. Each product is a clickable link that leads to its individual product page. Header includes a link to the Products page.
+- Displays a list of products.
+- Each product is a clickable link leading to its individual product page.
+- Header includes a link to the Products page.
 
 ### Single Product Page
-Displays product details including name, image, price, quantity input, and "Add to Cart" button. Allows users to add a quantity to the cart. Ensures the product's URL contains its unique ID. Prevents negative quantity values.
+- Displays product details.
+- Allows users to add a quantity to the cart.
+- Ensures the product's URL contains its unique ID.
+- Prevents negative quantity values.
 
 ### Cart Page
-Displays products added to the cart, including product name, quantity, subtotal, and a "Remove" button. Shows the total price of all products. Prevents negative quantity values. Includes a "Checkout" button.
+- Displays products added to the cart.
+- Shows product name, quantity, subtotal, and a "Remove" button.
+- Shows the total price of all products.
+- Prevents negative quantity values.
+- Includes a "Checkout" button.
 
 ### Checkout Page
-Prompts users for shipping and payment information. Requires users to enter their first name, last name, email, address, city, postal code, country, credit card details, expiration date, and security code. Prevents form submission with empty fields. Offers a "Confirm Order" button to finalize the purchase.
+- Prompts users for shipping and payment information.
+- Requires users to enter various details.
+- Prevents form submission with empty fields.
+- Offers a "Confirm Order" button to finalize the purchase.
 
 ### Thank You Page
-Confirms the order with a "Thank You for Ythe Order" message. Includes a header with a link to the Cart, showing the number of items in the cart. Updates the cart count as items are added or removed. Clears the cart and navigates to the Thank You page upon confirming the order.
+- Confirms the order with a "Thank You for Your Order" message.
+- Includes a header with a link to the Cart, showing the number of items in the cart.
+- Updates the cart count as items are added or removed.
+- Clears the cart and navigates to the Thank You page upon confirming the order.
 
 ## Cookies
 Utilizes a "cart" cookie to store information about the user's cart. Ensures cart data security, preventing unauthorized changes.
@@ -61,10 +84,10 @@ To ensure the ecommerce store functions correctly, I've implemented a comprehens
 - Unit tests the function for updating the quantity of items in the cart.
 - Unit tests the cart sum function.
 
-Set up GitHub Actions for automated code testing.
+I set up GitHub Actions for automated code testing.
 
 ## Security
-The security of user data is a top priority. I use cookies to store cart information and implement measures to prevent unauthorized changes to cart data. I do not save user payment or personal information unless a privacy policy is in place.
+The security of user data is a top priority. I use cookies to store cart information and implement measures to prevent unauthorized changes to cart data. I do not save user payment or personal information so far - this will be handled via stripe in the future. 
 
 ## Deployment
-The ecommerce store is deployed on Fly.io, ensuring high availability and reliable hosting for the application. 
+The ecommerce store is deployed on Fly.io, ensuring high availability and reliable hosting for the application.
