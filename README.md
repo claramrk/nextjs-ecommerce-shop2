@@ -1,4 +1,4 @@
-# Ticket Store
+# NextJS Ecommerce Ticket Store
 
 Welcome to my Ticket Store! I am building it for a tourism association in Lower Austria. This ecommerce store is a Next.js-based application designed to provide a seamless and secure shopping experience. From ticket browsing to checkout, the store offers a range of features to enhance user satisfaction. This README provides an overview of the features and requirements of the store.
 
