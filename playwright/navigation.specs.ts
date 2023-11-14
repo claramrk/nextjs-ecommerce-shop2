@@ -95,6 +95,6 @@ test('navigation test', async ({ page }) => {
   await page.waitForURL('http://localhost:3000/thankYou');
   await expect(page).toHaveURL('http://localhost:3000/thankYou');
   await expect(
-    page.getByRole('heading', { name: 'Thank you for your order!' }),
+    page.getByRole('heading', { name: 'Danke für deine Bestellung!' }),
   ).toBeVisible();
 });
