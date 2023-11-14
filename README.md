@@ -24,6 +24,8 @@ The ecommerce store leverages the following technologies:
 - **Cookies:** Manages cart data securely.
 - **GitHub Actions:** Used for CI/CD.
 - **Fly.io:** Deployment for high availability.
+- **Jest:** Used for Unit Testing.
+- **Playwright:** Used for E2E Testing.
 
 ## Features
 The ecommerce store offers the following key features:
