@@ -6,7 +6,7 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default function ThankYou() {
+export default function thankYou() {
   return (
     <div className="thankyoupage">
       <h1 className="h1">Danke für deine Bestellung!</h1>

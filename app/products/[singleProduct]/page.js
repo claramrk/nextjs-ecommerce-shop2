@@ -9,7 +9,7 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default async function SingleProduct(props) {
+export default async function product(props) {
   const singleProduct = await getProductSQLById(
     Number(props.params.singleProduct),
   );

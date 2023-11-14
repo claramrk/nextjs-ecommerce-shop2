@@ -7,7 +7,7 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default function Checkout() {
+export default function checkout() {
   return (
     <div>
       <h1>Tickets bestellen</h1>

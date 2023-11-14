@@ -1,4 +1,3 @@
-// import { cookies } from 'next/headers';
 import { cookies } from 'next/headers';
 import { getProductsSQL } from '../../database/products';
 import TicketComponent from '../products/TicketComponent';
@@ -14,7 +13,7 @@ export const metadata = {
   description: 'Ticketshop',
 };
 
-export default async function Cart() {
+export default async function cart() {
   // get productsfromDatabaseSQL
   const products = await getProductsSQL();
 

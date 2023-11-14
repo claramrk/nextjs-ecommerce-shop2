@@ -10,7 +10,7 @@ export const metadata = {
   description: 'This is Claras e-commerce shop',
 };
 
-export default async function Products() {
+export default async function products() {
   const productsFromDatabase = await getProductsSQL();
 
   return (

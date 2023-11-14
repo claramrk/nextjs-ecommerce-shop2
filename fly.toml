@@ -1,4 +1,4 @@
-app = "nextjs-ecommerce-shop2"
+app = "next-js-ecommerce-store2"
 primary_region = "otp"
 
 # Apps without volume: Comment out the [mounts] configuration below
