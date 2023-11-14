@@ -11,7 +11,7 @@ Welcome to my Ticket Store! I am building it for a tourism association in Lower 
 5. [Database](#database)
 6. [SEO](#seo)
 7. [Testing](#testing)
-8. [Security](#security)
+8. [Storing Data Securely](#storing-data-securely)
 9. [Deployment](#deployment)
 
 
@@ -63,8 +63,8 @@ The ecommerce store offers the following key features:
 - Updates the cart count as items are added or removed.
 - Clears the cart and navigates to the Thank You page upon confirming the order.
 
-## Cookies
-Utilizes a "cart" cookie to store information about the user's cart. Ensures cart data security, preventing unauthorized changes.
+## Storing Data Securely 
+The security of user data is a top priority. I use cookies to store cart information and implement measures to prevent unauthorized changes to cart data. I do not save user payment or personal information so far - this will be handled via stripe in the future. 
 
 ## Database
 The ecommerce store uses a PostgreSQL database to store and manage product and order data. I connect to and query information from this database to provide users with an efficient shopping experience.
@@ -82,9 +82,6 @@ To ensure the ecommerce store functions correctly, I've implemented a comprehens
 - Unit tests the cart sum function.
 
 I set up GitHub Actions for automated code testing.
-
-## Security
-The security of user data is a top priority. I use cookies to store cart information and implement measures to prevent unauthorized changes to cart data. I do not save user payment or personal information so far - this will be handled via stripe in the future. 
 
 ## Deployment
 The ecommerce store is deployed on Fly.io, ensuring high availability and reliable hosting for the application.
